@@ -22,4 +22,8 @@ const knex = require('knex') ({
     }
 });
 
+app.get("/", (req, res)=> {
+    res.render('landing');
+});
+
 app.listen(port, () => console.log("Server is listening."));
