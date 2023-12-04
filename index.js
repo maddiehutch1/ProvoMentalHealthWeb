@@ -10,7 +10,7 @@ app.set('view engine', 'ejs');
 
 app.use(express.urlencoded({extended:true}));
 
-app.use(express.static('public'));
+app.use('/public', express.static('public'));
 app.set('views', path.join(__dirname, 'views'));
 
 const knex = require('knex') ({
@@ -19,7 +19,7 @@ const knex = require('knex') ({
         host: process.env.RDS_HOSTNAME || 'localhost',
         user: process.env.RDS_USERNAME || 'postgres',
         password: process.env.RDS_PASSWORD || 'admin',
-        database: process.env.RDS_DB_NAME || 'ProvoMentalHealth', 
+        database: process.env.RDS_DB_NAME || 'bucket_list', 
         port: process.env.RDS_PORT || 5432,
         ssl: process.env.DB_SSL ? {rejectUnauthorized: false} : false
     }
