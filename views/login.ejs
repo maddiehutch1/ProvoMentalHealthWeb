@@ -47,17 +47,17 @@
                 <!-- To make this form functional, sign up at-->
                 <!-- https://startbootstrap.com/solution/contact-forms-->
                 <!-- to get an API token!-->
-                <form id="contactForm" data-sb-form-api-token="API_TOKEN">
+                <form id="contactForm" data-sb-form-api-token="API_TOKEN" action="/route/login" method="POST">
                     <!-- <div class="row align-items-stretch mb-5"> -->
                         <div class="col-md-6">
                             <div class="form-group">
                                 <!-- Name input-->
-                                <input class="form-control" id="name" type="text" placeholder="Your Username *" data-sb-validations="required" />
+                                <input class="form-control" id="username" type="text" placeholder="Your Username *" data-sb-validations="required" name="username"/>
                                 <div class="invalid-feedback" data-sb-feedback="name:required">A name is required.</div>
                             </div>
                             <div class="form-group">
                                 <!-- Password input-->
-                                <input class="form-control" id="password" type="password" placeholder="Your Password *" data-sb-validations="required,password" />
+                                <input class="form-control" id="password" type="password" placeholder="Your Password *" data-sb-validations="required,password" name="password" />
                                 <div class="invalid-feedback" data-sb-feedback="password:required">A password is required.</div>
                                 <div class="invalid-feedback" data-sb-feedback="password:email">Password is not valid.</div>
                             </div>
