@@ -75,4 +75,8 @@ app.get("/databaseadmin", (req, res) => {
     res.render("databaseadmin");
 });
 
+app.get("/surveydata", (req, res) => {
+    res.render("surveydata");
+});
+
 app.listen(port, () => console.log("Server is listening."));
