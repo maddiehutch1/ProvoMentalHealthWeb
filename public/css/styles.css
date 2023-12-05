@@ -8136,6 +8136,19 @@ textarea.form-control-lg {
   --bs-text-opacity: 1;
 }
 
+#coolicon:hover{
+  transform: scale(1.2) perspective(1px);
+  /* color:#000; */
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover{
+  text-decoration: none;
+}
+
 .bg-primary {
   --bs-bg-opacity: 1;
   background-color: rgba(var(--bs-primary-rgb), var(--bs-bg-opacity)) !important;
