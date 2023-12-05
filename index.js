@@ -71,4 +71,8 @@ app.get("/adminlanding", (req, res) => {
     res.render("adminlanding");
 });
 
+app.get("/databaseadmin", (req, res) => {
+    res.render("databaseadmin");
+});
+
 app.listen(port, () => console.log("Server is listening."));
