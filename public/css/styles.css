@@ -1119,8 +1119,11 @@ progress {
     width: 41.66666667%;
   }
   .col-md-6 {
-    flex: 0 0 auto;
-    width: 50%;
+    display: flex; /* Make it a flex container */
+    flex-direction: column; /* Stack items vertically */
+    align-items: center; /* Center items along the cross axis (vertically) */
+    width: 75%;
+    margin: 0 auto; /* Center the container itself horizontally */
   }
   .col-md-7 {
     flex: 0 0 auto;
