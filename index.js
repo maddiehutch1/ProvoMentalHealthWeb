@@ -37,9 +37,16 @@ app.get("/login", (req, res) => {
     res.render("login");
 });
 
-
 app.get("/survey", (req, res) => {
     res.render("survey");
+});
+
+app.get("/tableau", (req, res) => {
+    res.render("tableau");
+});
+
+app.get("/modify", (req, res) => {
+    res.render("modify");
 });
 
 app.listen(port, () => console.log("Server is listening."));
