@@ -41,6 +41,11 @@
                     <h2 class="section-heading text-uppercase">LOGIN PAGE</h2>
                     <h3 class="section-subheading text-light">Please enter valid credentials below.</h3>
                 </div>
+                <% if (locals.logout) { %>
+                    <div class="alert alert-success text-center">
+                        Logout Successful
+                    </div>
+                <% } %>
                 <!-- * * * * * * * * * * * * * * *-->
                 <!-- * * SB Forms Contact Form * *-->
                 <!-- * * * * * * * * * * * * * * *-->
@@ -63,19 +68,6 @@
                                 <div class="invalid-feedback" data-sb-feedback="password:email">Password is not valid.</div>
                             </div>
                         </div>
-                    <!-- </div> -->
-                    <!-- Submit success message-->
-                    <!---->
-                    <!-- This is what your users will see when the form-->
-                    <!-- has successfully submitted-->
-                    <div class="d-none" id="submitSuccessMessage">
-                        <div class="text-center text-white mb-3">
-                            <div class="fw-bolder">Form submission successful!</div>
-                            To activate this form, sign up at
-                            <br />
-                            <a href="https://startbootstrap.com/solution/contact-forms">https://startbootstrap.com/solution/contact-forms</a>
-                        </div>
-                    </div>
                     <!-- Submit error message-->
                     <!---->
                     <!-- This is what your users will see when there is-->
@@ -84,11 +76,11 @@
                     <!-- Submit Button-->
                     <div class="text-center"><button class="btn btn-primary btn-xl text-uppercase" id="submitButton" type="submit">LOGIN</button></div>
                 </form>
-            </div>
-            <br>
-            <div class="col-md-6">
-                <a class="link-light text-decoration-none me-3 text-muted" href="modify">Forgot Username / Password?</a><br>
-                <a class="link-light text-decoration-none me-3 text-muted" href="modify">Edit Account?</a>
+                <br>
+                <div class="col-md-6">
+                    <a class="text-center link-light text-decoration-none me-3 text-muted" href="modify">Forgot Username / Password?</a><br>
+                    <a class="text-center link-light text-decoration-none me-3 text-muted" href="modify">Edit Account?</a>
+                </div>
             </div>
         </section>
         <footer class="footer py-4">
@@ -98,3 +90,22 @@
                 </div>
             </div>
         </footer>
+        <script>
+            let sUsername = document.getElementById("username");
+
+            sUsername.focus();
+
+            // if (sUsername.value.trim() === '') {
+            //     sUsername.focus();
+            //     sErrorOutput = '* Please put your username';
+            //     document.getElementById('submitErrorMessage').innerHTML = sErrorOutput;
+            //     return false; // Prevent form submission
+            // } else if (sUsername.value != ) {
+            //     userAgeInput.focus();
+            //     sErrorOutput = '* Please use valid username';
+            //     document.getElementById('ageError').innerHTML = sErrorOutput
+            //     return false; // Prevent form submission
+            // }
+        </script>
+    </body>
+</html>
