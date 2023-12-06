@@ -724,6 +724,10 @@ progress {
   width: 16.6666666667%;
 }
 
+#website:hover{
+  color:black;
+}
+
 .col-auto {
   flex: 0 0 auto;
   width: auto;
@@ -10874,7 +10878,7 @@ p {
   font-weight: 400;
   font-style: italic;
   font-family: "Roboto Slab", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  margin-bottom: 4rem;
+  margin-bottom: 1rem;
 }
 
 @media (min-width: 768px) {
