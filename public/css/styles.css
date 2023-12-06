@@ -724,10 +724,27 @@ progress {
   width: 16.6666666667%;
 }
 
-#website:hover{
-  color:black;
+#website{
+  color:white;
+  display: inline-block;
+  transition: filter 0.2s ease-in-out;
+  font-size: larger;
+  font-weight: bold;
 }
 
+#website:hover{
+  filter: saturate(15) brightness(0.75) sepia(100%) hue-rotate(10deg);
+}
+
+.image-website{
+  display: inline-block;
+  filter: grayscale(100%); /* Set the image to grayscale by default */
+  transition: filter 0.2s ease-in-out;
+}
+
+.image-website:hover{
+  filter: saturate(15) brightness(1) sepia(100%) hue-rotate(10deg);
+}
 .col-auto {
   flex: 0 0 auto;
   width: auto;
@@ -8145,6 +8162,11 @@ textarea.form-control-lg {
   /* color:#000; */
 }
 
+#coolicon2:hover{
+  transform: scale(1.1) perspective(1px);
+  /* color:#000; */
+}
+
 a {
   text-decoration: none;
 }
@@ -11006,7 +11028,8 @@ header.masthead .masthead-heading {
   /* margin-bottom: 2rem; */
   font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   background-color: rgba(0, 0, 0, 0.8); /* Adjust the alpha value (0.0 to 1.0) for transparency */
-  display: block;
+  display: inline-block;
+  padding: 0.15rem 5rem;
   border-radius: 10px;
 }
 
