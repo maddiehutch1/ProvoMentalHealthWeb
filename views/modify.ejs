@@ -38,7 +38,7 @@
             <div class="container">
                 <div class="text-center">
                     <h2 class="section-heading text-uppercase">EDIT YOUR ACCOUNT</h2>
-                    <h3 class="section-subheading text-muted">Please enter information below.</h3>
+                    <h3 class="section-subheading text-light">Please enter information below.</h3>
                 </div>
                 <!-- * * * * * * * * * * * * * * *-->
                 <!-- * * SB Forms Contact Form * *-->
@@ -52,41 +52,28 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <!-- Name input-->
-                                <input class="form-control" id="name" type="text" placeholder="Your Username *" data-sb-validations="required" />
-                                <div class="invalid-feedback" data-sb-feedback="name:required">A name is required.</div>
+                                <input class="form-control" id="username" type="text" placeholder="Your Username *" data-sb-validations="required" />
+                                <div class="invalid-feedback" data-sb-feedback="username:required">Username is required.</div>
                             </div>
                             <div class="form-group">
                                 <!-- Password input-->
                                 <input class="form-control" id="password" type="password" placeholder="Your Password *" data-sb-validations="required,password" />
-                                <div class="invalid-feedback" data-sb-feedback="password:required">A password is required.</div>
+                                <div class="invalid-feedback" data-sb-feedback="password:required">Password is required.</div>
                                 <div class="invalid-feedback" data-sb-feedback="password:email">Password is not valid.</div>
                             </div>
                         </div>
-                    <!-- </div> -->
-                    <!-- Submit success message-->
-                    <!---->
-                    <!-- This is what your users will see when the form-->
-                    <!-- has successfully submitted-->
-                    <div class="d-none" id="submitSuccessMessage">
-                        <div class="text-center text-white mb-3">
-                            <div class="fw-bolder">Form submission successful!</div>
-                            To activate this form, sign up at
-                            <br />
-                            <a href="https://startbootstrap.com/solution/contact-forms">https://startbootstrap.com/solution/contact-forms</a>
-                        </div>
-                    </div>
                     <!-- Submit error message-->
                     <!---->
                     <!-- This is what your users will see when there is-->
                     <!-- an error submitting the form-->
-                    <div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3">Error sending message!</div></div>
+                    <div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3">Please enter valid credentials</div></div>
                     <!-- Submit Button-->
-                    <div class="text-center"><button class="btn btn-primary btn-xl text-uppercase disabled" id="submitButton" type="submit">LOGIN</button></div>
+                    <div class="text-center"><button class="btn btn-primary btn-xl text-uppercase" id="submitButton" type="submit">LOGIN</button></div>
                 </form>
-            </div>
-            <br>
-            <div class="col-md-6">
-                <a class="link-light text-decoration-none me-3" href="login">Already have account?</a><br>
+                <br>
+                <div class="col-md-6">
+                    <a class="text-center link-light text-decoration-none me-3 text-muted" href="login">Already have account?</a><br>
+                </div>
             </div>
         </section>
         <footer class="footer py-4">
@@ -96,3 +83,15 @@
                 </div>
             </div>
         </footer>
+        <script>
+            let sUsername = document.getElementById("username");
+
+            sUsername.focus();
+
+            if (sUsername.value != null)
+            {
+                document.getElementById("submitErrorMessage").value;
+            }
+        </script>
+    </body>
+</html>
