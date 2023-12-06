@@ -724,10 +724,27 @@ progress {
   width: 16.6666666667%;
 }
 
-#website:hover{
-  color:black;
+#website{
+  color:white;
+  display: inline-block;
+  transition: filter 0.2s ease-in-out;
+  font-size: larger;
+  font-weight: bold;
 }
 
+#website:hover{
+  filter: saturate(15) brightness(0.75) sepia(100%) hue-rotate(10deg);
+}
+
+.image-website{
+  display: inline-block;
+  filter: grayscale(100%); /* Set the image to grayscale by default */
+  transition: filter 0.2s ease-in-out;
+}
+
+.image-website:hover{
+  filter: saturate(15) brightness(1) sepia(100%) hue-rotate(10deg);
+}
 .col-auto {
   flex: 0 0 auto;
   width: auto;
@@ -8142,6 +8159,11 @@ textarea.form-control-lg {
 
 #coolicon:hover{
   transform: scale(1.2) perspective(1px);
+  /* color:#000; */
+}
+
+#coolicon2:hover{
+  transform: scale(1.1) perspective(1px);
   /* color:#000; */
 }
 
