@@ -11410,6 +11410,10 @@ label span {
   font-size: 1rem;
 }
 
+.affiliation-group {
+  font-size: 1rem;
+}
+
 .failed-input {
   --bs-text-opacity: 1;
   color: #dc3545;

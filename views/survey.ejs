@@ -101,7 +101,7 @@
                             </div><br>
                             <!-- Affiliations -->
                             <p class="text-light">What type of Organizations are you affiliated with?</p>
-                            <div class="form-check">
+                            <div class="form-check affiliation-group">
                                 <div class="row">
                                 <div class="col-6">
                                     <input class="form-check-input" type="checkbox" value="" id="CompanyCheck">
@@ -126,6 +126,7 @@
                                     </label><br>
                                 </div></div>
                             </div><br>
+                            <p class="failed-input" id="sAffiliationError"></p>
                             <!-- Social Media Yes/No -->
                             <div class="form-row align-items-center">
                                 <div class="col-auto my-1">
@@ -192,8 +193,8 @@
                             <div class="form-row align-items-center">
                                 <div class="col-auto my-1">
                                 <p class="text-light">Average time spent on social media:</p>
-                                  <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
-                                    <option selected>Select an option</option>
+                                  <select class="custom-select mr-sm-2" id="inlineFormCustomSelect1">
+                                    <option selected disabled>Select an option</option>
                                     <option value="1">Less than an hour</option>
                                     <option value="2">Between 1 and 2 hours</option>
                                     <option value="3">Between 2 and 3 hours</option>
@@ -203,15 +204,16 @@
                                   </select>
                                 </div>
                             </div><br>
+                            <p id="dropboxError" class="text-danger"></p>
                             <p class="text-light survey-question">How often do you find yourself using social media without a specific purpose?</p>
                             <div class="form-check form-check-inline">
                             <span class="text-light survey-response">Rarely</span>
                             <label class="radio-label">
-                                <input type="radio" name="option1" />
+                                <input type="radio" name="option1"/>
                                 <span>1</span>
                               </label>
                               <label class="radio-label">
-                                <input type="radio" name="option1"  />
+                                <input type="radio" name="option1"/>
                                 <span>2</span>
                               </label>
                               <label class="radio-label">
@@ -228,11 +230,12 @@
                               </label>
                               <span class="text-light survey-response">Often</span>
                             </div><br>
+                            <p id="radioError1" class="text-danger" style="display: none;">Please select an option.</p>
                             <p class="text-light survey-question">How often do you get distracted by social media when you are busy doing something?</p>
                             <div class="form-check form-check-inline">
                             <span class="text-light survey-response">Rarely</span>
                             <label class="radio-label">
-                                <input type="radio" name="option2"/>
+                                <input type="radio" name="option2" />
                                 <span>1</span>
                               </label>
                               <label class="radio-label">
@@ -253,11 +256,12 @@
                               </label>
                               <span class="text-light survey-response">Often</span>
                             </div><br>
+                            <p id="radioError2" class="text-danger" style="display: none;">Please select an option.</p>
                             <p class="text-light survey-question">Do you feel restless if you haven’t used social media in a while?</p>
                             <div class="form-check form-check-inline">
                             <span class="text-light survey-response">Rarely</span>
                             <label class="radio-label">
-                                <input type="radio" name="option3"/>
+                                <input type="radio" name="option3" />
                                 <span>1</span>
                               </label>
                               <label class="radio-label">
@@ -278,11 +282,12 @@
                               </label>
                               <span class="text-light survey-response">Often</span>
                             </div><br>
+                            <p id="radioError3" class="text-danger" style="display: none;">Please select an option.</p>
                             <p class="text-light survey-question">How easily distracted are you?</p>
                             <div class="form-check form-check-inline">    
                             <span class="text-light survey-response">Rarely</span>
                             <label class="radio-label">
-                                <input type="radio" name="option4"  />
+                                <input type="radio" name="option4" />
                                 <span>1</span>
                               </label>
                               <label class="radio-label">
@@ -303,11 +308,12 @@
                               </label>
                               <span class="text-light survey-response">Often</span>
                             </div><br>
+                            <p id="radioError4" class="text-danger" style="display: none;">Please select an option.</p>
                             <p class="text-light survey-question">How much are you bothered by worries?</p>
                             <div class="form-check form-check-inline">
                             <span class="text-light survey-response">Rarely</span>
                             <label class="radio-label">
-                            <input type="radio" name="option5"/>
+                            <input type="radio" name="option5" />
                                 <span>1</span>
                               </label>
                               <label class="radio-label">
@@ -328,11 +334,12 @@
                               </label>
                               <span class="text-light survey-response">Often</span>
                             </div><br>
+                            <p id="radioError5" class="text-danger" style="display: none;">Please select an option.</p>
                             <p class="text-light survey-question">Do you find it difficult to concentrate on things?</p>
                             <div class="form-check form-check-inline">
                             <span class="text-light survey-response">Rarely</span>
                             <label class="radio-label">
-                            <input type="radio" name="option6"/>
+                            <input type="radio" name="option6" />
                                 <span>1</span>
                               </label>
                               <label class="radio-label">
@@ -353,11 +360,12 @@
                               </label>
                               <span class="text-light survey-response">Often</span>
                             </div><br>
+                            <p id="radioError6" class="text-danger" style="display: none;">Please select an option.</p>
                             <p class="text-light survey-question">How often do you compare yourself to other successful people through the use of social media?</p>
                             <div class="form-check form-check-inline">
                             <span class="text-light survey-response">Rarely</span>
                             <label class="radio-label">
-                            <input type="radio" name="option7"/>
+                            <input type="radio" name="option7" />
                                 <span>1</span>
                               </label>
                               <label class="radio-label">
@@ -378,11 +386,12 @@
                               </label>
                               <span class="text-light survey-response">Often</span>
                             </div><br>
+                            <p id="radioError7" class="text-danger" style="display: none;">Please select an option.</p>
                             <p class="text-light survey-question">Following the previous question, how do you feel about these comparisons, generally speaking?</p>
                             <div class="form-check form-check-inline">
                             <span class="text-light survey-response">Rarely</span>
                             <label class="radio-label">
-                            <input type="radio" name="option8"/>
+                            <input type="radio" name="option8" />
                                 <span>1</span>
                               </label>
                               <label class="radio-label">
@@ -403,11 +412,12 @@
                               </label>
                               <span class="text-light survey-response">Often</span>
                             </div><br>
+                            <p id="radioError8" class="text-danger" style="display: none;">Please select an option.</p>
                             <p class="text-light survey-question">How often do you look to seek validation from features of social media?</p>
                             <div class="form-check form-check-inline">
                             <span class="text-light survey-response">Rarely</span>
                             <label class="radio-label">
-                            <input type="radio" name="option9"/>
+                            <input type="radio" name="option9" />
                                 <span>1</span>
                               </label>
                               <label class="radio-label">
@@ -428,11 +438,12 @@
                               </label>
                               <span class="text-light survey-response">Often</span>
                             </div><br>
+                            <p id="radioError9" class="text-danger" style="display: none;">Please select an option.</p>
                             <p class="text-light survey-question">How often do you feel depressed or down?</p>
                             <div class="form-check form-check-inline">
                             <span class="text-light survey-response">Rarely</span>
                             <label class="radio-label">
-                            <input type="radio" name="option10"/>
+                            <input type="radio" name="option10" />
                                 <span>1</span>
                               </label>
                               <label class="radio-label">
@@ -453,11 +464,12 @@
                               </label>
                               <span class="text-light survey-response">Often</span>
                             </div><br>
+                            <p id="radioError10" class="text-danger" style="display: none;">Please select an option.</p>
                             <p class="text-light survey-question">How frequently does your interested in daily activities fluctuate?</p>
                             <div class="form-check form-check-inline">
                             <span class="text-light survey-response">Rarely</span>
                             <label class="radio-label">
-                            <input type="radio" name="option11"/>
+                            <input type="radio" name="option11" />
                                 <span>1</span>
                               </label>
                               <label class="radio-label">
@@ -478,11 +490,12 @@
                               </label>
                               <span class="text-light survey-response">Often</span>
                             </div><br>
+                            <p id="radioError11" class="text-danger" style="display: none;">Please select an option.</p>
                             <p class="text-light survey-question">How often do you face issues regarding sleep?</p>
                             <div class="form-check form-check-inline">
                             <span class="text-light survey-response">Rarely</span>
                             <label class="radio-label">
-                            <input type="radio" name="option12"/>
+                            <input type="radio" name="option12" />
                                 <span>1</span>
                               </label>
                               <label class="radio-label">
@@ -503,6 +516,7 @@
                               </label>
                               <span class="text-light survey-response">Often</span>
                             </div><br>
+                            <p id="radioError12" class="text-danger" style="display: none;">Please select an option.</p>
                         </div>
                     </div>
                     <!-- Submit success message-->
@@ -523,7 +537,8 @@
                     <!-- an error submitting the form-->
                     <div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3">Error sending message!</div></div>
                     <!-- Submit Button-->
-                    <div class="text-center"><button class="btn btn-primary btn-xl text-uppercase" id="submitButton" type="submit">SUBMIT SURVEY</button></div>
+                    <div class="text-center"><button class="btn btn-primary btn-xl text-uppercase" id="submitButton" type="submit">SUBMIT SURVEY</button></div><br>
+                    <p id="survey-error" class="text-danger text-center"></p>
                 </form>
             </div>
         </section>
@@ -545,36 +560,299 @@
         </footer>
         <script>
             function validateForm() {
-                let userAgeInput = document.getElementById('userAge');
-                if (userAgeInput.value.trim() === '') {
-                    userAgeInput.focus();
-                    sErrorOutput = '* Please put your age';
-                    document.getElementById('ageError').innerHTML = sErrorOutput
-                    return false; // Prevent form submission
-                } else if (userAgeInput.value.trim() < 0) {
-                    userAgeInput.focus();
-                    sErrorOutput = '* You have placed an invalid age';
-                    document.getElementById('ageError').innerHTML = sErrorOutput
-                    return false; // Prevent form submission
+                    let userAgeInput = document.getElementById('userAge');
+                    let totalErrors = 0;
+                    if (userAgeInput.value.trim() === '') {
+                        userAgeInput.focus();
+                        sErrorOutput = '* Please put your age';
+                        document.getElementById('ageError').innerHTML = sErrorOutput
+                        totalErrors++; // Prevent form submission
+                    } else if (userAgeInput.value.trim() < 0) {
+                        userAgeInput.focus();
+                        sErrorOutput = '* You have placed an invalid age';
+                        document.getElementById('ageError').innerHTML = sErrorOutput
+                        totalErrors++; // Prevent form submission
+                    }else {
+                    document.getElementById('ageError').innerHTML = '';
                 }
 
-
-                var socialMediaCheckboxes = document.querySelectorAll('.social-media-group .form-check-input');
-                var atLeastOneChecked = Array.from(socialMediaCheckboxes).some(checkbox => checkbox.checked);
-
-                if (!atLeastOneChecked) {
-                    alert("Please select at least one social media platform.");
-                    
-                    var firstCheckbox = document.querySelector('.social-media-group .form-check-input');
-                    if (firstCheckbox) {
-                        firstCheckbox.focus();
-                        document.getElementById('CheckboxError').innerHTML = sCheckboxError
+                    let sSocialMediaUsage = document.getElementById('inlineFormCustomSelect1').value
+                    if (sSocialMediaUsage) {
+                        
                     }
-                    
-                    return false; // Prevent form submission
+
+                    var affiliationCheckboxes = document.querySelectorAll('.affiliation-group .form-check-input');
+                    var ifNoneChecked = Array.from(affiliationCheckboxes).some(checkbox => checkbox.checked);
+
+                    if (!ifNoneChecked) {
+                        // alert("Please select at least affiliation.");
+
+                        var firstCheckbox = document.querySelector('.affiliation-group .form-check-input');
+                        if (firstCheckbox) {
+                            firstCheckbox.focus();
+                            sAffiliationError = '* Please select at least one affiliation'
+                            document.getElementById('sAffiliationError').innerHTML = sAffiliationError
+                        }
+                        
+                        totalErrors++; // Prevent form submission
+                    }else {
+                    document.getElementById('sAffiliationError').innerHTML = '';
                 }
 
-                return true; // Continue with form submission
+                    var socialMediaCheckboxes = document.querySelectorAll('.social-media-group .form-check-input');
+                    var atLeastOneChecked = Array.from(socialMediaCheckboxes).some(checkbox => checkbox.checked);
+
+                    if (!atLeastOneChecked) {
+                        // alert("Please select at least one social media platform.");
+
+                        var secondCheckbox = document.querySelector('.social-media-group .form-check-input');
+                        if (secondCheckbox) {
+                            secondCheckbox.focus();
+                            sCheckboxError = '* Please select at least one social media platform'
+                            document.getElementById('sCheckboxError').innerHTML = sCheckboxError
+                        }
+                        
+                        totalErrors++; // Prevent form submission
+                    }else {
+                        document.getElementById('sCheckboxError').innerHTML = '';
+                    }
+
+                    var radioButton1 = document.getElementsByName('option1');
+                    var radioButton2 = document.getElementsByName('option2');
+                    var radioButton3 = document.getElementsByName('option3');
+                    var radioButton4 = document.getElementsByName('option4');
+                    var radioButton5 = document.getElementsByName('option5');
+                    var radioButton6 = document.getElementsByName('option6');
+                    var radioButton7 = document.getElementsByName('option7');
+                    var radioButton8 = document.getElementsByName('option8');
+                    var radioButton9 = document.getElementsByName('option9');
+                    var radioButton10 = document.getElementsByName('option10');
+                    var radioButton11 = document.getElementsByName('option11');
+                    var radioButton12 = document.getElementsByName('option12');
+                    var selected1 = false;
+                    var selected2 = false;
+                    var selected3 = false;
+                    var selected4 = false;
+                    var selected5 = false;
+                    var selected6 = false;
+                    var selected7 = false;
+                    var selected8 = false;
+                    var selected9 = false;
+                    var selected10 = false;
+                    var selected11 = false;
+                    var selected12 = false;
+
+                    for (var i = 0; i < radioButton1.length; i++) {
+                        if (radioButton1[i].checked) {
+                            selected1 = true;
+                            break;
+                        }
+                    }
+                    for (var i = 0; i < radioButton2.length; i++) {
+                        if (radioButton2[i].checked) {
+                            selected2 = true;
+                            break;
+                        }
+                    }
+                    for (var i = 0; i < radioButton3.length; i++) {
+                        if (radioButton3[i].checked) {
+                            selected3 = true;
+                            break;
+                        }
+                    }
+                    for (var i = 0; i < radioButton4.length; i++) {
+                        if (radioButton4[i].checked) {
+                            selected4 = true;
+                            break;
+                        }
+                    }
+                    for (var i = 0; i < radioButton5.length; i++) {
+                        if (radioButton5[i].checked) {
+                            selected5 = true;
+                            break;
+                        }
+                    }
+                    for (var i = 0; i < radioButton6.length; i++) {
+                        if (radioButton6[i].checked) {
+                            selected6 = true;
+                            break;
+                        }
+                    }
+                    for (var i = 0; i < radioButton7.length; i++) {
+                        if (radioButton7[i].checked) {
+                            selected7 = true;
+                            break;
+                        }
+                    }
+                    for (var i = 0; i < radioButton8.length; i++) {
+                        if (radioButton8[i].checked) {
+                            selected8 = true;
+                            break;
+                        }
+                    }
+                    for (var i = 0; i < radioButton9.length; i++) {
+                        if (radioButton9[i].checked) {
+                            selected9 = true;
+                            break;
+                        }
+                    }
+                    for (var i = 0; i < radioButton10.length; i++) {
+                        if (radioButton10[i].checked) {
+                            selected10 = true;
+                            break;
+                        }
+                    }
+                    for (var i = 0; i < radioButton11.length; i++) {
+                        if (radioButton11[i].checked) {
+                            selected11 = true;
+                            break;
+                        }
+                    }
+                    for (var i = 0; i < radioButton12.length; i++) {
+                        if (radioButton12[i].checked) {
+                            selected12 = true;
+                            break;
+                        }
+                    }
+
+                    if (!selected1) {
+                        // Show error message
+                        var flaggedError = document.getElementById('radioError1');
+                        document.getElementById('radioError1').style.display = 'block';
+                        flaggedError.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'nearest' });
+                        flaggedError.focus();
+                        totalErrors++;
+                    }else {
+                    // Hide error message
+                    document.getElementById('radioError1').style.display = 'none';
+                }
+
+                    if (!selected2) {
+                        // Show error message
+                        var flaggedError = document.getElementById('radioError2');
+                        document.getElementById('radioError2').style.display = 'block';
+                        flaggedError.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'nearest' });
+                        totalErrors++;
+                    }else {
+                    // Hide error message
+                    document.getElementById('radioError2').style.display = 'none';
+                }
+
+                    if (!selected3) {
+                        // Show error message
+                        var flaggedError = document.getElementById('radioError3');
+                        document.getElementById('radioError3').style.display = 'block';
+                        flaggedError.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'nearest' });
+                        totalErrors++;
+                    }else {
+                    // Hide error message
+                    document.getElementById('radioError3').style.display = 'none';
+                }
+
+                    if (!selected4) {
+                        // Show error message
+                        var flaggedError = document.getElementById('radioError4');
+                        document.getElementById('radioError4').style.display = 'block';
+                        flaggedError.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'nearest' });
+                        totalErrors++;
+                    }else {
+                    // Hide error message
+                    document.getElementById('radioError4').style.display = 'none';
+                }
+
+                    if (!selected5) {
+                        // Show error message
+                        var flaggedError = document.getElementById('radioError5');
+                        document.getElementById('radioError5').style.display = 'block';
+                        flaggedError.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'nearest' });
+                        totalErrors++;
+                    }else {
+                    // Hide error message
+                    document.getElementById('radioError5').style.display = 'none';
+                }
+
+                    if (!selected6) {
+                        // Show error message
+                        var flaggedError = document.getElementById('radioError6');
+                        document.getElementById('radioError6').style.display = 'block';
+                        flaggedError.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'nearest' });
+                        totalErrors++;
+                    }else{
+                    // Hide error message
+                    document.getElementById('radioError6').style.display = 'none';
+                }
+                    if (!selected7) {
+                        // Show error message
+                        var flaggedError = document.getElementById('radioError7');
+                        document.getElementById('radioError7').style.display = 'block';
+                        flaggedError.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'nearest' });
+                        totalErrors++;
+                    }else{
+                    // Hide error message
+                    document.getElementById('radioError7').style.display = 'none';
+                }
+
+                    if (!selected8) {
+                        // Show error message
+                        var flaggedError = document.getElementById('radioError8');
+                        document.getElementById('radioError8').style.display = 'block';
+                        flaggedError.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'nearest' });
+                        totalErrors++;
+                    }else{
+                    // Hide error message
+                    document.getElementById('radioError8').style.display = 'none';
+                }
+
+                    if (!selected9) {
+                        // Show error message
+                        var flaggedError = document.getElementById('radioError9');
+                        document.getElementById('radioError9').style.display = 'block';
+                        flaggedError.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'nearest' });
+                        totalErrors++;
+                    }else{
+                    // Hide error message
+                    document.getElementById('radioError9').style.display = 'none';
+                }
+
+                    if (!selected10) {
+                        // Show error message
+                        var flaggedError = document.getElementById('radioError10');
+                        document.getElementById('radioError10').style.display = 'block';
+                        flaggedError.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'nearest' });
+                        totalErrors++;
+                    }else {
+                    // Hide error message
+                    document.getElementById('radioError10').style.display = 'none';                        
+                    }
+
+                    if (!selected11) {
+                        // Show error message
+                        var flaggedError = document.getElementById('radioError11');
+                        document.getElementById('radioError11').style.display = 'block';
+                        flaggedError.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'nearest' });
+                        totalErrors++;
+                    }else {
+                    // Hide error message
+                    document.getElementById('radioError11').style.display = 'none';
+                }
+                    if (!selected12) {
+                        // Show error message
+                        var flaggedError = document.getElementById('radioError12');
+                        document.getElementById('radioError12').style.display = 'block';
+                        flaggedError.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'nearest' });
+                        totalErrors++;
+                    }else {
+                    // Hide error message
+                    document.getElementById('radioError12').style.display = 'none';
+                }
+
+                    if (totalErrors > 0) {
+                        let sSurveyErrorMessage = (`* You have ${totalErrors} errors in your survey.`)
+                        document.getElementById("survey-error").innerHTML = sSurveyErrorMessage
+                        return false;
+                    }
+
+                    return true; // Continue with form submission
             }
         </script>
   </body>
