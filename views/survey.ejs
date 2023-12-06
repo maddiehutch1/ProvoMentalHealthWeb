@@ -63,20 +63,21 @@
                             <p class="text-light">What is your gender?</p>
                             <div class="form-row align-items-center">
                                 <div class="col-auto my-1">
-                                  <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" required >
-                                    <option selected>Select an option</option>
+                                  <select class="custom-select mr-sm-2" id="inlineFormCustomSelect1">
+                                    <option value="0" selected disabled>Select an option</option>
                                     <option value="1">Male</option>
                                     <option value="2">Female</option>
                                     <option value="3">Other</option>
                                   </select>
                                 </div>
                             </div><br>
+                            <p id="dropboxError1" class="text-danger"></p>
                             <!-- RELATIONSHIP STATUS has : Divorced, In a Relationship, Married, Single -->
                             <p class="text-light">Relationship Status:</p>
                             <div class="form-row align-items-center">
                                 <div class="col-auto my-1">
-                                  <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" required>
-                                    <option selected>Select an option</option>
+                                  <select class="custom-select mr-sm-2" id="inlineFormCustomSelect2">
+                                    <option value="0" selected disabled>Select an option</option>
                                     <option value="1">Single</option>
                                     <option value="2">In a relationship</option>
                                     <option value="3">Married</option>
@@ -84,12 +85,13 @@
                                   </select>
                                 </div>
                             </div><br>
+                            <p id="dropboxError2" class="text-danger"></p>
                             <!-- OCCUPATION STATUS DROPDOWN: Retired, Salaried Worker, School Student, University Student -->
                             <p class="text-light">Occupation Status:</p>
                             <div class="form-row align-items-center">
                                 <div class="col-auto my-1">
-                                  <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" required>
-                                    <option selected>Select an option</option>
+                                  <select class="custom-select mr-sm-2" id="inlineFormCustomSelect3">
+                                    <option value="0" selected disabled>Select an option</option>
                                     <option value="1">Retired</option>
                                     <option value="2">Salaried Worker</option>
                                     <option value="1">Not in the workforce</option>
@@ -99,6 +101,7 @@
                                   </select>
                                 </div>
                             </div><br>
+                            <p id="dropboxError3" class="text-danger"></p>
                             <!-- Affiliations -->
                             <p class="text-light">What type of Organizations are you affiliated with?</p>
                             <div class="form-check affiliation-group">
@@ -131,13 +134,14 @@
                             <div class="form-row align-items-center">
                                 <div class="col-auto my-1">
                                 <p class="text-light">Do you use social media?</p>
-                                  <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
-                                    <option selected>Select an option</option>
+                                  <select class="custom-select mr-sm-2" id="inlineFormCustomSelect4">
+                                    <option value="0" selected disabled>Select an option</option>
                                     <option value="1">Yes</option>
                                     <option value="2">No</option>
                                   </select>
                                 </div>
                             </div><br>
+                            <p id="dropboxError4" class="text-danger"></p>
                             <!-- Types of Social Media -->
                             <p class="text-light">What social media platforms do you commonly use?</p>
                             <div class="form-check social-media-group">
@@ -193,8 +197,8 @@
                             <div class="form-row align-items-center">
                                 <div class="col-auto my-1">
                                 <p class="text-light">Average time spent on social media:</p>
-                                  <select class="custom-select mr-sm-2" id="inlineFormCustomSelect1">
-                                    <option selected disabled>Select an option</option>
+                                  <select class="custom-select mr-sm-2" id="inlineFormCustomSelect5">
+                                    <option value="0" selected disabled>Select an option</option>
                                     <option value="1">Less than an hour</option>
                                     <option value="2">Between 1 and 2 hours</option>
                                     <option value="3">Between 2 and 3 hours</option>
@@ -204,7 +208,7 @@
                                   </select>
                                 </div>
                             </div><br>
-                            <p id="dropboxError" class="text-danger"></p>
+                            <p id="dropboxError5" class="text-danger"></p>
                             <p class="text-light survey-question">How often do you find yourself using social media without a specific purpose?</p>
                             <div class="form-check form-check-inline">
                             <span class="text-light survey-response">Rarely</span>
@@ -561,15 +565,55 @@
                     } else if (userAgeInput.value.trim() < 0) {
                         userAgeInput.focus();
                         sErrorOutput = '* You have placed an invalid age';
-                        document.getElementById('ageError').innerHTML = sErrorOutput
+                        document.getElementById('ageError').innerHTML = sErrorOutput;
                         totalErrors++; // Prevent form submission
                     }else {
                     document.getElementById('ageError').innerHTML = '';
                 }
 
-                    let sSocialMediaUsage = document.getElementById('inlineFormCustomSelect1').value
-                    if (sSocialMediaUsage) {
-                        
+                    let sGender = document.getElementById('inlineFormCustomSelect1').value
+                    if (sGender == 0) {
+                        sDropboxError1 = '* You have not selected a valid option.';
+                        document.getElementById('dropboxError1').innerHTML = sDropboxError1;
+                        totalErrors++; // Prevent form submission
+                    }else {
+                        document.getElementById('dropboxError1').innerHTML = '';
+                    }
+
+                    let sRelationshipStatus = document.getElementById('inlineFormCustomSelect2').value
+                    if (sRelationshipStatus == 0) {
+                        sDropboxError2 = '* You have not selected a valid option.';
+                        document.getElementById('dropboxError2').innerHTML = sDropboxError2;
+                        totalErrors++; // Prevent form submission
+                    }else {
+                        document.getElementById('dropboxError2').innerHTML = '';
+                    }
+
+                    let sOccupationStatus = document.getElementById('inlineFormCustomSelect3').value
+                    if (sOccupationStatus == 0) {
+                        sDropboxError3 = '* You have not selected a valid option.';
+                        document.getElementById('dropboxError3').innerHTML = sDropboxError3;
+                        totalErrors++; // Prevent form submission
+                    }else {
+                        document.getElementById('dropboxError3').innerHTML = '';
+                    }
+
+                    let sSocialMediaStatus = document.getElementById('inlineFormCustomSelect4').value
+                    if (sSocialMediaStatus == 0) {
+                        sDropboxError4 = '* You have not selected a valid option.';
+                        document.getElementById('dropboxError4').innerHTML = sDropboxError4;
+                        totalErrors++; // Prevent form submission
+                    }else {
+                        document.getElementById('dropboxError4').innerHTML = '';
+                    }
+
+                    let sSocialMediaUsage = document.getElementById('inlineFormCustomSelect5').value
+                    if (sSocialMediaUsage == 0) {
+                        sDropboxError5 = '* You have not selected a valid option.';
+                        document.getElementById('dropboxError5').innerHTML = sDropboxError5;
+                        totalErrors++; // Prevent form submission
+                    }else {
+                        document.getElementById('dropboxError5').innerHTML = '';
                     }
 
                     var affiliationCheckboxes = document.querySelectorAll('.affiliation-group .form-check-input');
