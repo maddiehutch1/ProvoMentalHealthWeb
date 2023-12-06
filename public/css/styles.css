@@ -668,7 +668,7 @@ progress {
   }
 }
 .row {
-  --bs-gutter-x: 1.5rem;
+  --bs-gutter-x: 3rem;
   --bs-gutter-y: 0;
   display: flex;
   flex-wrap: wrap;
@@ -11337,4 +11337,53 @@ section#contact form#contactForm :-ms-input-placeholder {
   text-align: center;
   font-size: 0.9rem;
   font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+input[type="radio"] {
+  width: 30px;
+  height: 30px;
+  border-radius: 15px;
+  border: 2px solid #f2c744;
+  background-color: white;
+  -webkit-appearance: none; /*to disable the default appearance of radio button*/
+  -moz-appearance: none;
+}
+
+input[type="radio"]:focus { /*no need, if you don't disable default appearance*/
+  outline: none; /*to remove the square border on focus*/
+}
+
+input[type="radio"]:checked { /*no need, if you don't disable default appearance*/
+  background-color: #f2c744;
+}
+
+input[type="radio"]:checked ~ span:first-of-type {
+  color: white;
+}
+
+label span:first-of-type {
+  position: relative;
+  left: -24px;
+  font-size: 18px;
+  color: #000;
+}
+
+label span {
+  position: absolute;
+  top: -9px;
+}
+
+.radio-label {
+  display: inline-block;
+  margin-left: 12px;
+}
+
+.survey-question {
+  text-align: center;
+}
+
+.survey-response {
+  font-size: 20px;
+  position: relative;
+  top: -9px;
 }

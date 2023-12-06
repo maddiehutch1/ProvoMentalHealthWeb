@@ -53,18 +53,14 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <!-- AGE input-->
+                                <p class="text-light">Age:</p>
                                 <input class="form-control" id="name" type="text" placeholder="Age *" data-sb-validations="required" />
                                 <div class="invalid-feedback" data-sb-feedback="name:required">A name is required.</div>
-                            </div>
-                            <div class="form-group">
-                                <!-- GENDER input-->
-                                <input class="form-control" id="name" type="text" placeholder="Gender *" data-sb-validations="required" />
-                                <div class="invalid-feedback" data-sb-feedback="name:required">A gender is required.</div>
                             </div>
                             <!-- GENDER DROPDOWN -->
                             <div class="form-row align-items-center">
                                 <div class="col-auto my-1">
-                                <p class="text-light"></p>
+                                <p class="text-light">Gender:</p>
                                   <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
                                     <option selected>Select an option</option>
                                     <option value="1">Male</option>
@@ -76,7 +72,7 @@
                             <!-- RELATIONSHIP STATUS has : Divorced, In a Relationship, Married, Single -->
                             <div class="form-row align-items-center">
                                 <div class="col-auto my-1">
-                                <p class="text-light">Gender:</p>
+                                <p class="text-light">Relationship Status:</p>
                                   <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
                                     <option selected>Select an option</option>
                                     <option value="1">Single</option>
@@ -89,87 +85,422 @@
                             <!-- OCCUPATION STATUS DROPDOWN: Retired, Salaried Worker, School Student, University Student -->
                             <div class="form-row align-items-center">
                                 <div class="col-auto my-1">
+                                <p class="text-light">Occupation Status:</p>
                                   <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
                                     <option selected>Select an option</option>
-                                    <option value="1">Single</option>
-                                    <option value="2">In a relationship</option>
-                                    <option value="3">Married</option>
-                                    <option value="4">Divorced</option>
+                                    <option value="1">Retired</option>
+                                    <option value="2">Salaried Worker</option>
+                                    <option value="1">Not in the workforce</option>
+                                    <option value="1">Unemployed</option>
+                                    <option value="3">School Student</option>
+                                    <option value="4">University Student</option>
                                   </select>
                                 </div>
                             </div><br>
-                            <div class="form-group">
-                                <!-- OCCUPATION STATUS input-->
-                                <input class="form-control" id="name" type="text" placeholder="Question 1 *" data-sb-validations="required" />
-                                <div class="invalid-feedback" data-sb-feedback="name:required">A name is required.</div>
+                            <!-- Affiliations -->
+                            <p class="text-light">What type of Organizations are you affiliated with?</p>
+                            <div class="form-check">
+                                <div class="row">
+                                <div class="col-6">
+                                    <option selected>Select an option</option>
+                                    <input class="form-check-input" type="checkbox" value="" id="CompanyCheck">
+                                    <label class="form-check-label text-light" for="CompanyCheck">
+                                    Company
+                                    </label><br>
+                                    <input class="form-check-input" type="checkbox" value="" id="PrivateCheck">
+                                    <label class="form-check-label text-light" for="PrivateCheck">
+                                    Private
+                                    </label><br>
+                                    <input class="form-check-input" type="checkbox" value="" id="GovernmentCheck">
+                                    <label class="form-check-label text-light" for="GovernmentCheck">
+                                    Government
+                                    </label><br>
+                                    <input class="form-check-input" type="checkbox" value="" id="SchoolCheck">
+                                    <label class="form-check-label text-light" for="SchoolCheck">
+                                    School
+                                    </label><br>
+                                    <input class="form-check-input" type="checkbox" value="" id="NotApplicableCheck">
+                                    <label class="form-check-label text-light" for="NotApplicableCheck">
+                                    N/A
+                                    </label><br>
+                                </div></div>
+                            </div><br>
+                            <!-- Social Media Yes/No -->
+                            <div class="form-row align-items-center">
+                                <div class="col-auto my-1">
+                                <p class="text-light">Do you use social media?</p>
+                                  <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                                    <option selected>Select an option</option>
+                                    <option value="1">Yes</option>
+                                    <option value="2">No</option>
+                                  </select>
+                                </div>
+                            </div><br>
+                            <!-- Types of Social Media -->
+                            <p class="text-light">What social media platforms do you commonly use?</p>
+                            <div class="form-check">
+                                <div class="row">
+                                    <div class="col-6">
+                                    <input class="form-check-input" type="checkbox" value="" id="FacebookCheck">
+                                    <label class="form-check-label text-light" for="FacebookCheck">
+                                    Facebook
+                                    </label><br>
+                                    <input class="form-check-input" type="checkbox" value="" id="TwitterCheck">
+                                    <label class="form-check-label text-light" for="TwitterCheck">
+                                    Twitter
+                                    </label><br>
+                                    <input class="form-check-input" type="checkbox" value="" id="InstagramCheck">
+                                    <label class="form-check-label text-light" for="InstagramCheck">
+                                    Instagram
+                                    </label><br>
+                                    <input class="form-check-input" type="checkbox" value="" id="YouTubeCheck">
+                                    <label class="form-check-label text-light" for="YouTubeCheck">
+                                    YouTube
+                                    </label><br>
+                                    <input class="form-check-input" type="checkbox" value="" id="DiscordCheck">
+                                    <label class="form-check-label text-light" for="DiscordCheck">
+                                    Discord
+                                    </label><br>
+                                </div>
+                                <div class="col-6">
+                                    <input class="form-check-input" type="checkbox" value="" id="RedditCheck">
+                                    <label class="form-check-label text-light" for="RedditCheck">
+                                    Reddit
+                                    </label><br>
+                                    <input class="form-check-input" type="checkbox" value="" id="PinterestCheck">
+                                    <label class="form-check-label text-light" for="PinterestCheck">
+                                    Pinterest
+                                    </label><br>
+                                    <input class="form-check-input" type="checkbox" value="" id="TikTokCheck">
+                                    <label class="form-check-label text-light" for="TikTokCheck">
+                                    TikTok
+                                    </label><br>
+                                    <input class="form-check-input" type="checkbox" value="" id="SnapChatCheck">
+                                    <label class="form-check-label text-light" for="SnapChatCheck">
+                                    SnapChat
+                                    </label><br>
+                                    <input class="form-check-input" type="checkbox" value="" id="OtherCheck">
+                                    <label class="form-check-label text-light" for="OtherCheck">
+                                    Other
+                                    </label><br>
                             </div>
-                            <div class="form-group">
-                                <!-- ORGANIZATIONS input-->
-                                <input class="form-control" id="name" type="text" placeholder="Question 1 *" data-sb-validations="required" />
-                                <div class="invalid-feedback" data-sb-feedback="name:required">A name is required.</div>
+                            </div><br>
                             </div>
-                            <div class="form-group">
-                                <!-- USE SOCIAL MEDIA input-->
-                                <input class="form-control" id="name" type="text" placeholder="Question 1 *" data-sb-validations="required" />
-                                <div class="invalid-feedback" data-sb-feedback="name:required">A name is required.</div>
-                            </div>
-                            <div class="form-group">
-                                <!-- PLATFORMS input-->
-                                <input class="form-control" id="name" type="text" placeholder="Question 1 *" data-sb-validations="required" />
-                                <div class="invalid-feedback" data-sb-feedback="name:required">A name is required.</div>
-                            </div>
-                            <div class="form-group">
-                                <!-- AVG TIME USAGE input-->
-                                <input class="form-control" id="name" type="text" placeholder="Question 1 *" data-sb-validations="required" />
-                                <div class="invalid-feedback" data-sb-feedback="name:required">A name is required.</div>
-                            </div>
-                            <div class="form-group">
-                                <!-- NO PURPOSE USAGE input-->
-                                <input class="form-control" id="name" type="text" placeholder="Question 1 *" data-sb-validations="required" />
-                                <div class="invalid-feedback" data-sb-feedback="name:required">A name is required.</div>
-                            </div>
-                            <div class="form-group">
-                                <!-- DISTRACTED input-->
-                                <input class="form-control" id="name" type="text" placeholder="Question 3 *" data-sb-validations="required" />
-                                <div class="invalid-feedback" data-sb-feedback="name:required">A name is required.</div>
-                            </div>
-                            <div class="form-group">
-                                <!-- RESTLESS input-->
-                                <input class="form-control" id="name" type="text" placeholder="Question 4 *" data-sb-validations="required" />
-                                <div class="invalid-feedback" data-sb-feedback="name:required">A name is required.</div>
-                            </div>
-                            <div class="form-group">
-                                <!-- EASILY DISTRACTED RATING input-->
-                                <input class="form-control" id="name" type="text" placeholder="Question 5 *" data-sb-validations="required" />
-                                <div class="invalid-feedback" data-sb-feedback="name:required">A name is required.</div>
-                            </div>
-                            <div class="form-group">
-                                <!-- WORRIES RATING input-->
-                                <input class="form-control" id="name" type="text" placeholder="Question 5 *" data-sb-validations="required" />
-                                <div class="invalid-feedback" data-sb-feedback="name:required">A name is required.</div>
-                            </div>
-                            <div class="form-group">
-                                <!-- CONCENTRATION RATING input-->
-                                <input class="form-control" id="name" type="text" placeholder="Question 5 *" data-sb-validations="required" />
-                                <div class="invalid-feedback" data-sb-feedback="name:required">A name is required.</div>
-                            </div>
-                            <div class="form-group">
-                                <!-- COMPARISON RATING input-->
-                                <input class="form-control" id="name" type="text" placeholder="Question 5 *" data-sb-validations="required" />
-                                <div class="invalid-feedback" data-sb-feedback="name:required">A name is required.</div>
-                            </div>
-                            <!-- MOREEE NEEDED QUESTIONS -->
-                            <div class="form-group mb-md-0">
-                                <!-- Phone number input-->
-                                <input class="form-control" id="phone" type="tel" placeholder="Question 6 *" data-sb-validations="required" />
-                                <div class="invalid-feedback" data-sb-feedback="phone:required">A phone number is required.</div>
-                            </div>
-                            <div class="form-group">
-                                <!-- Email address input-->
-                                <input class="form-control" id="email" type="email" placeholder="Question 2 *" data-sb-validations="required,email" />
-                                <div class="invalid-feedback" data-sb-feedback="email:required">An email is required.</div>
-                                <div class="invalid-feedback" data-sb-feedback="email:email">Email is not valid.</div>
-                            </div>
+                            <!-- AverageTime -->
+                            <div class="form-row align-items-center">
+                                <div class="col-auto my-1">
+                                <p class="text-light">Average time spent on social media:</p>
+                                  <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                                    <option selected>Select an option</option>
+                                    <option value="1">Less than an hour</option>
+                                    <option value="2">Between 1 and 2 hours</option>
+                                    <option value="3">Between 2 and 3 hours</option>
+                                    <option value="4">Between 3 and 4 hours</option>
+                                    <option value="5">Between 4 and 5 hours</option>
+                                    <option value="6">More than 5 hours</option>
+                                  </select>
+                                </div>
+                            </div><br>
+                            <p class="text-light survey-question">How often do you find yourself using social media without a specific purpose?</p>
+                            <div class="form-check form-check-inline">
+                            <span class="text-light survey-response">Rarely</span>
+                            <label class="radio-label">
+                                <input type="radio" name="option1"/>
+                                <span>1</span>
+                              </label>
+                              <label class="radio-label">
+                                <input type="radio" name="option1"/>
+                                <span>2</span>
+                              </label>
+                              <label class="radio-label">
+                                <input type="radio" name="option1"/>
+                                <span>3</span>
+                              </label>
+                              <label class="radio-label">
+                                <input type="radio" name="option1"/>
+                                <span>4</span>
+                              </label>
+                              <label class="radio-label">
+                                <input type="radio" name="option1"/>
+                                <span>5</span>
+                              </label>
+                              <span class="text-light survey-response">Often</span>
+                            </div><br>
+                            <p class="text-light survey-question">How often do you get distracted by social media when you are busy doing something?</p>
+                            <div class="form-check form-check-inline">
+                            <span class="text-light survey-response">Rarely</span>
+                            <label class="radio-label">
+                                <input type="radio" name="option2"/>
+                                <span>1</span>
+                              </label>
+                              <label class="radio-label">
+                                <input type="radio" name="option2"/>
+                                <span>2</span>
+                              </label>
+                              <label class="radio-label">
+                                <input type="radio" name="option2"/>
+                                <span>3</span>
+                              </label>
+                              <label class="radio-label">
+                                <input type="radio" name="option2"/>
+                                <span>4</span>
+                              </label>
+                              <label class="radio-label">
+                                <input type="radio" name="option2"/>
+                                <span>5</span>
+                              </label>
+                              <span class="text-light survey-response">Often</span>
+                            </div><br>
+                            <p class="text-light survey-question">Do you feel restless if you haven’t used social media in a while?</p>
+                            <div class="form-check form-check-inline">
+                            <span class="text-light survey-response">Rarely</span>
+                            <label class="radio-label">
+                                <input type="radio" name="option3"/>
+                                <span>1</span>
+                              </label>
+                              <label class="radio-label">
+                                <input type="radio" name="option3"/>
+                                <span>2</span>
+                              </label>
+                              <label class="radio-label">
+                                <input type="radio" name="option3"/>
+                                <span>3</span>
+                              </label>
+                              <label class="radio-label">
+                                <input type="radio" name="option3"/>
+                                <span>4</span>
+                              </label>
+                              <label class="radio-label">
+                                <input type="radio" name="option3"/>
+                                <span>5</span>
+                              </label>
+                              <span class="text-light survey-response">Often</span>
+                            </div><br>
+                            <p class="text-light survey-question">How easily distracted are you?</p>
+                            <div class="form-check form-check-inline">    
+                            <span class="text-light survey-response">Rarely</span>
+                            <label class="radio-label">
+                                <input type="radio" name="option4"/>
+                                <span>1</span>
+                              </label>
+                              <label class="radio-label">
+                                <input type="radio" name="option4"/>
+                                <span>2</span>
+                              </label>
+                              <label class="radio-label">
+                                <input type="radio" name="option4"/>
+                                <span>3</span>
+                              </label>
+                              <label class="radio-label">
+                                <input type="radio" name="option4"/>
+                                <span>4</span>
+                              </label>
+                              <label class="radio-label">
+                                <input type="radio" name="option4"/>
+                                <span>5</span>
+                              </label>
+                              <span class="text-light survey-response">Often</span>
+                            </div><br>
+                            <p class="text-light survey-question">How much are you bothered by worries?</p>
+                            <div class="form-check form-check-inline">
+                            <span class="text-light survey-response">Rarely</span>
+                            <label class="radio-label">
+                            <input type="radio" name="option5"/>
+                                <span>1</span>
+                              </label>
+                              <label class="radio-label">
+                                <input type="radio" name="option5"/>
+                                <span>2</span>
+                              </label>
+                              <label class="radio-label">
+                                <input type="radio" name="option5"/>
+                                <span>3</span>
+                              </label>
+                              <label class="radio-label">
+                                <input type="radio" name="option5"/>
+                                <span>4</span>
+                              </label>
+                              <label class="radio-label">
+                                <input type="radio" name="option5"/>
+                                <span>5</span>
+                              </label>
+                              <span class="text-light survey-response">Often</span>
+                            </div><br>
+                            <p class="text-light survey-question">Do you find it difficult to concentrate on things?</p>
+                            <div class="form-check form-check-inline">
+                            <span class="text-light survey-response">Rarely</span>
+                            <label class="radio-label">
+                            <input type="radio" name="option6"/>
+                                <span>1</span>
+                              </label>
+                              <label class="radio-label">
+                                <input type="radio" name="option6"/>
+                                <span>2</span>
+                              </label>
+                              <label class="radio-label">
+                                <input type="radio" name="option6"/>
+                                <span>3</span>
+                              </label>
+                              <label class="radio-label">
+                                <input type="radio" name="option6"/>
+                                <span>4</span>
+                              </label>
+                              <label class="radio-label">
+                                <input type="radio" name="option6"/>
+                                <span>5</span>
+                              </label>
+                              <span class="text-light survey-response">Often</span>
+                            </div><br>
+                            <p class="text-light survey-question">How often do you compare yourself to other successful people through the use of social media?</p>
+                            <div class="form-check form-check-inline">
+                            <span class="text-light survey-response">Rarely</span>
+                            <label class="radio-label">
+                            <input type="radio" name="option7"/>
+                                <span>1</span>
+                              </label>
+                              <label class="radio-label">
+                                <input type="radio" name="option7"/>
+                                <span>2</span>
+                              </label>
+                              <label class="radio-label">
+                                <input type="radio" name="option7"/>
+                                <span>3</span>
+                              </label>
+                              <label class="radio-label">
+                                <input type="radio" name="option7"/>
+                                <span>4</span>
+                              </label>
+                              <label class="radio-label">
+                                <input type="radio" name="option7"/>
+                                <span>5</span>
+                              </label>
+                              <span class="text-light survey-response">Often</span>
+                            </div><br>
+                            <p class="text-light survey-question">Following the previous question, how do you feel about these comparisons, generally speaking?</p>
+                            <div class="form-check form-check-inline">
+                            <span class="text-light survey-response">Rarely</span>
+                            <label class="radio-label">
+                            <input type="radio" name="option8"/>
+                                <span>1</span>
+                              </label>
+                              <label class="radio-label">
+                                <input type="radio" name="option8"/>
+                                <span>2</span>
+                              </label>
+                              <label class="radio-label">
+                                <input type="radio" name="option8"/>
+                                <span>3</span>
+                              </label>
+                              <label class="radio-label">
+                                <input type="radio" name="option8"/>
+                                <span>4</span>
+                              </label>
+                              <label class="radio-label">
+                                <input type="radio" name="option8"/>
+                                <span>5</span>
+                              </label>
+                              <span class="text-light survey-response">Often</span>
+                            </div><br>
+                            <p class="text-light survey-question">How often do you look to seek validation from features of social media?</p>
+                            <div class="form-check form-check-inline">
+                            <span class="text-light survey-response">Rarely</span>
+                            <label class="radio-label">
+                            <input type="radio" name="option9"/>
+                                <span>1</span>
+                              </label>
+                              <label class="radio-label">
+                                <input type="radio" name="option9"/>
+                                <span>2</span>
+                              </label>
+                              <label class="radio-label">
+                                <input type="radio" name="option9"/>
+                                <span>3</span>
+                              </label>
+                              <label class="radio-label">
+                                <input type="radio" name="option9"/>
+                                <span>4</span>
+                              </label>
+                              <label class="radio-label">
+                                <input type="radio" name="option9"/>
+                                <span>5</span>
+                              </label>
+                              <span class="text-light survey-response">Often</span>
+                            </div><br>
+                            <p class="text-light survey-question">How often do you feel depressed or down?</p>
+                            <div class="form-check form-check-inline">
+                            <span class="text-light survey-response">Rarely</span>
+                            <label class="radio-label">
+                            <input type="radio" name="option10"/>
+                                <span>1</span>
+                              </label>
+                              <label class="radio-label">
+                                <input type="radio" name="option10"/>
+                                <span>2</span>
+                              </label>
+                              <label class="radio-label">
+                                <input type="radio" name="option10"/>
+                                <span>3</span>
+                              </label>
+                              <label class="radio-label">
+                                <input type="radio" name="option10"/>
+                                <span>4</span>
+                              </label>
+                              <label class="radio-label">
+                                <input type="radio" name="option10"/>
+                                <span>5</span>
+                              </label>
+                              <span class="text-light survey-response">Often</span>
+                            </div><br>
+                            <p class="text-light survey-question">How frequently does your interested in daily activities fluctuate?</p>
+                            <div class="form-check form-check-inline">
+                            <span class="text-light survey-response">Rarely</span>
+                            <label class="radio-label">
+                            <input type="radio" name="option11"/>
+                                <span>1</span>
+                              </label>
+                              <label class="radio-label">
+                                <input type="radio" name="option11"/>
+                                <span>2</span>
+                              </label>
+                              <label class="radio-label">
+                                <input type="radio" name="option11"/>
+                                <span>3</span>
+                              </label>
+                              <label class="radio-label">
+                                <input type="radio" name="option11"/>
+                                <span>4</span>
+                              </label>
+                              <label class="radio-label">
+                                <input type="radio" name="option11"/>
+                                <span>5</span>
+                              </label>
+                              <span class="text-light survey-response">Often</span>
+                            </div><br>
+                            <p class="text-light survey-question">How often do you face issues regarding sleep?</p>
+                            <div class="form-check form-check-inline">
+                            <span class="text-light survey-response">Rarely</span>
+                            <label class="radio-label">
+                            <input type="radio" name="option12"/>
+                                <span>1</span>
+                              </label>
+                              <label class="radio-label">
+                                <input type="radio" name="option12"/>
+                                <span>2</span>
+                              </label>
+                              <label class="radio-label">
+                                <input type="radio" name="option12"/>
+                                <span>3</span>
+                              </label>
+                              <label class="radio-label">
+                                <input type="radio" name="option12"/>
+                                <span>4</span>
+                              </label>
+                              <label class="radio-label">
+                                <input type="radio" name="option12"/>
+                                <span>5</span>
+                              </label>
+                              <span class="text-light survey-response">Often</span>
+                            </div><br>
                         </div>
                     </div>
                     <!-- Submit success message-->
