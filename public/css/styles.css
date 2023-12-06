@@ -11401,3 +11401,12 @@ label span {
   position: relative;
   top: -9px;
 }
+
+.social-media-group {
+  font-size: 1rem;
+}
+
+.failed-input {
+  --bs-text-opacity: 1;
+  color: #dc3545;
+}

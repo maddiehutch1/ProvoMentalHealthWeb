@@ -48,20 +48,22 @@
                 <!-- To make this form functional, sign up at-->
                 <!-- https://startbootstrap.com/solution/contact-forms-->
                 <!-- to get an API token!-->
-                <form id="contactForm" data-sb-form-api-token="API_TOKEN">
+                <form id="contactForm" data-sb-form-api-token="API_TOKEN" onsubmit="return validateForm()">
                     <div class="row align-items-stretch mb-5">
                         <div class="col-md-6">
+                            <p class="text-light">What is your age?</p>
                             <div class="form-group">
                                 <!-- AGE input-->
-                                <p class="text-light">Age:</p>
-                                <input class="form-control" id="userAge" type="text" placeholder="Age *" data-sb-validations="required"/>
-                                <div class="invalid-feedback" data-sb-feedback="name:required">An age is required.</div>
+                                <input class="form-control" id="userAge" type="text" placeholder="Age"/>
+                                <div class="invalid-feedback">An age is required.</div>
                             </div>
+                            <p class="failed-input" id="ageError"></p>
+
                             <!-- GENDER DROPDOWN -->
+                            <p class="text-light">What is your gender?</p>
                             <div class="form-row align-items-center">
                                 <div class="col-auto my-1">
-                                <p class="text-light">Gender:</p>
-                                  <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                                  <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" required >
                                     <option selected>Select an option</option>
                                     <option value="1">Male</option>
                                     <option value="2">Female</option>
@@ -70,10 +72,10 @@
                                 </div>
                             </div><br>
                             <!-- RELATIONSHIP STATUS has : Divorced, In a Relationship, Married, Single -->
+                            <p class="text-light">Relationship Status:</p>
                             <div class="form-row align-items-center">
                                 <div class="col-auto my-1">
-                                <p class="text-light">Relationship Status:</p>
-                                  <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                                  <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" required>
                                     <option selected>Select an option</option>
                                     <option value="1">Single</option>
                                     <option value="2">In a relationship</option>
@@ -83,10 +85,10 @@
                                 </div>
                             </div><br>
                             <!-- OCCUPATION STATUS DROPDOWN: Retired, Salaried Worker, School Student, University Student -->
+                            <p class="text-light">Occupation Status:</p>
                             <div class="form-row align-items-center">
                                 <div class="col-auto my-1">
-                                <p class="text-light">Occupation Status:</p>
-                                  <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                                  <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" required>
                                     <option selected>Select an option</option>
                                     <option value="1">Retired</option>
                                     <option value="2">Salaried Worker</option>
@@ -102,7 +104,6 @@
                             <div class="form-check">
                                 <div class="row">
                                 <div class="col-6">
-                                    <option selected>Select an option</option>
                                     <input class="form-check-input" type="checkbox" value="" id="CompanyCheck">
                                     <label class="form-check-label text-light" for="CompanyCheck">
                                     Company
@@ -138,7 +139,7 @@
                             </div><br>
                             <!-- Types of Social Media -->
                             <p class="text-light">What social media platforms do you commonly use?</p>
-                            <div class="form-check">
+                            <div class="form-check social-media-group">
                                 <div class="row">
                                     <div class="col-6">
                                     <input class="form-check-input" type="checkbox" value="" id="FacebookCheck">
@@ -186,6 +187,7 @@
                             </div>
                             </div><br>
                             </div>
+                            <p class="failed-input" id="sCheckboxError"></p>
                             <!-- AverageTime -->
                             <div class="form-row align-items-center">
                                 <div class="col-auto my-1">
@@ -541,3 +543,37 @@
                 </div>
             </div>
         </footer>
+        <script>
+            function validateForm() {
+                let userAgeInput = document.getElementById('userAge');
+                if (userAgeInput.value.trim() === '') {
+                    userAgeInput.focus();
+                    sErrorOutput = '* Please put your age';
+                    document.getElementById('ageError').innerHTML = sErrorOutput
+                    return false; // Prevent form submission
+                } else if (userAgeInput.value.trim() < 0) {
+                    userAgeInput.focus();
+                    sErrorOutput = '* You have placed an invalid age';
+                    document.getElementById('ageError').innerHTML = sErrorOutput
+                    return false; // Prevent form submission
+                }
+
+
+                var socialMediaCheckboxes = document.querySelectorAll('.social-media-group .form-check-input');
+                var atLeastOneChecked = Array.from(socialMediaCheckboxes).some(checkbox => checkbox.checked);
+
+                if (!atLeastOneChecked) {
+                    alert("Please select at least one social media platform.");
+                    
+                    var firstCheckbox = document.querySelector('.social-media-group .form-check-input');
+                    if (firstCheckbox) {
+                        firstCheckbox.focus();
+                        document.getElementById('CheckboxError').innerHTML = sCheckboxError
+                    }
+                    
+                    return false; // Prevent form submission
+                }
+
+                return true; // Continue with form submission
+            }
+        </script>
