@@ -30,8 +30,12 @@
                         <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
                         <!-- <li class="nav-item"><a class="nav-link" href="survey">Survey</a></li> -->
                         <li class="nav-item"><a class="nav-link" href="/tableau">Results</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/logout">Logout</a></li>
-                    </ul>
+                        <% if (locals.session.loggedIn) { %>
+                            <li class="nav-item"><a class="nav-link" href="/modify">Account</a></li>
+                            <li class="nav-item"><a class="nav-link" href="/logout">Logout</a></li>
+                        <% } else { %>
+                            <li class="nav-item"><a class="nav-link" href="/login">Login</a></li>
+                        <% } %>                    </ul>
                 </div>
             </div>
         </nav>
