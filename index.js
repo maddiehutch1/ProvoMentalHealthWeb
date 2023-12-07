@@ -251,7 +251,7 @@ app.post("/createResponse", (req, res)=> {
       DailyActivityInterestScale: req.body.DailyActivityInterestScale,
       SleepIssueScale: req.body.SleepIssueScale
    }).then(mylogin => {
-      res.redirect("/databaseadmin");
+      res.redirect("/");
    })
 });
 
