@@ -17,20 +17,85 @@
        <br><br>
        <label for="Gender">Gender:</label>
        <input type="text" id="Gender" name="Gender" value="<%=mySurvey[0].Gender %>">
+       <div class="form-row align-items-center">
+        <div class="col-auto my-1">
+          <select class="custom-select mr-sm-2" id="Gender" name="Gender" value="<%=mySurvey[0].Gender %>">
+            <option value="0" selected disabled>Select an option</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+    </div><br>
        <br><br>
        <label for="OccupationStatus">Occupation Status:</label>
-       <input type="OccupationStatus" id="OccupationStatus" name="OccupationStatus" value="<%=mySurvey[0].OccupationStatus %>">
+       <div class="form-row align-items-center">
+        <div class="col-auto my-1">
+            <select class="custom-select mr-sm-2" id="OccupationStatus" name="OccupationStatus" value="<%=mySurvey[0].OccupationStatus %>">
+                <option value="0" selected disabled>Select an option</option>
+                <option value="Retired">Retired</option>
+                <option value="Salaried Worker">Salaried Worker</option>
+                <option value="Not in the workforce">Not in the workforce</option>
+                <option value="Unemployed">Unemployed</option>
+                <option value="School">School Student</option>
+                <option value="University Student">University Student</option>
+              </select>
+        </div>
+       </div>
        <br><br>
        <label for="RelationshipStatus">Relationship Status:</label>
-       <input type="text" id="RelationshipStatus" name="RelationshipStatus" value="<%=mySurvey[0].RelationshipStatus %>">
+       <div class="form-row align-items-center">
+        <div class="col-auto my-1">
+          <select class="custom-select mr-sm-2" id="RelationshipStatus" name="RelationshipStatus" value="<%=mySurvey[0].RelationshipStatus %>">
+            <option value="0" selected disabled>Select an option</option>
+            <option value="Single">Single</option>
+            <option value="In a relationship">In a relationship</option>
+            <option value="Married">Married</option>
+            <option value="Divorced">Divorced</option>
+          </select>
+        </div>
+       </div>
        <br><br>
        <label for="UseSocialMedia">Do you use social media?</label>
-       <input type="text" id="UseSocialMedia" name="UseSocialMedia" value="<%=mySurvey[0].UseSocialMedia %>">
+       <div class="form-row align-items-center">
+        <div class="col-auto my-1">
+          <select class="custom-select mr-sm-2" id="UseSocialMedia" name="UseSocialMedia" value="<%=mySurvey[0].UseSocialMedia %>">
+            <option value="0" selected disabled>Select an option</option>
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+          </select>
+        </div>
+       </div>
        <br><br>
        <label for="AverageTime">What is the average time you spend on social media every day?</label>
-       <input type="text" id="AverageTime" name="AverageTime" value="<%=mySurvey[0].AverageTime %>">
+       <div class="form-row align-items-center">
+        <div class="col-auto my-1">
+          <select class="custom-select mr-sm-2" id="AverageTime" name="AverageTime" value="<%=mySurvey[0].AverageTime %>">
+            <option value="0" selected disabled>Select an option</option>
+            <option value="Less than an hour">Less than an hour</option>
+            <option value="Between 1 and 2 hours">Between 1 and 2 hours</option>
+            <option value="Between 2 and 3 hours">Between 2 and 3 hours</option>
+            <option value="Between 3 and 4 hours">Between 3 and 4 hours</option>
+            <option value="Between 4 and 5 hours">Between 4 and 5 hours</option>
+            <option value="More than 5 hours">More than 5 hours</option>
+          </select>
+        </div>
+       </div>
        <br><br>
        <label for="DoomscrollingScale">How often do you find yourself using social media without a specific purpose?</label>
+       <div class="form-row align-items-center">
+        <div class="col-auto my-1">
+        <p class="text-light">Average time spent on social media:</p>
+          <select class="custom-select mr-sm-2" id="DoomscrollingScale" name="DoomscrollingScale" value="<%=mySurvey[0].DoomscrollingScale %>">
+            <option value="0" selected disabled>Select an option</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
+        </div>
+       </div>
        <input type="text" id="DoomscrollingScale" name="DoomscrollingScale" value="<%=mySurvey[0].DoomscrollingScale %>">
        <br><br>
        <label for="PhoneDistractsYouScale">How often do you get distracted by social media when you are busy doing something?</label>
