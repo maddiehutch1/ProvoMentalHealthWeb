@@ -20,10 +20,10 @@
     <thead>
       <tr>
         <th scope="col">#</th>
-        <th scope="col">FirstName</th>
-        <th scope="col">LastName</th>
         <th scope="col">Username</th>
         <th scope="col">Password</th>
+        <th scope="col">FirstName</th>
+        <th scope="col">LastName</th>
         <th scope="col">Email</th>
         <th scope="col">UserRole</th>
         <th></th>
@@ -33,6 +33,7 @@
     <tbody>
       <% for (let iCount = 0; iCount < mylogin.length; iCount++) { %>
            <tr>
+             <td><%= mylogin[iCount].LoginID %></td>
              <td><%= mylogin[iCount].Username %></td>
              <td><%= mylogin[iCount].Password %></td>
              <td><%= mylogin[iCount].FirstName %></td>
