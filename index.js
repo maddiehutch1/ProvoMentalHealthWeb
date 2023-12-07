@@ -230,29 +230,59 @@ app.get('/logout', (req, res) => {
     })
 });
 
-app.post("/createResponse", (req, res)=> {
-    knex("SurveyResponse").insert({
-      Age: req.body.Age,
-      Gender: req.body.Gender,
-      RelationshipStatus: req.body.RelationshipStatus,
-      OccupationStatus: req.body.OccupationStatus,
-      UseSocialMedia: req.body.UseSocialMedia,
-      AverageTime: req.body.AverageTime,
-      DoomscrollingScale: req.body.DoomscrollingScale,
-      PhoneDistractsYouScale: req.body.PhoneDistractsYouScale,
-      RestlessnessScale: req.body.RestlessnessScale,
-      HowEasilyDistractedScale: req.body.HowEasilyDistractedScale,
-      BotherByWorriesScale: req.body.BotherByWorriesScale,
-      DifficultyConcentratingScale: req.body.DifficultyConcentratingScale,
-      SocialMediaComparisonScale: req.body.SocialMediaComparisonScale,
-      PreviousQuestionFeelAboutComparison: req.body.PreviousQuestionFeelAboutComparison,
-      SocialMediaValidationScale: req.body.SocialMediaValidationScale,
-      DepressionOrDownScale: req.body.DepressionOrDownScale,
-      DailyActivityInterestScale: req.body.DailyActivityInterestScale,
-      SleepIssueScale: req.body.SleepIssueScale
-   }).then(mylogin => {
-      res.redirect("/");
-   })
+app.post("/createResponse", async (req, res)=> {
+    const affiliations = req.body.affiliations;
+    const platforms = req.body.platforms;
+
+    try {
+        // Insert data into the SurveyResponse table
+        const[SurveyID] = await knex("SurveyResponse").insert({
+            Age: req.body.Age,
+            Gender: req.body.Gender,
+            OccupationStatus: req.body.OccupationStatus,
+            RelationshipStatus: req.body.RelationshipStatus,
+            UseSocialMedia: req.body.UseSocialMedia,
+            AverageTime: req.body.AverageTime,
+            DoomscrollingScale: req.body.DoomscroolingScale,
+            PhoneDistractsYouScale: req.body.PhoneDistractsYouScale,
+            RestlessnessScale: req.body.RestlessnessScale,
+            HowEasilyDistractedScale: req.body.HowEasilyDistractedScale,
+            BotherByWorriesScale: req.body.BotherByWorriesScale,
+            DifficultyConcentratingScale: req.body.DifficultyConcentratingScale,
+            SocialMediaComparisonScale: req.body.SocialMediaComparisonScale,
+            PreviousQuestionFeelAboutComparison: req.body.PreviousQuestionFeelAboutComparison,
+            DepressionOrDownScale: req.body.DepressionOrDownScale,
+            DailyActivityInterestScale: req.body.DailyActivityInterestScale,
+            SleepIssueScale: req.body.SleepIssueScale,
+            SocialMediaValidationScale: req.body.SocialMediaValidationScale // Other columns...
+        }).returning("SurveyID");
+                // Insert affiliations into the Affiliations table
+                await Promise.all(
+                    affiliations.map(async (affiliation) => {
+                        await knex("Affiliations").insert({
+                            SurveyID: surveyResponseID, // Use the SurveyID from SurveyResponse        
+                            AffiliationID: affiliation,
+                            // Other columns or values you might want to insert
+                        });
+                    })
+                );
+        
+                await Promise.all(
+                    platforms.map(async (platform) => {
+                        await knex("Platforms").insert({
+                            SurveyID: surveyResponseID, // Use the SurveyID from SurveyResponse
+                            PlatformID: platform        
+                            // Other columns or values you might want to insert
+                        });
+                    })
+                );
+
+        res.redirect("/");
+    } catch (error) {
+        console.error('Error creating survey response:', error);
+        res.status(500).send('Internal Server Error');
+    }
+
 });
 
 app.listen(port, () => console.log("Server is listening."));
