@@ -61,8 +61,8 @@
         <div class="col-auto my-1">
           <select class="custom-select mr-sm-2" id="UseSocialMedia" name="UseSocialMedia" value="<%=mySurvey[0].UseSocialMedia %>">
             <option value="0" selected disabled>Select an option</option>
-            <option value="Yes">Yes</option>
-            <option value="No">No</option>
+            <option value="Yes" <%= mySurvey[0].UseSocialMedia === 'Yes' ? 'selected' : '' %>>Yes</option>
+            <option value="No" <%= mySurvey[0].UseSocialMedia === 'No' ? 'selected' : '' %>>No</option>
           </select>
         </div>
        </div>
@@ -72,11 +72,11 @@
         <div class="col-auto my-1">
           <select class="custom-select mr-sm-2" id="AverageTime" name="AverageTime" value="<%=mySurvey[0].AverageTime %>">
             <option value="0" selected disabled>Select an option</option>
-            <option value="Less than an hour">Less than an hour</option>
-            <option value="Between 1 and 2 hours" <%= mySurvey[0].AverageTime === 'More than 5 hours' ? 'selected' : '' %>>Between 1 and 2 hours</option>
-            <option value="Between 2 and 3 hours" <%= mySurvey[0].AverageTime === 'More than 5 hours' ? 'selected' : '' %>>Between 2 and 3 hours</option>
-            <option value="Between 3 and 4 hours" <%= mySurvey[0].AverageTime === 'More than 5 hours' ? 'selected' : '' %>>Between 3 and 4 hours</option>
-            <option value="Between 4 and 5 hours" <%= mySurvey[0].AverageTime === 'More than 5 hours' ? 'selected' : '' %>>Between 4 and 5 hours</option>
+            <option value="Less than an hour" <%= mySurvey[0].AverageTime === 'Less than an hour' ? 'selected' : '' %>>Less than an hour</option>
+            <option value="Between 1 and 2 hours" <%= mySurvey[0].AverageTime === 'Between 1 and 2 hours' ? 'selected' : '' %>>Between 1 and 2 hours</option>
+            <option value="Between 2 and 3 hours" <%= mySurvey[0].AverageTime === 'Between 2 and 3 hours' ? 'selected' : '' %>>Between 2 and 3 hours</option>
+            <option value="Between 3 and 4 hours" <%= mySurvey[0].AverageTime === 'Between 3 and 4 hours' ? 'selected' : '' %>>Between 3 and 4 hours</option>
+            <option value="Between 4 and 5 hours" <%= mySurvey[0].AverageTime === 'Between 4 and 5 hours' ? 'selected' : '' %>>Between 4 and 5 hours</option>
             <option value="More than 5 hours" <%= mySurvey[0].AverageTime === 'More than 5 hours' ? 'selected' : '' %>>More than 5 hours</option>
           </select>
         </div>
@@ -85,7 +85,6 @@
        <label for="DoomscrollingScale">How often do you find yourself using social media without a specific purpose?</label>
        <div class="form-row align-items-center">
         <div class="col-auto my-1">
-        <p class="text-light">Average time spent on social media:</p>
           <select class="custom-select mr-sm-2" id="DoomscrollingScale" name="DoomscrollingScale" value="<%=mySurvey[0].DoomscrollingScale %>">
             <option value="0" selected disabled>Select an option</option>
             <option value="1">1</option>
