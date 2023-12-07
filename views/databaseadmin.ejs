@@ -3,7 +3,7 @@
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Provo City Health</title>
+   <title>Employee Access</title>
    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
    <!-- Google fonts-->
@@ -16,10 +16,12 @@
 <body>
    <label><b>Employee Information:</b></label>
    <br><br>
+   <form action="/createlogin" method="GET">
+    <button type="submit">Add Employee</button>
+  </form><br>
    <table class="table table-striped">
     <thead>
       <tr>
-        <th scope="col">#</th>
         <th scope="col">Username</th>
         <th scope="col">Password</th>
         <th scope="col">FirstName</th>
@@ -33,7 +35,6 @@
     <tbody>
       <% for (let iCount = 0; iCount < mylogin.length; iCount++) { %>
            <tr>
-             <td><%= mylogin[iCount].LoginID %></td>
              <td><%= mylogin[iCount].Username %></td>
              <td><%= mylogin[iCount].Password %></td>
              <td><%= mylogin[iCount].FirstName %></td>
@@ -55,9 +56,6 @@
        </tbody>
      </table>
      <br><br>
-  <form action="/createlogin" method="GET">
-    <button type="submit">Add Employee</button>
-  </form>
    <footer class="footer py-4">
     <div class="container">
         <div class="row align-items-center">

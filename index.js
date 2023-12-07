@@ -73,10 +73,6 @@ app.get("/databaseadmin", (req, res) => {
     });
 });
 
-app.get("/editlogin", (req, res) => {
-    res.render("editlogin");
-});
-
 app.get("/createlogin", (req, res) => {
     res.render("createlogin");
 });
@@ -146,7 +142,6 @@ app.get("/editemployee/:id", (req, res)=> {
 
 app.post("/editemployee", (req, res)=> {
     knex("Login").where("LoginID", parseInt(req.body.LoginID)).update({
-      LoginID: req.body.LoginID,
       Username: req.body.Username,
       Password: req.body.Password,
       FirstName: req.body.FirstName.toUpperCase(),
@@ -154,18 +149,76 @@ app.post("/editemployee", (req, res)=> {
       Email: req.body.Email,
       UserRole: req.body.UserRole
    }).then(mylogin => {
-      res.redirect("/adminlanding");
+      res.redirect("/databaseadmin");
    })
 });
-
-// app.get("/surveydata", (req, res) => {
-//     res.render("surveydata");
-// });
 
 app.get("/surveydata", (req, res) => {
     knex.select().from("SurveyResponse").then(SurveyResponse => {
         res.render("surveydata", {mySurvey: SurveyResponse});
     });
+});
+
+app.get("/editresponse/:id", (req, res)=> {
+    knex.select("SurveyID",
+          "Timestamp",
+          "Age",
+          "Gender",
+          "OccupationStatus",
+          "RelationshipStatus",
+          "UseSocialMedia",
+          "AverageTime",
+          "DoomscrollingScale",
+          "PhoneDistractsYouScale",
+          "RestlessnessScale",
+          "HowEasilyDistractedScale",
+          "BotherByWorriesScale",
+          "DifficultyConcentratingScale",
+          "SocialMediaComparisonScale",
+          "PreviousQuestionFeelAboutComparison",
+          "SocialMediaValidationScale",
+          "DepressionOrDownScale",
+          "DailyActivityInterestScale",
+          "SleepIssueScale").from("SurveyResponse").where("SurveyID", req.params.id).then(SurveyResponse => {
+    res.render("editresponse", {mySurvey: SurveyResponse});
+   }).catch( err => {
+      console.log(err);
+      res.status(500).json({err});
+   });
+});
+
+app.post("/editresponse", (req, res)=> {
+    knex("SurveyResponse").where("SurveyID", parseInt(req.body.SurveyID)).update({
+        Age: req.body.Age,
+        Gender: req.body.Gender,
+        OccupationStatus: req.body.OccupationStatus,
+        RelationshipStatus: req.body.RelationshipStatus,
+        UseSocialMedia: req.body.UseSocialMedia,
+        AverageTime: req.body.AverageTime,
+        DoomscrollingScale: req.body.DoomscroolingScale,
+        PhoneDistractsYouScale: req.body.PhoneDistractsYouScale,
+        RestlessnessScale: req.body.RestlessnessScale,
+        HowEasilyDistractedScale: req.body.HowEasilyDistractedScale,
+        BotherByWorriesScale: req.body.BotherByWorriesScale,
+        DifficultyConcentratingScale: req.body.DifficultyConcentratingScale,
+        SocialMediaComparisonScale: req.body.SocialMediaComparisonScale,
+        PreviousQuestionFeelAboutComparison: req.body.PreviousQuestionFeelAboutComparison,
+        DepressionOrDownScale: req.body.DepressionOrDownScale,
+        DailyActivityInterestScale: req.body.DailyActivityInterestScale,
+        SleepIssueScale: req.body.SleepIssueScale,
+        SocialMediaValidationScale: req.body.SocialMediaValidationScale
+   }).then(mylogin => {
+      res.redirect("/surveydata");
+   })
+});
+
+app.post("/deleteresponse/:id", (req, res) => {
+    knex("SurveyResponse").where("SurveyID",req.params.id).del().then( mySurvey => {
+      res.redirect("/surveydata");
+   }).catch( err => {
+      console.log(err);
+      res.status(500).json({err});
+   });
 });
 
 app.listen(port, () => console.log("Server is listening."));

@@ -10,20 +10,30 @@
    <form action="/editemployee" method="POST">
      <fieldset style="width: 0px;">
        <legend>Edit a Login:</legend>
-       <input type="hidden" id="SurveyID" name="SurveyID" value="<%=mylogin[0].SurveyID %>">
-       <input type="hidden" id="Timestamp" name="Timestamp" value="<%=mylogin[0].Timestamp %>">
-       <label for="Age">Age:</label>
-       <input type="text" id="Age" name="Age" value="<%=mylogin[0].Age %>">
+       <input type="hidden" id="LoginID" name="LoginID" value="<%=mylogin[0].LoginID %>">
+       <label for="Username">:</label>
+       <input type="text" id="Username" name="Username" value="<%=mylogin[0].Username %>">
        <br><br>
-       <label for="Gender">Gender:</label>
-       <input type="text" id="Gender" name="Gender" value="<%=mylogin[0].Gender %>">
+       <label for="Password">Password:</label>
+       <input type="text" id="Password" name="Password" value="<%=mylogin[0].Password %>">
        <br><br>
-       <label for="OccupationStatus">Occupation Status:</label>
-       <input type="OccupationStatus" id="OccupationStatus" name="OccupationStatus" value="<%=mylogin[0].OccupationStatus %>">
+       <label for="FirstName">First Name:</label>
+       <input type="text" id="FirstName" name="FirstName" value="<%=mylogin[0].FirstName %>">
        <br><br>
-       <label for="RelationshipStatus">Relationship Status:</label>
-       <input type="text" id="RelationshipStatus" name="RelationshipStatus" value="<%=mylogin[0].RelationshipStatus %>">
+       <label for="LastName">Last Name:</label>
+       <input type="text" id="LastName" name="LastName" value="<%=mylogin[0].LastName %>">
        <br><br>
+       <label for="Email">Email:</label>
+       <input type="text" id="Email" name="Email" value="<%=mylogin[0].Email %>">
+       <br><br>
+       <div class="form-row align-items-center">
+        <div class="col-auto my-1">
+          <select class="custom-select mr-sm-2" id="UserRole" name="UserRole" value="<%=mylogin[0].UserRole %>">
+            <option value="Employee">Employee</option>
+            <option value="Admin" disabled>Admin</option>
+          </select>
+        </div>
+    </div><br>
      </fieldset>
      <button type="submit">Save</button>
    </form>
