@@ -87,48 +87,170 @@
         <div class="col-auto my-1">
           <select class="custom-select mr-sm-2" id="DoomscrollingScale" name="DoomscrollingScale" value="<%=mySurvey[0].DoomscrollingScale %>">
             <option value="0" selected disabled>Select an option</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
+            <option value="1"<%= mySurvey[0].DoomscrollingScale === '1' ? 'selected' : '' %>>1</option>
+            <option value="2"<%= mySurvey[0].DoomscrollingScale === '2' ? 'selected' : '' %>>2</option>
+            <option value="3"<%= mySurvey[0].DoomscrollingScale === '3' ? 'selected' : '' %>>3</option>
+            <option value="4"<%= mySurvey[0].DoomscrollingScale === '4' ? 'selected' : '' %>>4</option>
+            <option value="5"<%= mySurvey[0].DoomscrollingScale === '5' ? 'selected' : '' %>>5</option>
           </select>
         </div>
        </div>
        <input type="text" id="DoomscrollingScale" name="DoomscrollingScale" value="<%=mySurvey[0].DoomscrollingScale %>">
        <br><br>
        <label for="PhoneDistractsYouScale">How often do you get distracted by social media when you are busy doing something?</label>
-       <input type="text" id="PhoneDistractsYouScale" name="PhoneDistractsYouScale" value="<%=mySurvey[0].PhoneDistractsYouScale %>">
+       <div class="form-row align-items-center">
+        <div class="col-auto my-1">
+          <select class="custom-select mr-sm-2" id="PhoneDistractsYouScale" name="PhoneDistractsYouScale" value="<%=mySurvey[0].PhoneDistractsYouScale %>">
+            <option value="0" selected disabled>Select an option</option>
+            <option value="1"<%= mySurvey[0].PhoneDistractsYouScale === '1' ? 'selected' : '' %>>1</option>
+            <option value="2"<%= mySurvey[0].PhoneDistractsYouScale === '2' ? 'selected' : '' %>>2</option>
+            <option value="3"<%= mySurvey[0].PhoneDistractsYouScale === '3' ? 'selected' : '' %>>3</option>
+            <option value="4"<%= mySurvey[0].PhoneDistractsYouScale === '4' ? 'selected' : '' %>>4</option>
+            <option value="5"<%= mySurvey[0].PhoneDistractsYouScale === '5' ? 'selected' : '' %>>5</option>
+          </select>
+        </div>
+       </div>
        <br><br>
        <label for="RestlessnessScale">Do you feel restless if you haven’t used social media in a while?</label>
-       <input type="text" id="RestlessnessScale" name="RestlessnessScale" value="<%=mySurvey[0].RestlessnessScale %>">
+       <div class="form-row align-items-center">
+        <div class="col-auto my-1">
+          <select class="custom-select mr-sm-2" id="RestlessnessScale" name="RestlessnessScale" value="<%=mySurvey[0].RestlessnessScale %>">
+            <option value="0" selected disabled>Select an option</option>
+            <option value="1"<%= mySurvey[0].RestlessnessScale === '1' ? 'selected' : '' %>>1</option>
+            <option value="2"<%= mySurvey[0].RestlessnessScale === '2' ? 'selected' : '' %>>2</option>
+            <option value="3"<%= mySurvey[0].RestlessnessScale === '3' ? 'selected' : '' %>>3</option>
+            <option value="4"<%= mySurvey[0].RestlessnessScale === '4' ? 'selected' : '' %>>4</option>
+            <option value="5"<%= mySurvey[0].RestlessnessScale === '5' ? 'selected' : '' %>>5</option>
+          </select>
+        </div>
+       </div>
        <br><br>
        <label for="HowEasilyDistractedScale">How easily distracted are you?</label>
-       <input type="text" id="HowEasilyDistractedScale" name="HowEasilyDistractedScale" value="<%=mySurvey[0].HowEasilyDistractedScale %>">
+       <div class="form-row align-items-center">
+        <div class="col-auto my-1">
+          <select class="custom-select mr-sm-2" id="HowEasilyDistractedScale" name="HowEasilyDistractedScale" value="<%=mySurvey[0].HowEasilyDistractedScale %>">
+            <option value="0" selected disabled>Select an option</option>
+            <option value="1"<%= mySurvey[0].HowEasilyDistractedScale === '1' ? 'selected' : '' %>>1</option>
+            <option value="2"<%= mySurvey[0].HowEasilyDistractedScale === '2' ? 'selected' : '' %>>2</option>
+            <option value="3"<%= mySurvey[0].HowEasilyDistractedScale === '3' ? 'selected' : '' %>>3</option>
+            <option value="4"<%= mySurvey[0].HowEasilyDistractedScale === '4' ? 'selected' : '' %>>4</option>
+            <option value="5"<%= mySurvey[0].HowEasilyDistractedScale === '5' ? 'selected' : '' %>>5</option>
+          </select>
+        </div>
+       </div>
        <br><br>
        <label for="BotherByWorriesScale">How much are you bothered by worries?</label>
-       <input type="text" id="BotherByWorriesScale" name="BotherByWorriesScale" value="<%=mySurvey[0].BotherByWorriesScale %>">
+       <div class="form-row align-items-center">
+        <div class="col-auto my-1">
+          <select class="custom-select mr-sm-2" id="BotherByWorriesScale" name="BotherByWorriesScale" value="<%=mySurvey[0].BotherByWorriesScale %>">
+            <option value="0" selected disabled>Select an option</option>
+            <option value="1"<%= mySurvey[0].BotherByWorriesScale === '1' ? 'selected' : '' %>>1</option>
+            <option value="2"<%= mySurvey[0].BotherByWorriesScale === '2' ? 'selected' : '' %>>2</option>
+            <option value="3"<%= mySurvey[0].BotherByWorriesScale === '3' ? 'selected' : '' %>>3</option>
+            <option value="4"<%= mySurvey[0].BotherByWorriesScale === '4' ? 'selected' : '' %>>4</option>
+            <option value="5"<%= mySurvey[0].BotherByWorriesScale === '5' ? 'selected' : '' %>>5</option>
+          </select>
+        </div>
+       </div>
        <br><br>
        <label for="DifficultyConcentratingScale">Do you find it difficult to concentrate on things?</label>
-       <input type="text" id="DifficultyConcentratingScale" name="DifficultyConcentratingScale" value="<%=mySurvey[0].DifficultyConcentratingScale %>">
+       <div class="form-row align-items-center">
+        <div class="col-auto my-1">
+          <select class="custom-select mr-sm-2" id="DifficultyConcentratingScale" name="DifficultyConcentratingScale" value="<%=mySurvey[0].DifficultyConcentratingScale %>">
+            <option value="0" selected disabled>Select an option</option>
+            <option value="1"<%= mySurvey[0].DifficultyConcentratingScale === '1' ? 'selected' : '' %>>1</option>
+            <option value="2"<%= mySurvey[0].DifficultyConcentratingScale === '2' ? 'selected' : '' %>>2</option>
+            <option value="3"<%= mySurvey[0].DifficultyConcentratingScale === '3' ? 'selected' : '' %>>3</option>
+            <option value="4"<%= mySurvey[0].DifficultyConcentratingScale === '4' ? 'selected' : '' %>>4</option>
+            <option value="5"<%= mySurvey[0].DifficultyConcentratingScale === '5' ? 'selected' : '' %>>5</option>
+          </select>
+        </div>
+       </div>
        <br><br>
        <label for="SocialMediaComparisonScale">How often do you compare yourself to other successful people through the use of social media?</label>
-       <input type="text" id="SocialMediaComparisonScale" name="SocialMediaComparisonScale" value="<%=mySurvey[0].SocialMediaComparisonScale %>">
+       <div class="form-row align-items-center">
+        <div class="col-auto my-1">
+          <select class="custom-select mr-sm-2" id="SocialMediaComparisonScale" name="SocialMediaComparisonScale" value="<%=mySurvey[0].SocialMediaComparisonScale %>">
+            <option value="0" selected disabled>Select an option</option>
+            <option value="1"<%= mySurvey[0].SocialMediaComparisonScale === '1' ? 'selected' : '' %>>1</option>
+            <option value="2"<%= mySurvey[0].SocialMediaComparisonScale === '2' ? 'selected' : '' %>>2</option>
+            <option value="3"<%= mySurvey[0].SocialMediaComparisonScale === '3' ? 'selected' : '' %>>3</option>
+            <option value="4"<%= mySurvey[0].SocialMediaComparisonScale === '4' ? 'selected' : '' %>>4</option>
+            <option value="5"<%= mySurvey[0].SocialMediaComparisonScale === '5' ? 'selected' : '' %>>5</option>
+          </select>
+        </div>
+       </div>
        <br><br>
        <label for="PreviousQuestionFeelAboutComparison">Following the previous question, how do you feel about these comparisons, generally speaking?</label>
-       <input type="text" id="PreviousQuestionFeelAboutComparison" name="PreviousQuestionFeelAboutComparison" value="<%=mySurvey[0].PreviousQuestionFeelAboutComparison %>">
+       <div class="form-row align-items-center">
+        <div class="col-auto my-1">
+          <select class="custom-select mr-sm-2" id="PreviousQuestionFeelAboutComparison" name="PreviousQuestionFeelAboutComparison" value="<%=mySurvey[0].PreviousQuestionFeelAboutComparison %>">
+            <option value="0" selected disabled>Select an option</option>
+            <option value="1"<%= mySurvey[0].PreviousQuestionFeelAboutComparison === '1' ? 'selected' : '' %>>1</option>
+            <option value="2"<%= mySurvey[0].PreviousQuestionFeelAboutComparison === '2' ? 'selected' : '' %>>2</option>
+            <option value="3"<%= mySurvey[0].PreviousQuestionFeelAboutComparison === '3' ? 'selected' : '' %>>3</option>
+            <option value="4"<%= mySurvey[0].PreviousQuestionFeelAboutComparison === '4' ? 'selected' : '' %>>4</option>
+            <option value="5"<%= mySurvey[0].PreviousQuestionFeelAboutComparison === '5' ? 'selected' : '' %>>5</option>
+          </select>
+        </div>
+       </div>
        <br><br>
        <label for="SocialMediaValidationScale">How often do you look to seek validation from features of social media?</label>
-       <input type="text" id="SocialMediaValidationScale" name="SocialMediaValidationScale" value="<%=mySurvey[0].SocialMediaValidationScale %>">
+       <div class="form-row align-items-center">
+        <div class="col-auto my-1">
+          <select class="custom-select mr-sm-2" id="SocialMediaValidationScale" name="SocialMediaValidationScale" value="<%=mySurvey[0].SocialMediaValidationScale %>">
+            <option value="0" selected disabled>Select an option</option>
+            <option value="1"<%= mySurvey[0].SocialMediaValidationScale === '1' ? 'selected' : '' %>>1</option>
+            <option value="2"<%= mySurvey[0].SocialMediaValidationScale === '2' ? 'selected' : '' %>>2</option>
+            <option value="3"<%= mySurvey[0].SocialMediaValidationScale === '3' ? 'selected' : '' %>>3</option>
+            <option value="4"<%= mySurvey[0].SocialMediaValidationScale === '4' ? 'selected' : '' %>>4</option>
+            <option value="5"<%= mySurvey[0].SocialMediaValidationScale === '5' ? 'selected' : '' %>>5</option>
+          </select>
+        </div>
+       </div>
        <br><br>
        <label for="DepressionOrDownScale">How often do you feel depressed or down?</label>
-       <input type="text" id="DepressionOrDownScale" name="DepressionOrDownScale" value="<%=mySurvey[0].DepressionOrDownScale %>">
+       <div class="form-row align-items-center">
+        <div class="col-auto my-1">
+          <select class="custom-select mr-sm-2" id="DepressionOrDownScale" name="DepressionOrDownScale" value="<%=mySurvey[0].DepressionOrDownScale %>">
+            <option value="0" selected disabled>Select an option</option>
+            <option value="1"<%= mySurvey[0].DepressionOrDownScale === '1' ? 'selected' : '' %>>1</option>
+            <option value="2"<%= mySurvey[0].DepressionOrDownScale === '2' ? 'selected' : '' %>>2</option>
+            <option value="3"<%= mySurvey[0].DepressionOrDownScale === '3' ? 'selected' : '' %>>3</option>
+            <option value="4"<%= mySurvey[0].DepressionOrDownScale === '4' ? 'selected' : '' %>>4</option>
+            <option value="5"<%= mySurvey[0].DepressionOrDownScale === '5' ? 'selected' : '' %>>5</option>
+          </select>
+        </div>
+       </div>
        <br><br>
        <label for="DailyActivityInterestScale">How frequently does your interested in daily activities fluctuate?</label>
-       <input type="text" id="DailyActivityInterestScale" name="DailyActivityInterestScale" value="<%=mySurvey[0].DailyActivityInterestScale %>">
+       <label for="DailyActivityInterestScale">How often do you find yourself using social media without a specific purpose?</label>
+       <div class="form-row align-items-center">
+        <div class="col-auto my-1">
+          <select class="custom-select mr-sm-2" id="DailyActivityInterestScale" name="DailyActivityInterestScale" value="<%=mySurvey[0].DailyActivityInterestScale %>">
+            <option value="0" selected disabled>Select an option</option>
+            <option value="1"<%= mySurvey[0].DailyActivityInterestScale === '1' ? 'selected' : '' %>>1</option>
+            <option value="2"<%= mySurvey[0].DailyActivityInterestScale === '2' ? 'selected' : '' %>>2</option>
+            <option value="3"<%= mySurvey[0].DailyActivityInterestScale === '3' ? 'selected' : '' %>>3</option>
+            <option value="4"<%= mySurvey[0].DailyActivityInterestScale === '4' ? 'selected' : '' %>>4</option>
+            <option value="5"<%= mySurvey[0].DailyActivityInterestScale === '5' ? 'selected' : '' %>>5</option>
+          </select>
+        </div>
+       </div>
        <br><br>
        <label for="SleepIssueScale">How often do you face issues regarding sleep?</label>
-       <input type="text" id="SleepIssueScale" name="SleepIssueScale" value="<%=mySurvey[0].SleepIssueScale %>">
+       <div class="form-row align-items-center">
+        <div class="col-auto my-1">
+          <select class="custom-select mr-sm-2" id="SleepIssueScale" name="SleepIssueScale" value="<%=mySurvey[0].SleepIssueScale %>">
+            <option value="0" selected disabled>Select an option</option>
+            <option value="1"<%= mySurvey[0].SleepIssueScale === '1' ? 'selected' : '' %>>1</option>
+            <option value="2"<%= mySurvey[0].SleepIssueScale === '2' ? 'selected' : '' %>>2</option>
+            <option value="3"<%= mySurvey[0].SleepIssueScale === '3' ? 'selected' : '' %>>3</option>
+            <option value="4"<%= mySurvey[0].SleepIssueScale === '4' ? 'selected' : '' %>>4</option>
+            <option value="5"<%= mySurvey[0].SleepIssueScale === '5' ? 'selected' : '' %>>5</option>
+          </select>
+        </div>
+       </div>
        <br><br>
      </fieldset>
      <button type="submit">Save</button>
