@@ -154,7 +154,7 @@ app.get("/editresponse/:id", (req, res)=> {
           "DepressionOrDownScale",
           "DailyActivityInterestScale",
           "SleepIssueScale").from("SurveyResponse").where("SurveyID", req.params.id).then(SurveyResponse => {
-    res.render("surveyresponse", {mySurvey: SurveyResponse});
+    res.render("editresponse", {mySurvey: SurveyResponse});
    }).catch( err => {
       console.log(err);
       res.status(500).json({err});
@@ -184,6 +184,15 @@ app.post("/editresponse", (req, res)=> {
    }).then(mylogin => {
       res.redirect("/surveydata");
    })
+});
+
+app.post("/deleteresponse/:id", (req, res) => {
+    knex("SurveyResponse").where("SurveyID",req.params.id).del().then( mySurvey => {
+      res.redirect("/surveydata");
+   }).catch( err => {
+      console.log(err);
+      res.status(500).json({err});
+   });
 });
 
 app.listen(port, () => console.log("Server is listening."));
