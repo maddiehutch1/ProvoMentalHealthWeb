@@ -4,7 +4,6 @@ const express = require('express');
 const bodyparser = require('body-parser');
 const { v4:uuidv4 } = require('uuid');
 const session = require('express-session');
-const router = require('./router');
 
 let app = express();
 
@@ -28,8 +27,6 @@ app.use(session({
     resave: false,
     saveUninitialized: true
 }));
-
-app.use('/route', router);
 
 const knex = require('knex') ({
     client: 'pg',
@@ -219,6 +216,18 @@ app.post("/deleteresponse/:id", (req, res) => {
       console.log(err);
       res.status(500).json({err});
    });
+});
+
+app.get('/logout', (req, res) => {
+    req.session.destroy(function(err){
+        if(err){
+            console.log(err);
+            res.send("Error");
+        }
+        else{
+            res.render('login', { logout: true, logoutMessage: "Logout Successful" });
+        }
+    })
 });
 
 app.listen(port, () => console.log("Server is listening."));

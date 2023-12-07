@@ -42,8 +42,8 @@
                     <h3 class="section-subheading text-light">Please enter valid credentials below.</h3>
                 </div>
                 <% if (locals.logout) { %>
-                    <div class="alert alert-success text-center">
-                        Logout Successful
+                    <div id="logoutMessage" class="alert alert-success text-center">
+                        <%= logoutMessage %>
                     </div>
                 <% } %>
                 <!-- * * * * * * * * * * * * * * *-->
@@ -58,19 +58,15 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <!-- Name input-->
-                                <input class="form-control" id="username" type="text" placeholder="Your Username *" data-sb-validations="required" name="username"/>
-                                <div class="invalid-feedback" data-sb-feedback="name:required">A name is required.</div>
-                            </div>
+                                <input class="form-control" id="username" type="text" placeholder="Your Username *" data-sb-validations="required" name="username"/>                            </div>
                             <div class="form-group">
                                 <!-- Password input-->
                                 <input class="form-control" id="password" type="password" placeholder="Your Password *" data-sb-validations="required,password" name="password" />
-                                <div class="invalid-feedback" data-sb-feedback="password:required">A password is required.</div>
-                                <div class="invalid-feedback" data-sb-feedback="password:email">Password is not valid.</div>
                             </div>
                         </div>
                     <% if (locals.errorMessage) { %>
                         <div id="errorMessage" class="text-center text-danger mb-3"><%= errorMessage %></div>
-                    <% } %>    
+                    <% } %>   
                     <!-- Submit Button-->
                     <div class="text-center"><button class="btn btn-primary btn-xl text-uppercase" id="submitButton" type="submit">LOGIN</button></div>
                 </form>
@@ -88,22 +84,22 @@
                 </div>
             </div>
         </footer>
-        <!-- <script>
+        <script>
             document.getElementById("username").focus();
 
-            function validateForm(){
-                let username = document.getElementById("username").value.trim();
-                let password = document.getElementById("password").value.trim();
+            // function validateForm(){
+            //     let username = document.getElementById("username").value.trim();
+            //     let password = document.getElementById("password").value.trim();
 
-                if (username === "" || password === "")
-                {
-                    document.getElementById("submitErrorMessage").innerHTML = "Username and password are required";
-                    return false;
-                }
+            //     if (username === "" || password === "")
+            //     {
+            //         document.getElementById("submitErrorMessage").innerHTML = "Username and password are required";
+            //         return false;
+            //     }
 
-                return true;
-            }
+            //     return true;
+            // }
 
-        </script> -->
+        </script>
     </body>
 </html>
