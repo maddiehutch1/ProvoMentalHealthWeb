@@ -115,7 +115,7 @@ app.get("/editemployee/:id", (req, res)=> {
           "LastName",
           "Email",
           "UserRole").from("Login").where("LoginID", req.params.id).then(Login => {
-    res.render("editemployee", {Login: LoginID});
+    res.render("editemployee", {mylogin: LoginID});
    }).catch( err => {
       console.log(err);
       res.status(500).json({err});
