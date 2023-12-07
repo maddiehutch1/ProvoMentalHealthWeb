@@ -285,6 +285,8 @@ app.post("/createResponse", async (req, res)=> {
                 //     })
                 // );
 
+            console.log('Generated SurveyID:', surveyID);
+
         res.redirect("/");
     } catch (error) {
         console.error('Error creating survey response:', error);
