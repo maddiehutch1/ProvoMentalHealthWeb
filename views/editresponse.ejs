@@ -16,7 +16,6 @@
        <input type="text" id="Age" name="Age" value="<%=mySurvey[0].Age %>">
        <br><br>
        <label for="Gender">Gender:</label>
-       <input type="text" id="Gender" name="Gender" value="<%=mySurvey[0].Gender %>">
        <div class="form-row align-items-center">
         <div class="col-auto my-1">
           <select class="custom-select mr-sm-2" id="Gender" name="Gender" value="<%=mySurvey[0].Gender %>">
@@ -48,10 +47,10 @@
         <div class="col-auto my-1">
           <select class="custom-select mr-sm-2" id="RelationshipStatus" name="RelationshipStatus" value="<%=mySurvey[0].RelationshipStatus %>">
             <option value="0" selected disabled>Select an option</option>
-            <option value="Single">Single</option>
-            <option value="In a relationship">In a relationship</option>
-            <option value="Married">Married</option>
-            <option value="Divorced">Divorced</option>
+            <option value="Single" <%= mySurvey[0].RelationshipStatus === 'Single' ? 'selected' : '' %>>Single</option>
+            <option value="In a relationship"<%= mySurvey[0].RelationshipStatus === 'In a relationship' ? 'selected' : '' %>>In a relationship</option>
+            <option value="Married"<%= mySurvey[0].RelationshipStatus === 'Married' ? 'selected' : '' %>>Married</option>
+            <option value="Divorced"<%= mySurvey[0].RelationshipStatus === 'Divorced' ? 'selected' : '' %>>Divorced</option>
           </select>
         </div>
        </div>
@@ -115,11 +114,11 @@
         <div class="col-auto my-1">
           <select class="custom-select mr-sm-2" id="RestlessnessScale" name="RestlessnessScale" value="<%=mySurvey[0].RestlessnessScale %>">
             <option value="0" selected disabled>Select an option</option>
-            <option value="1"<%= mySurvey[0].RestlessnessScale === '1' ? 'selected' : '' %>>1</option>
-            <option value="2"<%= mySurvey[0].RestlessnessScale === '2' ? 'selected' : '' %>>2</option>
-            <option value="3"<%= mySurvey[0].RestlessnessScale === '3' ? 'selected' : '' %>>3</option>
-            <option value="4"<%= mySurvey[0].RestlessnessScale === '4' ? 'selected' : '' %>>4</option>
-            <option value="5"<%= mySurvey[0].RestlessnessScale === '5' ? 'selected' : '' %>>5</option>
+            <option value="1"<%= mySurvey[0].RestlessnessScale === 1 ? 'selected' : '' %>>1</option>
+            <option value="2"<%= mySurvey[0].RestlessnessScale === 2 ? 'selected' : '' %>>2</option>
+            <option value="3"<%= mySurvey[0].RestlessnessScale === 3 ? 'selected' : '' %>>3</option>
+            <option value="4"<%= mySurvey[0].RestlessnessScale === 4 ? 'selected' : '' %>>4</option>
+            <option value="5"<%= mySurvey[0].RestlessnessScale === 5 ? 'selected' : '' %>>5</option>
           </select>
         </div>
        </div>
@@ -129,11 +128,11 @@
         <div class="col-auto my-1">
           <select class="custom-select mr-sm-2" id="HowEasilyDistractedScale" name="HowEasilyDistractedScale" value="<%=mySurvey[0].HowEasilyDistractedScale %>">
             <option value="0" selected disabled>Select an option</option>
-            <option value="1"<%= mySurvey[0].HowEasilyDistractedScale === '1' ? 'selected' : '' %>>1</option>
-            <option value="2"<%= mySurvey[0].HowEasilyDistractedScale === '2' ? 'selected' : '' %>>2</option>
-            <option value="3"<%= mySurvey[0].HowEasilyDistractedScale === '3' ? 'selected' : '' %>>3</option>
-            <option value="4"<%= mySurvey[0].HowEasilyDistractedScale === '4' ? 'selected' : '' %>>4</option>
-            <option value="5"<%= mySurvey[0].HowEasilyDistractedScale === '5' ? 'selected' : '' %>>5</option>
+            <option value="1"<%= mySurvey[0].HowEasilyDistractedScale === 1 ? 'selected' : '' %>>1</option>
+            <option value="2"<%= mySurvey[0].HowEasilyDistractedScale === 2 ? 'selected' : '' %>>2</option>
+            <option value="3"<%= mySurvey[0].HowEasilyDistractedScale === 3 ? 'selected' : '' %>>3</option>
+            <option value="4"<%= mySurvey[0].HowEasilyDistractedScale === 4 ? 'selected' : '' %>>4</option>
+            <option value="5"<%= mySurvey[0].HowEasilyDistractedScale === 5 ? 'selected' : '' %>>5</option>
           </select>
         </div>
        </div>
