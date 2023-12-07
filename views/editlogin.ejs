@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+
+</head>
+<body>
+   <form action="/editlogin" method="POST">
+     <fieldset style="width: 0px;">
+       <legend>Edit a Login:</legend>
+       <input type="hidden" id="LoginID" name="LoginID" >
+       <label for="Username">Username:</label>
+       <input type="text" id="Username" name="Username" >
+       <br><br>
+       <label for="Password">Password:</label>
+       <input type="text" id="Password" name="Password" >
+       <br><br>
+       <label for="FirstName">First Name:</label>
+       <input type="text" id="FirstName" name="FirstName" >
+       <br><br>
+       <label for="LastName">Last Name:</label>
+       <input type="text" id="LastName" name="LastName" >
+       <br><br>
+       <label for="Email">Email:</label>
+       <input type="text" id="Email" name="Email" >
+       <br><br>
+       <div class="form-row align-items-center">
+        <div class="col-auto my-1">
+          <select class="custom-select mr-sm-2" id="UserRole" name="UserRole">
+            <option value="1">Employee</option>
+            <option value="2" disabled>Admin</option>
+          </select>
+        </div>
+    </div><br>
+     </fieldset>
+     <button type="submit">Save</button>
+   </form>
+</body>
+</html>

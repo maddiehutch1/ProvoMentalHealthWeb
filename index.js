@@ -34,10 +34,10 @@ app.use('/route', router);
 const knex = require('knex') ({
     client: 'pg',
     connection: {
-        host: process.env.RDS_HOSTNAME || 'localhost',
-        user: process.env.RDS_USERNAME || 'postgres',
-        password: process.env.RDS_PASSWORD || 'admin',
-        database: process.env.RDS_DB_NAME || 'ProvoSocialMediaUsage', 
+        host: process.env.RDS_HOSTNAME || 'awseb-e-53wyk8kamn-stack-awsebrdsdatabase-kcxprbtmnmgb.cibesl0vtc3a.us-east-1.rds.amazonaws.com',
+        user: process.env.RDS_USERNAME || 'ebroot',
+        password: process.env.RDS_PASSWORD || 'SuperSecretPassword275',
+        database: process.env.RDS_DB_NAME || 'ebdb', 
         port: process.env.RDS_PORT || 5432,
         ssl: process.env.DB_SSL ? {rejectUnauthorized: false} : false
     }
@@ -72,8 +72,69 @@ app.get("/adminlanding", (req, res) => {
 });
 
 app.get("/databaseadmin", (req, res) => {
-    res.render("databaseadmin");
+    knex.select().from("Login").then(Login => {
+        res.render("databaseadmin"), {mylogin: Login};
+    });
 });
+
+app.get("/editlogin", (req, res) => {
+    res.render("editlogin");
+});
+
+app.get("/createlogin", (req, res) => {
+    res.render("createlogin");
+});
+
+app.post("/createlogin", (req, res)=> {
+    knex("Login").insert({
+      Username: req.body.Username,
+      Password: req.body.Password,
+      FirstName: req.body.FirstName.toUpperCase(),
+      LastName: req.body.LastName.toUpperCase(),
+      Email: req.body.Email,
+      UserRole: req.body.UserRole.toUpperCase()
+   }).then(mylogin => {
+      res.redirect("/");
+   })
+});
+
+// app.post("/deleteCountry/:id", (req, res) => {
+//     knex("country").where("country_id",req.params.id).del().then( mycountry => {
+//       res.redirect("/");
+//    }).catch( err => {
+//       console.log(err);
+//       res.status(500).json({err});
+//    });
+// });
+
+// app.get("/editEmployee/:id", (req, res)=> {
+//     knex.select("LoginID",
+//           "Username",
+//           "Password",
+//           "FirstName",
+//           "LastName",
+//           "Email",
+//           "UserRole").from("Login").where("LoginID", req.params.id).then(country => {
+//     res.render("editEmployee", {Login: LoginID});
+//    }).catch( err => {
+//       console.log(err);
+//       res.status(500).json({err});
+//    });
+// });
+
+// app.post("/editEmployee", (req, res)=> {
+//     knex("Login").where("LoginID", parseInt(req.body.LoginID)).update({
+//       LoginID: req.body.LoginID,
+//       Username: req.body.username,
+//       Password: req.body.password,
+//       FirstName: req.body.firstName.toUpperCase(),
+//       LastName: req.body.lastName.toUpperCase(),
+//       Email: req.body.email,
+//       UserRole: req.body.userRole
+//    }).then(mycountry => {
+//       res.redirect("/");
+//    })
+// });
 
 app.get("/surveydata", (req, res) => {
     res.render("surveydata");

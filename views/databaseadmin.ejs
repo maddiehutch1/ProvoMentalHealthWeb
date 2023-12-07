@@ -4,10 +4,77 @@
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>Provo City Health</title>
+   <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+   <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+   <!-- Google fonts-->
+   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+   <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
+   <!-- Core theme CSS (includes Bootstrap)-->
+   <link href="/public/css/styles.css" rel="stylesheet" type="text/css" />
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 </head>
 <body>
-   <label><b>Country Information:</b></label>
+   <label><b>Employee Information:</b></label>
    <br><br>
+   <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">FirstName</th>
+        <th scope="col">LastName</th>
+        <th scope="col">Username</th>
+        <th scope="col">Password</th>
+        <th scope="col">Email</th>
+        <th scope="col">UserRole</th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">1</th>
+        <td>Mark</td>
+        <td>Otto</td>
+        <td>@mdo</td>
+        <td>ilovescrabble420</td>
+        <td>admin@admin.com</td>
+        <td>Admin</td>
+      </tr>
+      <tr>
+        <th scope="row">2</th>
+        <td>Jacob</td>
+        <td>Thornton</td>
+        <td>@fat</td>
+        <td>ilovescrabble420</td>
+        <td>admin@admin.com</td>
+        <td>City Worker</td>
+      </tr>
+      <tr>
+        <th scope="row">3</th>
+        <td>Larry</td>
+        <td>the Bird</td>
+        <td>@twitter</td>
+        <td>ilovescrabble420</td>
+        <td>admin@admin.com</td>
+        <td>City Worker</td>
+      </tr>
+      <tr>
+        <td style="text-align: center;">
+            <button type="submit">Edit</button>
+          </form>
+        </td>
+        <td style="text-align: center;">
+
+            <button type="submit">Delete</button>
+          </form>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <form action="/createlogin" method="GET">
+    <button type="submit">Add Employee</button>
+  </form>
+
    <table style="width: 100%; background-color: antiquewhite; border: 1px solid black;">
      <thead style="background-color: cornflowerblue; color: white;">
        <tr>
@@ -22,26 +89,18 @@
        </tr>
      </thead>
      <tbody style="font-family: Arial; font-size: 9pt;">
-        <% for (let iCount = 0; iCount < mycountry.length; iCount++) { %> 
          <tr>
-           <td><%= mycountry[iCount].country_name %></td>
-           <td><%= mycountry[iCount].popular_site %></td>
-           <td><%= mycountry[iCount].capital %></td>
-           <td><%= mycountry[iCount].population %></td>
-           <td style="text-align: center;"><%= mycountry[iCount].visited %></td>
-           <td style="text-align: center;"><%= mycountry[iCount].covid_level %></td>
            <td style="text-align: center;">
-             <form action="/editCountry/<%= mycountry[iCount].country_id %>" method="GET">
                <button type="submit">Edit</button>
              </form>
            </td>
            <td style="text-align: center;">
-             <form action="/deleteCountry/<%= mycountry[iCount].country_id %>" method="POST">
+
                <button type="submit">Delete</button>
              </form>
            </td>
          </tr>
-      <% } %>
+
      </tbody>
    </table>
    <br><br>
