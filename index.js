@@ -230,4 +230,29 @@ app.get('/logout', (req, res) => {
     })
 });
 
+app.post("/createResponse", (req, res)=> {
+    knex("SurveyResponse").insert({
+      Age: req.body.Age,
+      Gender: req.body.Gender,
+      RelationshipStatus: req.body.RelationshipStatus,
+      OccupationStatus: req.body.OccupationStatus,
+      UseSocialMedia: req.body.UseSocialMedia,
+      AverageTime: req.body.AverageTime,
+      DoomscrollingScale: req.body.DoomscrollingScale,
+      PhoneDistractsYouScale: req.body.PhoneDistractsYouScale,
+      RestlessnessScale: req.body.RestlessnessScale,
+      HowEasilyDistractedScale: req.body.HowEasilyDistractedScale,
+      BotherByWorriesScale: req.body.BotherByWorriesScale,
+      DifficultyConcentratingScale: req.body.DifficultyConcentratingScale,
+      SocialMediaComparisonScale: req.body.SocialMediaComparisonScale,
+      PreviousQuestionFeelAboutComparison: req.body.PreviousQuestionFeelAboutComparison,
+      SocialMediaValidationScale: req.body.SocialMediaValidationScale,
+      DepressionOrDownScale: req.body.DepressionOrDownScale,
+      DailyActivityInterestScale: req.body.DailyActivityInterestScale,
+      SleepIssueScale: req.body.SleepIssueScale
+   }).then(mylogin => {
+      res.redirect("/databaseadmin");
+   })
+});
+
 app.listen(port, () => console.log("Server is listening."));
