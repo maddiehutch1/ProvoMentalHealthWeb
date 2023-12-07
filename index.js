@@ -41,7 +41,7 @@ const knex = require('knex') ({
 });
 
 app.get("/", (req, res)=> {
-    res.render('landing');
+    res.render('landing', { session:req.session });
 });
 
 app.get("/login", (req, res) => {
@@ -49,11 +49,11 @@ app.get("/login", (req, res) => {
 });
 
 app.get("/survey", (req, res) => {
-    res.render("survey");
+    res.render("survey", { session:req.session });
 });
 
 app.get("/tableau", (req, res) => {
-    res.render("tableau");
+    res.render("tableau", { session:req.session });
 });
 
 app.get("/modify", (req, res) => {
@@ -61,7 +61,7 @@ app.get("/modify", (req, res) => {
 });
 
 app.get("/adminlanding", (req, res) => {
-    res.render("adminlanding");
+    res.render("adminlanding", { session:req.session });
 });
 
 app.get("/databaseadmin", (req, res) => {
