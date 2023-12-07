@@ -48,13 +48,13 @@
                 <!-- To make this form functional, sign up at-->
                 <!-- https://startbootstrap.com/solution/contact-forms-->
                 <!-- to get an API token!-->
-                <form id="contactForm" data-sb-form-api-token="API_TOKEN" onsubmit="return validateForm()">
+                <form id="contactForm" data-sb-form-api-token="API_TOKEN" onsubmit="return validateForm()" action="/createResponse">
                     <div class="row align-items-stretch mb-5">
                         <div class="col-md-6">
                             <p class="text-light">What is your age?</p>
                             <div class="form-group">
                                 <!-- AGE input-->
-                                <input class="form-control" id="userAge" type="text" placeholder="Age"/>
+                                <input class="form-control" id="Age" type="text" placeholder="Age" name="Age"/>
                                 <div class="invalid-feedback">An age is required.</div>
                             </div>
                             <p class="failed-input" id="ageError"></p>
@@ -63,11 +63,11 @@
                             <p class="text-light">What is your gender?</p>
                             <div class="form-row align-items-center">
                                 <div class="col-auto my-1">
-                                  <select class="custom-select mr-sm-2" id="inlineFormCustomSelect1">
+                                  <select class="custom-select mr-sm-2" id="Gender" name="Gender">
                                     <option value="0" selected disabled>Select an option</option>
-                                    <option value="1">Male</option>
-                                    <option value="2">Female</option>
-                                    <option value="3">Other</option>
+                                    <option value="Male">Male</option>
+                                    <option value="Female">Female</option>
+                                    <option value="Other">Other</option>
                                   </select>
                                 </div>
                             </div><br>
@@ -76,12 +76,12 @@
                             <p class="text-light">Relationship Status:</p>
                             <div class="form-row align-items-center">
                                 <div class="col-auto my-1">
-                                  <select class="custom-select mr-sm-2" id="inlineFormCustomSelect2">
+                                  <select class="custom-select mr-sm-2" id="RelationshipStatus" name="RelationshipStatus">
                                     <option value="0" selected disabled>Select an option</option>
-                                    <option value="1">Single</option>
-                                    <option value="2">In a relationship</option>
-                                    <option value="3">Married</option>
-                                    <option value="4">Divorced</option>
+                                    <option value="Single">Single</option>
+                                    <option value="In a relationship">In a relationship</option>
+                                    <option value="Married">Married</option>
+                                    <option value="Divorced">Divorced</option>
                                   </select>
                                 </div>
                             </div><br>
@@ -90,14 +90,14 @@
                             <p class="text-light">Occupation Status:</p>
                             <div class="form-row align-items-center">
                                 <div class="col-auto my-1">
-                                  <select class="custom-select mr-sm-2" id="inlineFormCustomSelect3">
+                                  <select class="custom-select mr-sm-2" id="OccupationStatus" name="OccupationStatus">
                                     <option value="0" selected disabled>Select an option</option>
-                                    <option value="1">Retired</option>
-                                    <option value="2">Salaried Worker</option>
-                                    <option value="1">Not in the workforce</option>
-                                    <option value="1">Unemployed</option>
-                                    <option value="3">School Student</option>
-                                    <option value="4">University Student</option>
+                                    <option value="Retired">Retired</option>
+                                    <option value="Salaried Worker">Salaried Worker</option>
+                                    <option value="Not in the workforce">Not in the workforce</option>
+                                    <option value="Unemployed">Unemployed</option>
+                                    <option value="School Student">School Student</option>
+                                    <option value="University Student">University Student</option>
                                   </select>
                                 </div>
                             </div><br>
@@ -134,10 +134,10 @@
                             <div class="form-row align-items-center">
                                 <div class="col-auto my-1">
                                 <p class="text-light">Do you use social media?</p>
-                                  <select class="custom-select mr-sm-2" id="inlineFormCustomSelect4">
+                                  <select class="custom-select mr-sm-2" id="UseSocialMedia" name="UseSocialMedia">
                                     <option value="0" selected disabled>Select an option</option>
-                                    <option value="1">Yes</option>
-                                    <option value="2">No</option>
+                                    <option value="Yes">Yes</option>
+                                    <option value="No">No</option>
                                   </select>
                                 </div>
                             </div><br>
@@ -197,14 +197,14 @@
                             <div class="form-row align-items-center">
                                 <div class="col-auto my-1">
                                 <p class="text-light">Average time spent on social media:</p>
-                                  <select class="custom-select mr-sm-2" id="inlineFormCustomSelect5">
+                                  <select class="custom-select mr-sm-2" id="AverageTime" name="AverageTime">
                                     <option value="0" selected disabled>Select an option</option>
-                                    <option value="1">Less than an hour</option>
-                                    <option value="2">Between 1 and 2 hours</option>
-                                    <option value="3">Between 2 and 3 hours</option>
-                                    <option value="4">Between 3 and 4 hours</option>
-                                    <option value="5">Between 4 and 5 hours</option>
-                                    <option value="6">More than 5 hours</option>
+                                    <option value="Less than an hour">Less than an hour</option>
+                                    <option value="Between 1 and 2 hours">Between 1 and 2 hours</option>
+                                    <option value="Between 2 and 3 hours">Between 2 and 3 hours</option>
+                                    <option value="Between 3 and 4 hours">Between 3 and 4 hours</option>
+                                    <option value="Between 4 and 5 hours">Between 4 and 5 hours</option>
+                                    <option value="More than 5 hours">More than 5 hours</option>
                                   </select>
                                 </div>
                             </div><br>
@@ -571,7 +571,7 @@
                     document.getElementById('ageError').innerHTML = '';
                 }
 
-                    let sGender = document.getElementById('inlineFormCustomSelect1').value
+                    let sGender = document.getElementById('Gender').value
                     if (sGender == 0) {
                         sDropboxError1 = '* You have not selected a valid option.';
                         document.getElementById('dropboxError1').innerHTML = sDropboxError1;
@@ -580,7 +580,7 @@
                         document.getElementById('dropboxError1').innerHTML = '';
                     }
 
-                    let sRelationshipStatus = document.getElementById('inlineFormCustomSelect2').value
+                    let sRelationshipStatus = document.getElementById('RelationshipStatus').value
                     if (sRelationshipStatus == 0) {
                         sDropboxError2 = '* You have not selected a valid option.';
                         document.getElementById('dropboxError2').innerHTML = sDropboxError2;
@@ -589,7 +589,7 @@
                         document.getElementById('dropboxError2').innerHTML = '';
                     }
 
-                    let sOccupationStatus = document.getElementById('inlineFormCustomSelect3').value
+                    let sOccupationStatus = document.getElementById('OccupationStatus').value
                     if (sOccupationStatus == 0) {
                         sDropboxError3 = '* You have not selected a valid option.';
                         document.getElementById('dropboxError3').innerHTML = sDropboxError3;
@@ -598,8 +598,8 @@
                         document.getElementById('dropboxError3').innerHTML = '';
                     }
 
-                    let sSocialMediaStatus = document.getElementById('inlineFormCustomSelect4').value
-                    if (sSocialMediaStatus == 0) {
+                    let sUseSocialMedia = document.getElementById('UseSocialMedia').value
+                    if (sUseSocialMedia == 0) {
                         sDropboxError4 = '* You have not selected a valid option.';
                         document.getElementById('dropboxError4').innerHTML = sDropboxError4;
                         totalErrors++; // Prevent form submission
@@ -607,8 +607,8 @@
                         document.getElementById('dropboxError4').innerHTML = '';
                     }
 
-                    let sSocialMediaUsage = document.getElementById('inlineFormCustomSelect5').value
-                    if (sSocialMediaUsage == 0) {
+                    let sAverageTime = document.getElementById('AverageTime').value
+                    if (sAverageTime == 0) {
                         sDropboxError5 = '* You have not selected a valid option.';
                         document.getElementById('dropboxError5').innerHTML = sDropboxError5;
                         totalErrors++; // Prevent form submission
