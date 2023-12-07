@@ -125,12 +125,12 @@ app.get("/editemployee/:id", (req, res)=> {
 app.post("/editemployee", (req, res)=> {
     knex("Login").where("LoginID", parseInt(req.body.LoginID)).update({
       LoginID: req.body.LoginID,
-      Username: req.body.username,
-      Password: req.body.password,
-      FirstName: req.body.firstName.toUpperCase(),
-      LastName: req.body.lastName.toUpperCase(),
-      Email: req.body.email,
-      UserRole: req.body.userRole
+      Username: req.body.Username,
+      Password: req.body.Password,
+      FirstName: req.body.FirstName.toUpperCase(),
+      LastName: req.body.LastName.toUpperCase(),
+      Email: req.body.Email,
+      UserRole: req.body.UserRole
    }).then(mylogin => {
       res.redirect("/adminlanding");
    })
