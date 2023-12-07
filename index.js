@@ -73,7 +73,7 @@ app.get("/adminlanding", (req, res) => {
 
 app.get("/databaseadmin", (req, res) => {
     knex.select().from("Login").then(Login => {
-        res.render("databaseadmin"), {mylogin: Login};
+        res.render("databaseadmin", {mylogin: Login});
     });
 });
 
