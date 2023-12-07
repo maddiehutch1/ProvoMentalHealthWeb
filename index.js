@@ -136,8 +136,14 @@ app.post("/editemployee", (req, res)=> {
    })
 });
 
+// app.get("/surveydata", (req, res) => {
+//     res.render("surveydata");
+// });
+
 app.get("/surveydata", (req, res) => {
-    res.render("surveydata");
+    knex.select().from("SurveyResponse").then(SurveyResponse => {
+        res.render("surveydata", {mySurvey: SurveyResponse});
+    });
 });
 
 app.listen(port, () => console.log("Server is listening."));
