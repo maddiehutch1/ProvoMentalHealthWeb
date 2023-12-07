@@ -10,30 +10,62 @@
    <form action="/editresponse" method="POST">
      <fieldset style="width: 0px;">
        <legend>Edit a Response:</legend>
-       <input type="hidden" id="LoginID" name="LoginID" >
-       <label for="Username">:</label>
-       <input type="text" id="Username" name="Username" >
+       <input type="hidden" id="SurveyID" name="SurveyID" value="<%=mySurvey[0].SurveyID %>">
+       <input type="hidden" id="Timestamp" name="Timestamp" value="<%=mySurvey[0].Timestamp %>">
+       <label for="Age">Age:</label>
+       <input type="text" id="Age" name="Age" value="<%=mySurvey[0].Age %>">
        <br><br>
-       <label for="Password">Password:</label>
-       <input type="text" id="Password" name="Password" >
+       <label for="Gender">Gender:</label>
+       <input type="text" id="Gender" name="Gender" value="<%=mySurvey[0].Gender %>">
        <br><br>
-       <label for="FirstName">First Name:</label>
-       <input type="text" id="FirstName" name="FirstName" >
+       <label for="OccupationStatus">Occupation Status:</label>
+       <input type="OccupationStatus" id="OccupationStatus" name="OccupationStatus" value="<%=mySurvey[0].OccupationStatus %>">
        <br><br>
-       <label for="LastName">Last Name:</label>
-       <input type="text" id="LastName" name="LastName" >
+       <label for="RelationshipStatus">Relationship Status:</label>
+       <input type="text" id="RelationshipStatus" name="RelationshipStatus" value="<%=mySurvey[0].RelationshipStatus %>">
        <br><br>
-       <label for="Email">Email:</label>
-       <input type="text" id="Email" name="Email" >
+       <label for="UseSocialMedia">Do you use social media?</label>
+       <input type="text" id="UseSocialMedia" name="UseSocialMedia" value="<%=mySurvey[0].UseSocialMedia %>">
        <br><br>
-       <div class="form-row align-items-center">
-        <div class="col-auto my-1">
-          <select class="custom-select mr-sm-2" id="UserRole" name="UserRole">
-            <option value="1">Employee</option>
-            <option value="2" disabled>Admin</option>
-          </select>
-        </div>
-    </div><br>
+       <label for="AverageTime">What is the average time you spend on social media every day?</label>
+       <input type="text" id="AverageTime" name="AverageTime" value="<%=mySurvey[0].AverageTime %>">
+       <br><br>
+       <label for="DoomscrollingScale">How often do you find yourself using social media without a specific purpose?</label>
+       <input type="text" id="DoomscrollingScale" name="DoomscrollingScale" value="<%=mySurvey[0].DoomscrollingScale %>">
+       <br><br>
+       <label for="PhoneDistractsYouScale">How often do you get distracted by social media when you are busy doing something?</label>
+       <input type="text" id="PhoneDistractsYouScale" name="PhoneDistractsYouScale" value="<%=mySurvey[0].PhoneDistractsYouScale %>">
+       <br><br>
+       <label for="RestlessnessScale">Do you feel restless if you haven’t used social media in a while?</label>
+       <input type="text" id="RestlessnessScale" name="RestlessnessScale" value="<%=mySurvey[0].RestlessnessScale %>">
+       <br><br>
+       <label for="HowEasilyDistractedScale">How easily distracted are you?</label>
+       <input type="text" id="HowEasilyDistractedScale" name="HowEasilyDistractedScale" value="<%=mySurvey[0].HowEasilyDistractedScale %>">
+       <br><br>
+       <label for="BotherByWorriesScale">How much are you bothered by worries?</label>
+       <input type="text" id="BotherByWorriesScale" name="BotherByWorriesScale" value="<%=mySurvey[0].BotherByWorriesScale %>">
+       <br><br>
+       <label for="DifficultyConcentratingScale">Do you find it difficult to concentrate on things?</label>
+       <input type="text" id="DifficultyConcentratingScale" name="DifficultyConcentratingScale" value="<%=mySurvey[0].DifficultyConcentratingScale %>">
+       <br><br>
+       <label for="SocialMediaComparisonScale">How often do you compare yourself to other successful people through the use of social media?</label>
+       <input type="text" id="SocialMediaComparisonScale" name="SocialMediaComparisonScale" value="<%=mySurvey[0].SocialMediaComparisonScale %>">
+       <br><br>
+       <label for="PreviousQuestionFeelAboutComparison">Following the previous question, how do you feel about these comparisons, generally speaking?</label>
+       <input type="text" id="PreviousQuestionFeelAboutComparison" name="PreviousQuestionFeelAboutComparison" value="<%=mySurvey[0].PreviousQuestionFeelAboutComparison %>">
+       <br><br>
+       <label for="SocialMediaValidationScale">How often do you look to seek validation from features of social media?</label>
+       <input type="text" id="SocialMediaValidationScale" name="SocialMediaValidationScale" value="<%=mySurvey[0].SocialMediaValidationScale %>">
+       <br><br>
+       <label for="DepressionOrDownScale">How often do you feel depressed or down?</label>
+       <input type="text" id="DepressionOrDownScale" name="DepressionOrDownScale" value="<%=mySurvey[0].DepressionOrDownScale %>">
+       <br><br>
+       <label for="DailyActivityInterestScale">How frequently does your interested in daily activities fluctuate?</label>
+       <input type="text" id="DailyActivityInterestScale" name="DailyActivityInterestScale" value="<%=mySurvey[0].DailyActivityInterestScale %>">
+       <br><br>
+       <label for="SleepIssueScale">How often do you face issues regarding sleep?</label>
+       <input type="text" id="SleepIssueScale" name="SleepIssueScale" value="<%=mySurvey[0].SleepIssueScale %>">
+       <br><br>
      </fieldset>
      <button type="submit">Save</button>
    </form>
