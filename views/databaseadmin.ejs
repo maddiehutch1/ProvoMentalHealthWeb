@@ -44,6 +44,11 @@
                  <button type="submit">Edit</button>
                </form>
              </td>
+             <td style="text-align: center;">
+              <form action="/deleteUser/<%= mylogin[iCount].LoginID %>" method="POST">
+                <button type="submit">Delete</button>
+              </form>
+            </td>
            </tr>
         <% } %>
        </tbody>

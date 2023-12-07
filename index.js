@@ -92,9 +92,9 @@ app.post("/createlogin", (req, res)=> {
       FirstName: req.body.FirstName.toUpperCase(),
       LastName: req.body.LastName.toUpperCase(),
       Email: req.body.Email,
-      UserRole: req.body.UserRole.toUpperCase()
+      UserRole: req.body.UserRole
    }).then(mylogin => {
-      res.redirect("/");
+      res.redirect("/databaseadmin");
    })
 });
 
