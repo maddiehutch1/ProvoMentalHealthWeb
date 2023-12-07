@@ -53,7 +53,7 @@
                 <!-- To make this form functional, sign up at-->
                 <!-- https://startbootstrap.com/solution/contact-forms-->
                 <!-- to get an API token!-->
-                <form id="contactForm" data-sb-form-api-token="API_TOKEN" action="/route/login" method="POST">
+                <form id="contactForm" data-sb-form-api-token="API_TOKEN" action="/login" method="POST">
                     <!-- <div class="row align-items-stretch mb-5"> -->
                         <div class="col-md-6">
                             <div class="form-group">
@@ -68,11 +68,9 @@
                                 <div class="invalid-feedback" data-sb-feedback="password:email">Password is not valid.</div>
                             </div>
                         </div>
-                    <!-- Submit error message-->
-                    <!---->
-                    <!-- This is what your users will see when there is-->
-                    <!-- an error submitting the form-->
-                    <div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3">Error sending message!</div></div>
+                    <% if (locals.errorMessage) { %>
+                        <div id="errorMessage" class="text-center text-danger mb-3"><%= errorMessage %></div>
+                    <% } %>    
                     <!-- Submit Button-->
                     <div class="text-center"><button class="btn btn-primary btn-xl text-uppercase" id="submitButton" type="submit">LOGIN</button></div>
                 </form>
@@ -90,22 +88,22 @@
                 </div>
             </div>
         </footer>
-        <script>
-            let sUsername = document.getElementById("username");
+        <!-- <script>
+            document.getElementById("username").focus();
 
-            sUsername.focus();
+            function validateForm(){
+                let username = document.getElementById("username").value.trim();
+                let password = document.getElementById("password").value.trim();
 
-            // if (sUsername.value.trim() === '') {
-            //     sUsername.focus();
-            //     sErrorOutput = '* Please put your username';
-            //     document.getElementById('submitErrorMessage').innerHTML = sErrorOutput;
-            //     return false; // Prevent form submission
-            // } else if (sUsername.value != ) {
-            //     userAgeInput.focus();
-            //     sErrorOutput = '* Please use valid username';
-            //     document.getElementById('ageError').innerHTML = sErrorOutput
-            //     return false; // Prevent form submission
-            // }
-        </script>
+                if (username === "" || password === "")
+                {
+                    document.getElementById("submitErrorMessage").innerHTML = "Username and password are required";
+                    return false;
+                }
+
+                return true;
+            }
+
+        </script> -->
     </body>
 </html>
