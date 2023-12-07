@@ -21,9 +21,9 @@
         <div class="col-auto my-1">
           <select class="custom-select mr-sm-2" id="Gender" name="Gender" value="<%=mySurvey[0].Gender %>">
             <option value="0" selected disabled>Select an option</option>
-            <option value="Male">Male</option>
-            <option value="Female">Female</option>
-            <option value="Other">Other</option>
+            <option value="Male"<%= mySurvey[0].Gender === 'Male' ? 'selected' : '' %>>Male</option>
+            <option value="Female"<%= mySurvey[0].Gender === 'Female' ? 'selected' : '' %>>Female</option>
+            <option value="Other"<%= mySurvey[0].Gender === 'Other' ? 'selected' : '' %>>Other</option>
           </select>
         </div>
     </div><br>
@@ -33,12 +33,12 @@
         <div class="col-auto my-1">
             <select class="custom-select mr-sm-2" id="OccupationStatus" name="OccupationStatus" value="<%=mySurvey[0].OccupationStatus %>">
                 <option value="0" selected disabled>Select an option</option>
-                <option value="Retired">Retired</option>
-                <option value="Salaried Worker">Salaried Worker</option>
-                <option value="Not in the workforce">Not in the workforce</option>
-                <option value="Unemployed">Unemployed</option>
-                <option value="School">School Student</option>
-                <option value="University Student">University Student</option>
+                <option value="Retired"<%= mySurvey[0].OccupationStatus === 'Retired' ? 'selected' : '' %>>Retired</option>
+                <option value="Salaried Worker"<%= mySurvey[0].OccupationStatus === 'Salaried Worker' ? 'selected' : '' %>>Salaried Worker</option>
+                <option value="Not in the workforce"<%= mySurvey[0].OccupationStatus === 'Not in the workforce' ? 'selected' : '' %>>Not in the workforce</option>
+                <option value="Unemployed"<%= mySurvey[0].OccupationStatus === 'Unemployed' ? 'selected' : '' %>>Unemployed</option>
+                <option value="School"<%= mySurvey[0].OccupationStatus === 'School' ? 'selected' : '' %>>School Student</option>
+                <option value="University Student"<%= mySurvey[0].OccupationStatus === 'University Student' ? 'selected' : '' %>>University Student</option>
               </select>
         </div>
        </div>
@@ -95,7 +95,6 @@
           </select>
         </div>
        </div>
-       <input type="text" id="DoomscrollingScale" name="DoomscrollingScale" value="<%=mySurvey[0].DoomscrollingScale %>">
        <br><br>
        <label for="PhoneDistractsYouScale">How often do you get distracted by social media when you are busy doing something?</label>
        <div class="form-row align-items-center">
