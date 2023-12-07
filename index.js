@@ -61,7 +61,8 @@ app.get("/modify", (req, res) => {
 });
 
 app.get("/adminlanding", (req, res) => {
-    res.render("adminlanding", { session:req.session });
+    const role = req.session.role;
+    res.render("adminlanding", { session:req.session, role });
 });
 
 app.get("/databaseadmin", (req, res) => {
@@ -80,15 +81,22 @@ app.post("/login", async (req, res)=> {
 
       // Perform a SELECT query to check if the entered credentials are valid
     try {
-      const result = await knex
-        .select('Username', 'Password')
+        const result = await knex
+        .select('Username', 'Password', 'UserRole')
         .from('Login')
-        .where({ Username: user_username, Password: user_password })
+        .where({ Username: user_username, Password: user_password });
+
         if (result.length > 0) {
             // Valid login credentials, set session variables and redirect
             req.session.loggedIn = true;
-            req.session.user = result[0]; 
+            req.session.user = result[0];
+
+            const user_role = result[0].UserRole;
+
+            req.session.role = user_role;
+
             res.redirect("/adminlanding");
+
         } else {
             // Invalid login credentials, display an error message
             res.render("login", { errorMessage: "Invalid username or password" });

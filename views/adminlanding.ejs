@@ -31,7 +31,7 @@
                         <!-- <li class="nav-item"><a class="nav-link" href="survey">Survey</a></li> -->
                         <li class="nav-item"><a class="nav-link" href="/tableau">Results</a></li>
                         <% if (locals.session.loggedIn) { %>
-                            <li class="nav-item"><a class="nav-link" href="/modify">Account</a></li>
+                            <li class="nav-item"><a class="nav-link" href="/adminlanding">Account</a></li>
                             <li class="nav-item"><a class="nav-link" href="/logout">Logout</a></li>
                         <% } else { %>
                             <li class="nav-item"><a class="nav-link" href="/login">Login</a></li>
@@ -43,21 +43,34 @@
         <section class="page-section" id="services">
             <div class="container">
                 <div class="text-center">
-                    <h2 class="section-heading text-uppercase">Welcome ADMIN!</h2>
+                    <h2 class="section-heading text-uppercase">Welcome <%= role %>!</h2>
                     <h3 class="section-subheading text-muted">Select task on your dashboard</h3>
                 </div>
                 <div class="row text-center">
+                    <% if (role === "admin") { %>
+                        <div id="coolicon2" class="col-6">
+                            <a href="/databaseadmin">
+                            <span class="fa-stack fa-4x">
+                                <i class="fas fa-circle fa-stack-2x text-primary"></i>
+                                <i class="fas fa-lock fa-stack-1x fa-inverse"></i>
+                            </span>
+                            <h4 class="my-3">ADMINISTRATION</h4>
+                            <p class="text-muted">City worker account database - CREATE, EDIT, DELETE</p>
+                            </a>
+                        </div>
+                    <% } else { %>
+                        <div id="coolicon2" class="col-6">
+                            <a href="/modify">
+                            <span class="fa-stack fa-4x">
+                                <i class="fas fa-circle fa-stack-2x text-primary"></i>
+                                <i class="fas fa-lock fa-stack-1x fa-inverse"></i>
+                            </span>
+                            <h4 class="my-3">ADMINISTRATION</h4>
+                            <p class="text-muted">EDIT personal account</p>
+                            </a>
+                        </div>
+                    <% } %>
                     <div id="coolicon2" class="col-6">
-                        <a href="/databaseadmin">
-                        <span class="fa-stack fa-4x">
-                            <i class="fas fa-circle fa-stack-2x text-primary"></i>
-                            <i class="fas fa-lock fa-stack-1x fa-inverse"></i>
-                        </span>
-                        <h4 class="my-3">ADMINISTRATION</h4>
-                        <p class="text-muted">City worker account database - CREATE, EDIT, DELETE</p>
-                        </a>
-                    </div>
-                    <div  id="coolicon2" class="col-6">
                         <a href="/surveydata">
                         <span class="fa-stack fa-4x">
                             <i class="fas fa-circle fa-stack-2x text-primary"></i>
