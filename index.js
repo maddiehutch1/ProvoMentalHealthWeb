@@ -98,14 +98,14 @@ app.post("/createlogin", (req, res)=> {
    })
 });
 
-// app.post("/deleteCountry/:id", (req, res) => {
-//     knex("country").where("country_id",req.params.id).del().then( mycountry => {
-//       res.redirect("/");
-//    }).catch( err => {
-//       console.log(err);
-//       res.status(500).json({err});
-//    });
-// });
+app.post("/deleteUser/:id", (req, res) => {
+    knex("Login").where("LoginID",req.params.id).del().then( mylogin => {
+      res.redirect("/databaseadmin");
+   }).catch( err => {
+      console.log(err);
+      res.status(500).json({err});
+   });
+});
 
 app.get("/editemployee/:id", (req, res)=> {
     knex.select("LoginID",
