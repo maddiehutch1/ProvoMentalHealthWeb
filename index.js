@@ -107,34 +107,34 @@ app.post("/createlogin", (req, res)=> {
 //    });
 // });
 
-// app.get("/editEmployee/:id", (req, res)=> {
-//     knex.select("LoginID",
-//           "Username",
-//           "Password",
-//           "FirstName",
-//           "LastName",
-//           "Email",
-//           "UserRole").from("Login").where("LoginID", req.params.id).then(country => {
-//     res.render("editEmployee", {Login: LoginID});
-//    }).catch( err => {
-//       console.log(err);
-//       res.status(500).json({err});
-//    });
-// });
+app.get("/editemployee/:id", (req, res)=> {
+    knex.select("LoginID",
+          "Username",
+          "Password",
+          "FirstName",
+          "LastName",
+          "Email",
+          "UserRole").from("Login").where("LoginID", req.params.id).then(Login => {
+    res.render("editemployee", {Login: LoginID});
+   }).catch( err => {
+      console.log(err);
+      res.status(500).json({err});
+   });
+});
 
-// app.post("/editEmployee", (req, res)=> {
-//     knex("Login").where("LoginID", parseInt(req.body.LoginID)).update({
-//       LoginID: req.body.LoginID,
-//       Username: req.body.username,
-//       Password: req.body.password,
-//       FirstName: req.body.firstName.toUpperCase(),
-//       LastName: req.body.lastName.toUpperCase(),
-//       Email: req.body.email,
-//       UserRole: req.body.userRole
-//    }).then(mycountry => {
-//       res.redirect("/");
-//    })
-// });
+app.post("/editemployee", (req, res)=> {
+    knex("Login").where("LoginID", parseInt(req.body.LoginID)).update({
+      LoginID: req.body.LoginID,
+      Username: req.body.username,
+      Password: req.body.password,
+      FirstName: req.body.firstName.toUpperCase(),
+      LastName: req.body.lastName.toUpperCase(),
+      Email: req.body.email,
+      UserRole: req.body.userRole
+   }).then(mylogin => {
+      res.redirect("/adminlanding");
+   })
+});
 
 app.get("/surveydata", (req, res) => {
     res.render("surveydata");

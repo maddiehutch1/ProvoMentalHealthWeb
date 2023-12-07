@@ -31,6 +31,29 @@
       </tr>
     </thead>
     <tbody>
+      <% for (let iCount = 0; iCount < mylogin.length; iCount++) { %>
+           <tr>
+             <td><%= mylogin[iCount].Username %></td>
+             <td><%= mylogin[iCount].Password %></td>
+             <td><%= mylogin[iCount].FirstName %></td>
+             <td><%= mylogin[iCount].LastName %></td>
+             <td><%= mylogin[iCount].Email %></td>
+             <td><%= mylogin[iCount].UserRole %></td>
+             <td style="text-align: center;">
+               <form action="/editemployee/<%= mylogin[iCount].LoginID %>" method="GET">
+                 <button type="submit">Edit</button>
+               </form>
+             </td>
+             <td style="text-align: center;">
+               <form action="/deleteCountry/<%= mycountry[iCount].country_id %>" method="POST">
+                 <button type="submit">Delete</button>
+               </form>
+             </td>
+           </tr>
+        <% } %>
+       </tbody>
+     </table>
+     <br><br>
       <tr>
         <th scope="row">1</th>
         <td>Mark</td>
