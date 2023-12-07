@@ -122,7 +122,7 @@ app.get("/editemployee/:id", (req, res)=> {
    });
 });
 
-app.post("editemployee", (req, res)=> {
+app.post("/editemployee", (req, res)=> {
     knex("Login").where("LoginID", parseInt(req.body.LoginID)).update({
       LoginID: req.body.LoginID,
       Username: req.body.Username,
