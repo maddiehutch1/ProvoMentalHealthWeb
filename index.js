@@ -77,31 +77,31 @@ app.get("/createlogin", (req, res) => {
     res.render("createlogin");
 });
 
-app.post("/login", async (req, res)=> {
-    const user_username = req.body.username;
-    const user_password = req.body.password;
+// app.post("/login", async (req, res)=> {
+//     const user_username = req.body.username;
+//     const user_password = req.body.password;
 
-      // Perform a SELECT query to check if the entered credentials are valid
-    try {
-      const result = await knex
-        .select('Username', 'Password')
-        .from('Login')
-        .where({ Username: user_username, Password: user_password })
-        if (result.length > 0) {
-            // Valid login credentials, set session variables and redirect
-            req.session.loggedIn = true;
-            req.session.user = result[0]; 
-            res.redirect("/adminlanding");
-        } else {
-            // Invalid login credentials, display an error message
-            res.render("login", { errorMessage: "Invalid username or password" });
-        }
-    } catch (error) {
-        // Handle database query errors
-        console.error(error);
-        res.status(500).send("Internal Server Error");
-    }
-});
+//       // Perform a SELECT query to check if the entered credentials are valid
+//     try {
+//       const result = await knex
+//         .select('Username', 'Password')
+//         .from('Login')
+//         .where({ Username: user_username, Password: user_password })
+//         if (result.length > 0) {
+//             // Valid login credentials, set session variables and redirect
+//             req.session.loggedIn = true;
+//             req.session.user = result[0]; 
+//             res.redirect("/adminlanding");
+//         } else {
+//             // Invalid login credentials, display an error message
+//             res.render("login", { errorMessage: "Invalid username or password" });
+//         }
+//     } catch (error) {
+//         // Handle database query errors
+//         console.error(error);
+//         res.status(500).send("Internal Server Error");
+//     }
+// });
 
 app.post("/createlogin", (req, res)=> {
     knex("Login").insert({
