@@ -610,15 +610,15 @@
                     sErrorOutput = '* Please put your age';
                     document.getElementById('ageError').innerHTML = sErrorOutput
                     totalErrors++; // Prevent form submission
-                  } else if (userAgeInput.value.trim() < 0) {
+                  } else if (isNaN(userAgeInput.value.trim()) || userAgeInput.value.trim() <= 0) {
                     userAgeInput.focus();
-                    sErrorOutput = '* You have placed an invalid age';
+                    sErrorOutput = '* Please enter a valid age';
                     document.getElementById('ageError').innerHTML = sErrorOutput;
                     totalErrors++; // Prevent form submission
-                  }else {
+                  } else {
                     document.getElementById('ageError').innerHTML = '';
                   }
-                  
+                                    
                   let sGender = document.getElementById('Gender').value
                   if (sGender == 0) {
                     sDropboxError1 = '* You have not selected a valid option.';
@@ -939,6 +939,7 @@
                 }
                 
                 function setTimestamp() {
+                  alert('timestamp is running');
                   const currentTimestamp = new Date().toISOString().slice(0, 19).replace("T", "Z");
                   document.getElementById("Timestamp").value = currentTimestamp
                   document.getElementById("Timestamp").innerHTML = currentTimestamp
