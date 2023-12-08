@@ -1,548 +1,585 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="" />
-        <meta name="author" content="" />
-        <title>Provo City Health</title>
-        <!-- Favicon-->
-        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
-        <!-- Font Awesome icons (free version)-->
-        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
-        <!-- Google fonts-->
-        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
-        <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-        <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="/public/css/styles.css" rel="stylesheet" type="text/css" />
-    </head>
-    <body id="page-top">
-        <!-- Navigation-->
-        <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
-            <div class="container">
-                <a class="navbar-brand" href="/"><img id="logo" src="/public/assets/img/provo-logo-NEW.png" alt="..." /></a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                    Menu
-                    <i class="fas fa-bars ms-1"></i>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarResponsive">
-                    <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
-                        <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
-                        <li class="nav-item"><a class="nav-link" href="tableau">Results</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/ourmission">LookUp Campaign</a></li>
-                        <% if (locals.session.loggedIn) { %>
-                          <li class="nav-item"><a class="nav-link" href="/adminlanding">Account</a></li>
-                          <li class="nav-item"><a class="nav-link" href="/logout">Logout</a></li>
-                        <% } else { %>
-                            <li class="nav-item"><a class="nav-link" href="/login">Login</a></li>
-                        <% } %>                    </ul>
-                </div>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Provo City Health</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <!-- Font Awesome icons (free version)-->
+    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+    <!-- Google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="/public/css/styles.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body id="page-top">
+    <!-- Navigation-->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+      <div class="container">
+        <a class="navbar-brand" href="/"><img id="logo" src="/public/assets/img/provo-logo-NEW.png" alt="..." /></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          Menu
+          <i class="fas fa-bars ms-1"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
+            <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="tableau">Results</a></li>
+            <li class="nav-item"><a class="nav-link" href="/ourmission">LookUp Campaign</a></li>
+            <% if (locals.session.loggedIn) { %>
+              <li class="nav-item"><a class="nav-link" href="/adminlanding">Account</a></li>
+              <li class="nav-item"><a class="nav-link" href="/logout">Logout</a></li>
+              <% } else { %>
+                <li class="nav-item"><a class="nav-link" href="/login">Login</a></li>
+                <% } %>                    </ul>
+              </div>
             </div>
-        </nav>
-        <section class="page-section" id="contact">
+          </nav>
+          <section class="page-section" id="contact">
             <div class="container">
-                <div class="text-center">
-                    <h2 class="section-heading text-uppercase">Participate in the Survey</h2>
-                    <h3 class="section-subheading text-muted">Help make our community be better informed to help YOU!</h3>
+              <div class="text-center">
+                <h2 class="section-heading text-uppercase">Participate in the Survey</h2>
+                <h3 class="section-subheading text-muted">Help make our community be better informed to help YOU!</h3>
+              </div>
+              <% if (locals.submitSuccessMessage) { %>
+                <div id="submitSuccessMessage" class="alert alert-success text-center">
+                  <%= submitSuccessMessage %>
                 </div>
-                <% if (locals.submitSuccessMessage) { %>
-                  <div id="submitSuccessMessage" class="alert alert-success text-center">
-                      <%= submitSuccessMessage %>
-                  </div>
                 <% } %>                
-                <form id="contactForm" data-sb-form-api-token="API_TOKEN" onsubmit="return setTimestamp()" action="/createResponse" method="POST">
-                    <div class="row align-items-stretch mb-5">
-                        <div class="col-md-6">
-                            <p class="text-light">What is your age?</p>
-                            <div class="form-group">
-                                <!-- AGE input-->
-                                <input class="form-control" id="Age" type="text" placeholder="Age" name="Age"/>
-                                <div class="invalid-feedback">An age is required.</div>
-                            </div>
-                            <p class="failed-input" id="ageError"></p>
+                <form id="contactForm" data-sb-form-api-token="API_TOKEN" onsubmit="return validateForm()" action="/createResponse" method="POST">
+                  <div class="row align-items-stretch mb-5">
+                    <div class="col-md-6">
 
-                            <!-- GENDER DROPDOWN -->
-                            <p class="text-light">What is your gender?</p>
-                            <div class="form-row align-items-center">
-                                <div class="col-auto my-1">
-                                  <select class="custom-select mr-sm-2" id="Gender" name="Gender">
-                                    <option value="0" selected disabled>Select an option</option>
-                                    <option value="Male">Male</option>
-                                    <option value="Female">Female</option>
-                                    <option value="Other">Other</option>
-                                  </select>
-                                </div>
-                            </div><br>
-                            <p id="dropboxError1" class="text-danger"></p>
-                            <!-- RELATIONSHIP STATUS has : Divorced, In a Relationship, Married, Single -->
-                            <p class="text-light">Relationship Status:</p>
-                            <div class="form-row align-items-center">
-                                <div class="col-auto my-1">
-                                  <select class="custom-select mr-sm-2" id="RelationshipStatus" name="RelationshipStatus">
-                                    <option value="0" selected disabled>Select an option</option>
-                                    <option value="Single">Single</option>
-                                    <option value="In a relationship">In a relationship</option>
-                                    <option value="Married">Married</option>
-                                    <option value="Divorced">Divorced</option>
-                                  </select>
-                                </div>
-                            </div><br>
-                            <p id="dropboxError2" class="text-danger"></p>
-                            <!-- OCCUPATION STATUS DROPDOWN: Retired, Salaried Worker, School Student, University Student -->
-                            <p class="text-light">Occupation Status:</p>
-                            <div class="form-row align-items-center">
-                                <div class="col-auto my-1">
-                                  <select class="custom-select mr-sm-2" id="OccupationStatus" name="OccupationStatus">
-                                    <option value="0" selected disabled>Select an option</option>
-                                    <option value="Retired">Retired</option>
-                                    <option value="Salaried Worker">Salaried Worker</option>
-                                    <option value="Not in the workforce">Not in the workforce</option>
-                                    <option value="Unemployed">Unemployed</option>
-                                    <option value="School Student">School Student</option>
-                                    <option value="University Student">University Student</option>
-                                  </select>
-                                </div>
-                            </div><br>
-                            <p id="dropboxError3" class="text-danger"></p>
-                            <!-- Affiliations -->
-                            <p class="text-light">What type of Organizations are you affiliated with?</p>
-                            <div class="form-check affiliation-group">
-                                <div class="row">
-                                  <div class="col-6">
-                                    <input class="form-check-input" type="checkbox" value="1" id="UniversityCheck" name="affiliation1">
-                                    <label class="form-check-label text-light" for="UniversityCheck">
-                                    University
-                                    </label><br>
-                                    <input class="form-check-input" type="checkbox" value="2" id="CompanyCheck" name="affiliation2">
-                                    <label class="form-check-label text-light" for="CompanyCheck">
-                                    Company
-                                    </label><br>
-                                    <input class="form-check-input" type="checkbox" value="3" id="PrivateCheck" name="affiliation3">
-                                    <label class="form-check-label text-light" for="PrivateCheck">
-                                    Private
-                                    </label><br>
-                                  </div>
-                                <div class="col-6">
-                                    <input class="form-check-input" type="checkbox" value="4" id="GovernmentCheck" name="affiliation4">
-                                    <label class="form-check-label text-light" for="GovernmentCheck">
-                                    Government
-                                    </label><br>
-                                    <input class="form-check-input" type="checkbox" value="5" id="SchoolCheck" name="affiliation5">
-                                    <label class="form-check-label text-light" for="SchoolCheck">
-                                    School
-                                    </label><br>
-                                    <input class="form-check-input" type="checkbox" value="6" id="NotApplicableCheck" name="affiliation6">
-                                    <label class="form-check-label text-light" for="NotApplicableCheck">
-                                    N/A
-                                    </label><br>
-                                </div></div>
-                            </div><br>
-                            <p class="failed-input" id="sAffiliationError"></p>
-                            <!-- Social Media Yes/No -->
-                            <div class="form-row align-items-center">
-                                <div class="col-auto my-1">
-                                <p class="text-light">Do you use social media?</p>
-                                  <select class="custom-select mr-sm-2" id="UseSocialMedia" name="UseSocialMedia">
-                                    <option value="0" selected disabled>Select an option</option>
-                                    <option value="Yes">Yes</option>
-                                    <option value="No">No</option>
-                                  </select>
-                                </div>
-                            </div><br>
-                            <p id="dropboxError4" class="text-danger"></p>
-                            <!-- Types of Social Media -->
-                            <p class="text-light">What social media platforms do you commonly use?</p>
-                            <div class="form-check social-media-group">
-                                <div class="row">
-                                    <div class="col-6">
-                                    <input class="form-check-input" type="checkbox" value="1" id="FacebookCheck" name="platform1">
-                                    <label class="form-check-label text-light" for="FacebookCheck">
-                                    Facebook
-                                    </label><br>
-                                    <input class="form-check-input" type="checkbox" value="2" id="TwitterCheck" name="platform2">
-                                    <label class="form-check-label text-light" for="TwitterCheck">
-                                    Twitter
-                                    </label><br>
-                                    <input class="form-check-input" type="checkbox" value="3" id="InstagramCheck" name="platform3">
-                                    <label class="form-check-label text-light" for="InstagramCheck">
-                                    Instagram
-                                    </label><br>
-                                    <input class="form-check-input" type="checkbox" value="4" id="YouTubeCheck" name="platform4">
-                                    <label class="form-check-label text-light" for="YouTubeCheck">
-                                    YouTube
-                                    </label><br>
-                                    <input class="form-check-input" type="checkbox" value="5" id="DiscordCheck" name="platform5">
-                                    <label class="form-check-label text-light" for="DiscordCheck">
-                                    Discord
-                                    </label><br>
-                                </div>
-                                <div class="col-6">
-                                    <input class="form-check-input" type="checkbox" value="6" id="RedditCheck" name="platform6">
-                                    <label class="form-check-label text-light" for="RedditCheck">
-                                    Reddit
-                                    </label><br>
-                                    <input class="form-check-input" type="checkbox" value="7" id="PinterestCheck" name="platform7">
-                                    <label class="form-check-label text-light" for="PinterestCheck">
-                                    Pinterest
-                                    </label><br>
-                                    <input class="form-check-input" type="checkbox" value="8" id="TikTokCheck" name="platform8">
-                                    <label class="form-check-label text-light" for="TikTokCheck">
-                                    TikTok
-                                    </label><br>
-                                    <input class="form-check-input" type="checkbox" value="9" id="SnapChatCheck" name="platform9">
-                                    <label class="form-check-label text-light" for="SnapChatCheck">
-                                    SnapChat
-                                    </label><br>
-                                    <input class="form-check-input" type="checkbox" value="10" id="OtherCheck" name="platform10">
-                                    <label class="form-check-label text-light" for="OtherCheck">
-                                    Other
-                                    </label><br>
-                            </div>
-                            </div><br>
-                            </div>
-                            <p class="failed-input" id="sCheckboxError"></p>
-                            <!-- AverageTime -->
-                            <div class="form-row align-items-center">
-                                <div class="col-auto my-1">
-                                <p class="text-light">Average time spent on social media:</p>
-                                  <select class="custom-select mr-sm-2" id="AverageTime" name="AverageTime">
-                                    <option value="0" selected disabled>Select an option</option>
-                                    <option value="Less than an hour">Less than an hour</option>
-                                    <option value="Between 1 and 2 hours">Between 1 and 2 hours</option>
-                                    <option value="Between 2 and 3 hours">Between 2 and 3 hours</option>
-                                    <option value="Between 3 and 4 hours">Between 3 and 4 hours</option>
-                                    <option value="Between 4 and 5 hours">Between 4 and 5 hours</option>
-                                    <option value="More than 5 hours">More than 5 hours</option>
-                                  </select>
-                                </div>
-                            </div><br>
-                            <p id="dropboxError5" class="text-danger"></p>
-                            <p class="text-light survey-question">How often do you find yourself using social media without a specific purpose?</p>
-                            <div class="form-check form-check-inline">
-                            <span class="text-light survey-response">Rarely</span>
-                            <label class="radio-label">
-                                <input type="radio" name="DoomscrollingScale" value="1"/>
-                                <span>1</span>
-                              </label>
-                              <label class="radio-label">
-                                <input type="radio" name="DoomscrollingScale" value="2"/>
-                                <span>2</span>
-                              </label>
-                              <label class="radio-label">
-                                <input type="radio" name="DoomscrollingScale" value="3"/>
-                                <span>3</span>
-                              </label>
-                              <label class="radio-label">
-                                <input type="radio" name="DoomscrollingScale" value="4"/>
-                                <span>4</span>
-                              </label>
-                              <label class="radio-label">
-                                <input type="radio" name="DoomscrollingScale" value="5"/>
-                                <span>5</span>
-                              </label>
-                              <span class="text-light survey-response">Often</span>
-                            </div><br>
-                            <p id="radioError1" class="text-danger" style="display: none;">Please select an option.</p>
-                            <p class="text-light survey-question">How often do you get distracted by social media when you are busy doing something?</p>
-                            <div class="form-check form-check-inline">
-                            <span class="text-light survey-response">Rarely</span>
-                            <label class="radio-label">
-                                <input type="radio" name="PhoneDistractsYouScale" value="1"/>
-                                <span>1</span>
-                              </label>
-                              <label class="radio-label">
-                                <input type="radio" name="PhoneDistractsYouScale" value="2"/>
-                                <span>2</span>
-                              </label>
-                              <label class="radio-label">
-                                <input type="radio" name="PhoneDistractsYouScale" value="3"/>
-                                <span>3</span>
-                              </label>
-                              <label class="radio-label">
-                                <input type="radio" name="PhoneDistractsYouScale" value="4"/>
-                                <span>4</span>
-                              </label>
-                              <label class="radio-label">
-                                <input type="radio" name="PhoneDistractsYouScale" value="5"/>
-                                <span>5</span>
-                              </label>
-                              <span class="text-light survey-response">Often</span>
-                            </div><br>
-                            <p id="radioError2" class="text-danger" style="display: none;">Please select an option.</p>
-                            <p class="text-light survey-question">Do you feel restless if you haven’t used social media in a while?</p>
-                            <div class="form-check form-check-inline">
-                            <span class="text-light survey-response">Rarely</span>
-                            <label class="radio-label">
-                                <input type="radio" name="RestlessnessScale" value="1"/>
-                                <span>1</span>
-                              </label>
-                              <label class="radio-label">
-                                <input type="radio" name="RestlessnessScale" value="2"/>
-                                <span>2</span>
-                              </label>
-                              <label class="radio-label">
-                                <input type="radio" name="RestlessnessScale" value="3"/>
-                                <span>3</span>
-                              </label>
-                              <label class="radio-label">
-                                <input type="radio" name="RestlessnessScale" value="4"/>
-                                <span>4</span>
-                              </label>
-                              <label class="radio-label">
-                                <input type="radio" name="RestlessnessScale" value="5"/>
-                                <span>5</span>
-                              </label>
-                              <span class="text-light survey-response">Often</span>
-                            </div><br>
-                            <p id="radioError3" class="text-danger" style="display: none;">Please select an option.</p>
-                            <p class="text-light survey-question">How easily distracted are you?</p>
-                            <div class="form-check form-check-inline">    
-                            <span class="text-light survey-response">Rarely</span>
-                            <label class="radio-label">
-                                <input type="radio" name="HowEasilyDistractedScale" value="1"/>
-                                <span>1</span>
-                              </label>
-                              <label class="radio-label">
-                                <input type="radio" name="HowEasilyDistractedScale"  value="2"/>
-                                <span>2</span>
-                              </label>
-                              <label class="radio-label">
-                                <input type="radio" name="HowEasilyDistractedScale" value="3"/>
-                                <span>3</span>
-                              </label>
-                              <label class="radio-label">
-                                <input type="radio" name="HowEasilyDistractedScale"  value="4"/>
-                                <span>4</span>
-                              </label>
-                              <label class="radio-label">
-                                <input type="radio" name="HowEasilyDistractedScale"  value="5"/>
-                                <span>5</span>
-                              </label>
-                              <span class="text-light survey-response">Often</span>
-                            </div><br>
-                            <p id="radioError4" class="text-danger" style="display: none;">Please select an option.</p>
-                            <p class="text-light survey-question">How much are you bothered by worries?</p>
-                            <div class="form-check form-check-inline">
-                            <span class="text-light survey-response">Rarely</span>
-                            <label class="radio-label">
-                            <input type="radio" name="BotherByWorriesScale" value="1"/>
-                                <span>1</span>
-                              </label>
-                              <label class="radio-label">
-                                <input type="radio" name="BotherByWorriesScale" value="2"/>
-                                <span>2</span>
-                              </label>
-                              <label class="radio-label">
-                                <input type="radio" name="BotherByWorriesScale" value="3"/>
-                                <span>3</span>
-                              </label>
-                              <label class="radio-label">
-                                <input type="radio" name="BotherByWorriesScale" value="4"/>
-                                <span>4</span>
-                              </label>
-                              <label class="radio-label">
-                                <input type="radio" name="BotherByWorriesScale" value="5"/>
-                                <span>5</span>
-                              </label>
-                              <span class="text-light survey-response">Often</span>
-                            </div><br>
-                            <p id="radioError5" class="text-danger" style="display: none;">Please select an option.</p>
-                            <p class="text-light survey-question">Do you find it difficult to concentrate on things?</p>
-                            <div class="form-check form-check-inline">
-                            <span class="text-light survey-response">Rarely</span>
-                            <label class="radio-label">
-                            <input type="radio" name="DifficultyConcentratingScale" value="1"/>
-                                <span>1</span>
-                              </label>
-                              <label class="radio-label">
-                                <input type="radio" name="DifficultyConcentratingScale" value="2"/>
-                                <span>2</span>
-                              </label>
-                              <label class="radio-label">
-                                <input type="radio" name="DifficultyConcentratingScale" value="3"/>
-                                <span>3</span>
-                              </label>
-                              <label class="radio-label">
-                                <input type="radio" name="DifficultyConcentratingScale" value="4"/>
-                                <span>4</span>
-                              </label>
-                              <label class="radio-label">
-                                <input type="radio" name="DifficultyConcentratingScale" value="5"/>
-                                <span>5</span>
-                              </label>
-                              <span class="text-light survey-response">Often</span>
-                            </div><br>
-                            <p id="radioError6" class="text-danger" style="display: none;">Please select an option.</p>
-                            <p class="text-light survey-question">How often do you compare yourself to other successful people through the use of social media?</p>
-                            <div class="form-check form-check-inline">
-                            <span class="text-light survey-response">Rarely</span>
-                            <label class="radio-label">
-                            <input type="radio" name="SocialMediaComparisonScale" value="1"/>
-                                <span>1</span>
-                              </label>
-                              <label class="radio-label">
-                                <input type="radio" name="SocialMediaComparisonScale" value="2"/>
-                                <span>2</span>
-                              </label>
-                              <label class="radio-label">
-                                <input type="radio" name="SocialMediaComparisonScale" value="3"/>
-                                <span>3</span>
-                              </label>
-                              <label class="radio-label">
-                                <input type="radio" name="SocialMediaComparisonScale" value="4"/>
-                                <span>4</span>
-                              </label>
-                              <label class="radio-label">
-                                <input type="radio" name="SocialMediaComparisonScale" value="5"/>
-                                <span>5</span>
-                              </label>
-                              <span class="text-light survey-response">Often</span>
-                            </div><br>
-                            <p id="radioError7" class="text-danger" style="display: none;">Please select an option.</p>
-                            <p class="text-light survey-question">Following the previous question, how do you feel about these comparisons, generally speaking?</p>
-                            <div class="form-check form-check-inline">
-                            <span class="text-light survey-response">Rarely</span>
-                            <label class="radio-label">
-                            <input type="radio" name="PreviousQuestionFeelAboutComparison" value="1"/>
-                                <span>1</span>
-                              </label>
-                              <label class="radio-label">
-                                <input type="radio" name="PreviousQuestionFeelAboutComparison" value="2"/>
-                                <span>2</span>
-                              </label>
-                              <label class="radio-label">
-                                <input type="radio" name="PreviousQuestionFeelAboutComparison" value="3"/>
-                                <span>3</span>
-                              </label>
-                              <label class="radio-label">
-                                <input type="radio" name="PreviousQuestionFeelAboutComparison" value="4"/>
-                                <span>4</span>
-                              </label>
-                              <label class="radio-label">
-                                <input type="radio" name="PreviousQuestionFeelAboutComparison" value="5"/>
-                                <span>5</span>
-                              </label>
-                              <span class="text-light survey-response">Often</span>
-                            </div><br>
-                            <p id="radioError8" class="text-danger" style="display: none;">Please select an option.</p>
-                            <p class="text-light survey-question">How often do you look to seek validation from features of social media?</p>
-                            <div class="form-check form-check-inline">
-                            <span class="text-light survey-response">Rarely</span>
-                            <label class="radio-label">
-                            <input type="radio" name="DepressionOrDownScale" value="1"/>
-                                <span>1</span>
-                              </label>
-                              <label class="radio-label">
-                                <input type="radio" name="DepressionOrDownScale" value="2"/>
-                                <span>2</span>
-                              </label>
-                              <label class="radio-label">
-                                <input type="radio" name="DepressionOrDownScale" value="3"/>
-                                <span>3</span>
-                              </label>
-                              <label class="radio-label">
-                                <input type="radio" name="DepressionOrDownScale" value="4"/>
-                                <span>4</span>
-                              </label>
-                              <label class="radio-label">
-                                <input type="radio" name="DepressionOrDownScale" value="5"/>
-                                <span>5</span>
-                              </label>
-                              <span class="text-light survey-response">Often</span>
-                            </div><br>
-                            <p id="radioError9" class="text-danger" style="display: none;">Please select an option.</p>
-                            <p class="text-light survey-question">How often do you feel depressed or down?</p>
-                            <div class="form-check form-check-inline">
-                            <span class="text-light survey-response">Rarely</span>
-                            <label class="radio-label">
-                            <input type="radio" name="DailyActivityInterestScale" value="1"/>
-                                <span>1</span>
-                              </label>
-                              <label class="radio-label">
-                                <input type="radio" name="DailyActivityInterestScale" value="2"/>
-                                <span>2</span>
-                              </label>
-                              <label class="radio-label">
-                                <input type="radio" name="DailyActivityInterestScale" value="3"/>
-                                <span>3</span>
-                              </label>
-                              <label class="radio-label">
-                                <input type="radio" name="DailyActivityInterestScale" value="4"/>
-                                <span>4</span>
-                              </label>
-                              <label class="radio-label">
-                                <input type="radio" name="DailyActivityInterestScale" value="5"/>
-                                <span>5</span>
-                              </label>
-                              <span class="text-light survey-response">Often</span>
-                            </div><br>
-                            <p id="radioError10" class="text-danger" style="display: none;">Please select an option.</p>
-                            <p class="text-light survey-question">How frequently does your interested in daily activities fluctuate?</p>
-                            <div class="form-check form-check-inline">
-                            <span class="text-light survey-response">Rarely</span>
-                            <label class="radio-label">
-                            <input type="radio" name="SleepIssueScale" value="1"/>
-                                <span>1</span>
-                              </label>
-                              <label class="radio-label">
-                                <input type="radio" name="SleepIssueScale" value="2"/>
-                                <span>2</span>
-                              </label>
-                              <label class="radio-label">
-                                <input type="radio" name="SleepIssueScale" value="3"/>
-                                <span>3</span>
-                              </label>
-                              <label class="radio-label">
-                                <input type="radio" name="SleepIssueScale" value="4"/>
-                                <span>4</span>
-                              </label>
-                              <label class="radio-label">
-                                <input type="radio" name="SleepIssueScale" value="5"/>
-                                <span>5</span>
-                              </label>
-                              <span class="text-light survey-response">Often</span>
-                            </div><br>
-                            <p id="radioError11" class="text-danger" style="display: none;">Please select an option.</p>
-                            <p class="text-light survey-question">How often do you face issues regarding sleep?</p>
-                            <div class="form-check form-check-inline">
-                            <span class="text-light survey-response">Rarely</span>
-                            <label class="radio-label">
-                            <input type="radio" name="SocialMediaValidationScale" value="1"/>
-                                <span>1</span>
-                              </label>
-                              <label class="radio-label">
-                                <input type="radio" name="SocialMediaValidationScale" value="2"/>
-                                <span>2</span>
-                              </label>
-                              <label class="radio-label">
-                                <input type="radio" name="SocialMediaValidationScale" value="3"/>
-                                <span>3</span>
-                              </label>
-                              <label class="radio-label">
-                                <input type="radio" name="SocialMediaValidationScale" value="4"/>
-                                <span>4</span>
-                              </label>
-                              <label class="radio-label">
-                                <input type="radio" name="SocialMediaValidationScale" value="5"/>
-                                <span>5</span>
-                              </label>
-                              <span class="text-light survey-response">Often</span>
-                            </div><br>
-                            <p id="radioError12" class="text-danger" style="display: none;">Please select an option.</p>
-                        </div>
-                    </div>
-                    <!-- Submit success message-->
-                    <!---->
-                    <!-- This is what your users will see when the form-->
-                    <!-- has successfully submitted-->
-                    <div class="d-none" id="submitSuccessMessage">
-                        <div class="text-center text-white mb-3">
-                            <div class="fw-bolder">Form submission successful!</div>
-                            To activate this form, sign up at
-                            <br />
-                            <a href="https://startbootstrap.com/solution/contact-forms">https://startbootstrap.com/solution/contact-forms</a>
-                        </div>
+
+        <!-- AGE Question-->
+        <p class="text-light">What is your age?</p>
+        <div class="form-group">
+          <input class="form-control" id="Age" type="text" placeholder="Age" name="Age"/>
+          <div class="invalid-feedback">An age is required.</div>
+        </div>
+        <p class="failed-input" id="ageError"></p>
+        
+
+        <!-- GENDER Question -->
+        <p class="text-light">What is your gender?</p>
+        <div class="form-row align-items-center">
+          <div class="col-auto my-1">
+            <select class="custom-select mr-sm-2" id="Gender" name="Gender">
+              <option value="0" selected disabled>Select an option</option>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+        </div><br>
+        <p id="dropboxError1" class="text-danger"></p>
+
+
+        <!-- Relationship Status Question -->
+        <p class="text-light">Relationship Status:</p>
+        <div class="form-row align-items-center">
+          <div class="col-auto my-1">
+            <select class="custom-select mr-sm-2" id="RelationshipStatus" name="RelationshipStatus">
+              <option value="0" selected disabled>Select an option</option>
+              <option value="Single">Single</option>
+              <option value="In a relationship">In a relationship</option>
+              <option value="Married">Married</option>
+              <option value="Divorced">Divorced</option>
+            </select>
+          </div>
+        </div><br>
+        <p id="dropboxError2" class="text-danger"></p>
+
+
+        <!-- Occupation Status Question -->
+        <p class="text-light">Occupation Status:</p>
+        <div class="form-row align-items-center">
+          <div class="col-auto my-1">
+            <select class="custom-select mr-sm-2" id="OccupationStatus" name="OccupationStatus">
+              <option value="0" selected disabled>Select an option</option>
+              <option value="Retired">Retired</option>
+              <option value="Salaried Worker">Salaried Worker</option>
+              <option value="Not in the workforce">Not in the workforce</option>
+              <option value="Unemployed">Unemployed</option>
+              <option value="School Student">School Student</option>
+              <option value="University Student">University Student</option>
+            </select>
+          </div>
+        </div><br>
+        <p id="dropboxError3" class="text-danger"></p>
+
+
+        <!-- Affiliations Check Box Question -->
+        <p class="text-light">What type of Organizations are you affiliated with?</p>
+        <div class="form-check affiliation-group">
+          <div class="row">
+            <div class="col-6">
+              <input class="form-check-input" type="checkbox" value="1" id="UniversityCheck" name="affiliation1">
+              <label class="form-check-label text-light" for="UniversityCheck">
+                University
+              </label><br>
+              <input class="form-check-input" type="checkbox" value="2" id="CompanyCheck" name="affiliation2">
+              <label class="form-check-label text-light" for="CompanyCheck">
+                Company
+              </label><br>
+              <input class="form-check-input" type="checkbox" value="3" id="PrivateCheck" name="affiliation3">
+              <label class="form-check-label text-light" for="PrivateCheck">
+                Private
+              </label><br>
+            </div>
+            <div class="col-6">
+              <input class="form-check-input" type="checkbox" value="4" id="GovernmentCheck" name="affiliation4">
+              <label class="form-check-label text-light" for="GovernmentCheck">
+                Government
+              </label><br>
+              <input class="form-check-input" type="checkbox" value="5" id="SchoolCheck" name="affiliation5">
+              <label class="form-check-label text-light" for="SchoolCheck">
+                School
+              </label><br>
+              <input class="form-check-input" type="checkbox" value="6" id="NotApplicableCheck" name="affiliation6">
+              <label class="form-check-label text-light" for="NotApplicableCheck">
+                N/A
+              </label><br>
+            </div></div>
+          </div><br>
+          <p class="failed-input" id="sAffiliationError"></p>
+
+
+          <!-- UseSocialMedia Question -->
+          <div class="form-row align-items-center">
+            <div class="col-auto my-1">
+              <p class="text-light">Do you use social media?</p>
+              <select class="custom-select mr-sm-2" id="UseSocialMedia" name="UseSocialMedia">
+                <option value="0" selected disabled>Select an option</option>
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+              </select>
+            </div>
+          </div><br>
+          <p id="dropboxError4" class="text-danger"></p>
+
+
+          <!-- Platforms Check Box Question -->
+          <p class="text-light">What social media platforms do you commonly use?</p>
+          <div class="form-check social-media-group">
+            <div class="row">
+              <div class="col-6">
+                <input class="form-check-input" type="checkbox" value="1" id="FacebookCheck" name="platform1">
+                <label class="form-check-label text-light" for="FacebookCheck">
+                  Facebook
+                </label><br>
+                <input class="form-check-input" type="checkbox" value="2" id="TwitterCheck" name="platform2">
+                <label class="form-check-label text-light" for="TwitterCheck">
+                  Twitter
+                </label><br>
+                <input class="form-check-input" type="checkbox" value="3" id="InstagramCheck" name="platform3">
+                <label class="form-check-label text-light" for="InstagramCheck">
+                  Instagram
+                </label><br>
+                <input class="form-check-input" type="checkbox" value="4" id="YouTubeCheck" name="platform4">
+                <label class="form-check-label text-light" for="YouTubeCheck">
+                  YouTube
+                </label><br>
+                <input class="form-check-input" type="checkbox" value="5" id="DiscordCheck" name="platform5">
+                <label class="form-check-label text-light" for="DiscordCheck">
+                  Discord
+                </label><br>
+              </div>
+              <div class="col-6">
+                <input class="form-check-input" type="checkbox" value="6" id="RedditCheck" name="platform6">
+                <label class="form-check-label text-light" for="RedditCheck">
+                  Reddit
+                </label><br>
+                <input class="form-check-input" type="checkbox" value="7" id="PinterestCheck" name="platform7">
+                <label class="form-check-label text-light" for="PinterestCheck">
+                  Pinterest
+                </label><br>
+                <input class="form-check-input" type="checkbox" value="8" id="TikTokCheck" name="platform8">
+                <label class="form-check-label text-light" for="TikTokCheck">
+                  TikTok
+                </label><br>
+                <input class="form-check-input" type="checkbox" value="9" id="SnapChatCheck" name="platform9">
+                <label class="form-check-label text-light" for="SnapChatCheck">
+                  SnapChat
+                </label><br>
+                <input class="form-check-input" type="checkbox" value="10" id="OtherCheck" name="platform10">
+                <label class="form-check-label text-light" for="OtherCheck">
+                  Other
+                </label><br>
+              </div>
+            </div><br>
+          </div>
+          <p class="failed-input" id="sCheckboxError"></p>
+
+
+          <!-- AverageTime Question -->
+          <div class="form-row align-items-center">
+            <div class="col-auto my-1">
+              <p class="text-light">Average time spent on social media:</p>
+              <select class="custom-select mr-sm-2" id="AverageTime" name="AverageTime">
+                <option value="0" selected disabled>Select an option</option>
+                <option value="Less than an hour">Less than an hour</option>
+                <option value="Between 1 and 2 hours">Between 1 and 2 hours</option>
+                <option value="Between 2 and 3 hours">Between 2 and 3 hours</option>
+                <option value="Between 3 and 4 hours">Between 3 and 4 hours</option>
+                <option value="Between 4 and 5 hours">Between 4 and 5 hours</option>
+                <option value="More than 5 hours">More than 5 hours</option>
+              </select>
+            </div>
+          </div><br>
+          <p id="dropboxError5" class="text-danger"></p>
+
+
+          <!-- DoomscrollingScale Question -->
+          <p class="text-light survey-question">How often do you find yourself using social media without a specific purpose?</p>
+          <div class="form-check form-check-inline">
+            <span class="text-light survey-response">Rarely</span>
+            <label class="radio-label">
+              <input type="radio" name="DoomscrollingScale" value="1"/>
+              <span>1</span>
+            </label>
+            <label class="radio-label">
+              <input type="radio" name="DoomscrollingScale" value="2"/>
+              <span>2</span>
+            </label>
+            <label class="radio-label">
+              <input type="radio" name="DoomscrollingScale" value="3"/>
+              <span>3</span>
+            </label>
+            <label class="radio-label">
+              <input type="radio" name="DoomscrollingScale" value="4"/>
+              <span>4</span>
+            </label>
+            <label class="radio-label">
+              <input type="radio" name="DoomscrollingScale" value="5"/>
+              <span>5</span>
+            </label>
+            <span class="text-light survey-response">Often</span>
+          </div><br>
+          <p id="radioError1" class="text-danger" style="display: none;">Please select an option.</p>
+
+
+          <!-- PhoneDistractsYouScale Question -->
+          <p class="text-light survey-question">How often do you get distracted by social media when you are busy doing something?</p>
+          <div class="form-check form-check-inline">
+            <span class="text-light survey-response">Rarely</span>
+            <label class="radio-label">
+              <input type="radio" name="PhoneDistractsYouScale" value="1"/>
+              <span>1</span>
+            </label>
+            <label class="radio-label">
+              <input type="radio" name="PhoneDistractsYouScale" value="2"/>
+              <span>2</span>
+            </label>
+            <label class="radio-label">
+              <input type="radio" name="PhoneDistractsYouScale" value="3"/>
+              <span>3</span>
+            </label>
+            <label class="radio-label">
+              <input type="radio" name="PhoneDistractsYouScale" value="4"/>
+              <span>4</span>
+            </label>
+            <label class="radio-label">
+              <input type="radio" name="PhoneDistractsYouScale" value="5"/>
+              <span>5</span>
+            </label>
+            <span class="text-light survey-response">Often</span>
+          </div><br>
+          <p id="radioError2" class="text-danger" style="display: none;">Please select an option.</p>
+
+
+          <!-- Restlessness Question -->
+          <p class="text-light survey-question">Do you feel restless if you haven’t used social media in a while?</p>
+          <div class="form-check form-check-inline">
+            <span class="text-light survey-response">Rarely</span>
+            <label class="radio-label">
+              <input type="radio" name="RestlessnessScale" value="1"/>
+              <span>1</span>
+            </label>
+            <label class="radio-label">
+              <input type="radio" name="RestlessnessScale" value="2"/>
+              <span>2</span>
+            </label>
+            <label class="radio-label">
+              <input type="radio" name="RestlessnessScale" value="3"/>
+              <span>3</span>
+            </label>
+            <label class="radio-label">
+              <input type="radio" name="RestlessnessScale" value="4"/>
+              <span>4</span>
+            </label>
+            <label class="radio-label">
+              <input type="radio" name="RestlessnessScale" value="5"/>
+              <span>5</span>
+            </label>
+            <span class="text-light survey-response">Often</span>
+          </div><br>
+          <p id="radioError3" class="text-danger" style="display: none;">Please select an option.</p>
+
+
+          <!-- HowEasilyDistractedScale Question -->
+          <p class="text-light survey-question">How easily distracted are you?</p>
+          <div class="form-check form-check-inline">    
+            <span class="text-light survey-response">Rarely</span>
+            <label class="radio-label">
+              <input type="radio" name="HowEasilyDistractedScale" value="1"/>
+              <span>1</span>
+            </label>
+            <label class="radio-label">
+              <input type="radio" name="HowEasilyDistractedScale"  value="2"/>
+              <span>2</span>
+            </label>
+            <label class="radio-label">
+              <input type="radio" name="HowEasilyDistractedScale" value="3"/>
+              <span>3</span>
+            </label>
+            <label class="radio-label">
+              <input type="radio" name="HowEasilyDistractedScale"  value="4"/>
+              <span>4</span>
+            </label>
+            <label class="radio-label">
+              <input type="radio" name="HowEasilyDistractedScale"  value="5"/>
+              <span>5</span>
+            </label>
+            <span class="text-light survey-response">Often</span>
+          </div><br>
+          <p id="radioError4" class="text-danger" style="display: none;">Please select an option.</p>
+
+
+          <!-- BotherByWorries Question -->
+          <p class="text-light survey-question">How much are you bothered by worries?</p>
+          <div class="form-check form-check-inline">
+            <span class="text-light survey-response">Rarely</span>
+            <label class="radio-label">
+              <input type="radio" name="BotherByWorriesScale" value="1"/>
+              <span>1</span>
+            </label>
+            <label class="radio-label">
+              <input type="radio" name="BotherByWorriesScale" value="2"/>
+              <span>2</span>
+            </label>
+            <label class="radio-label">
+              <input type="radio" name="BotherByWorriesScale" value="3"/>
+              <span>3</span>
+            </label>
+            <label class="radio-label">
+              <input type="radio" name="BotherByWorriesScale" value="4"/>
+              <span>4</span>
+            </label>
+            <label class="radio-label">
+              <input type="radio" name="BotherByWorriesScale" value="5"/>
+              <span>5</span>
+            </label>
+            <span class="text-light survey-response">Often</span>
+          </div><br>
+          <p id="radioError5" class="text-danger" style="display: none;">Please select an option.</p>
+
+
+          <!-- DifficultyConcentratingScale Question -->
+          <p class="text-light survey-question">Do you find it difficult to concentrate on things?</p>
+          <div class="form-check form-check-inline">
+            <span class="text-light survey-response">Rarely</span>
+            <label class="radio-label">
+              <input type="radio" name="DifficultyConcentratingScale" value="1"/>
+              <span>1</span>
+            </label>
+            <label class="radio-label">
+              <input type="radio" name="DifficultyConcentratingScale" value="2"/>
+              <span>2</span>
+            </label>
+            <label class="radio-label">
+              <input type="radio" name="DifficultyConcentratingScale" value="3"/>
+              <span>3</span>
+            </label>
+            <label class="radio-label">
+              <input type="radio" name="DifficultyConcentratingScale" value="4"/>
+              <span>4</span>
+            </label>
+            <label class="radio-label">
+              <input type="radio" name="DifficultyConcentratingScale" value="5"/>
+              <span>5</span>
+            </label>
+            <span class="text-light survey-response">Often</span>
+          </div><br>
+          <p id="radioError6" class="text-danger" style="display: none;">Please select an option.</p>
+
+
+          <!-- SocialMediaComparisonScale Question -->
+          <p class="text-light survey-question">How often do you compare yourself to other successful people through the use of social media?</p>
+          <div class="form-check form-check-inline">
+            <span class="text-light survey-response">Rarely</span>
+            <label class="radio-label">
+              <input type="radio" name="SocialMediaComparisonScale" value="1"/>
+              <span>1</span>
+            </label>
+            <label class="radio-label">
+              <input type="radio" name="SocialMediaComparisonScale" value="2"/>
+              <span>2</span>
+            </label>
+            <label class="radio-label">
+              <input type="radio" name="SocialMediaComparisonScale" value="3"/>
+              <span>3</span>
+            </label>
+            <label class="radio-label">
+              <input type="radio" name="SocialMediaComparisonScale" value="4"/>
+              <span>4</span>
+            </label>
+            <label class="radio-label">
+              <input type="radio" name="SocialMediaComparisonScale" value="5"/>
+              <span>5</span>
+            </label>
+            <span class="text-light survey-response">Often</span>
+          </div><br>
+          <p id="radioError7" class="text-danger" style="display: none;">Please select an option.</p>
+
+          <!-- PreviousQuestionFeelAboutComparison Question -->
+          <p class="text-light survey-question">Following the previous question, how do you feel about these comparisons, generally speaking?</p>
+          <div class="form-check form-check-inline">
+            <span class="text-light survey-response">Rarely</span>
+            <label class="radio-label">
+              <input type="radio" name="PreviousQuestionFeelAboutComparison" value="1"/>
+              <span>1</span>
+            </label>
+            <label class="radio-label">
+              <input type="radio" name="PreviousQuestionFeelAboutComparison" value="2"/>
+              <span>2</span>
+            </label>
+            <label class="radio-label">
+              <input type="radio" name="PreviousQuestionFeelAboutComparison" value="3"/>
+              <span>3</span>
+            </label>
+            <label class="radio-label">
+              <input type="radio" name="PreviousQuestionFeelAboutComparison" value="4"/>
+              <span>4</span>
+            </label>
+            <label class="radio-label">
+              <input type="radio" name="PreviousQuestionFeelAboutComparison" value="5"/>
+              <span>5</span>
+            </label>
+            <span class="text-light survey-response">Often</span>
+          </div><br>
+          <p id="radioError8" class="text-danger" style="display: none;">Please select an option.</p>
+
+          <!-- SocialMediaValidationScale Question -->
+          <p class="text-light survey-question">How often do you look to seek validation from features of social media?</p>
+          <div class="form-check form-check-inline">
+            <span class="text-light survey-response">Rarely</span>
+            <label class="radio-label">
+              <input type="radio" name="DepressionOrDownScale" value="1"/>
+              <span>1</span>
+            </label>
+            <label class="radio-label">
+              <input type="radio" name="DepressionOrDownScale" value="2"/>
+              <span>2</span>
+            </label>
+            <label class="radio-label">
+              <input type="radio" name="DepressionOrDownScale" value="3"/>
+              <span>3</span>
+            </label>
+            <label class="radio-label">
+              <input type="radio" name="DepressionOrDownScale" value="4"/>
+              <span>4</span>
+            </label>
+            <label class="radio-label">
+              <input type="radio" name="DepressionOrDownScale" value="5"/>
+              <span>5</span>
+            </label>
+            <span class="text-light survey-response">Often</span>
+          </div><br>
+          <p id="radioError9" class="text-danger" style="display: none;">Please select an option.</p>
+
+
+          <!-- DepressionOrDownScale Question -->
+          <p class="text-light survey-question">How often do you feel depressed or down?</p>
+          <div class="form-check form-check-inline">
+            <span class="text-light survey-response">Rarely</span>
+            <label class="radio-label">
+              <input type="radio" name="DailyActivityInterestScale" value="1"/>
+              <span>1</span>
+            </label>
+            <label class="radio-label">
+              <input type="radio" name="DailyActivityInterestScale" value="2"/>
+              <span>2</span>
+            </label>
+            <label class="radio-label">
+              <input type="radio" name="DailyActivityInterestScale" value="3"/>
+              <span>3</span>
+            </label>
+            <label class="radio-label">
+              <input type="radio" name="DailyActivityInterestScale" value="4"/>
+              <span>4</span>
+            </label>
+            <label class="radio-label">
+              <input type="radio" name="DailyActivityInterestScale" value="5"/>
+              <span>5</span>
+            </label>
+            <span class="text-light survey-response">Often</span>
+          </div><br>
+          <p id="radioError10" class="text-danger" style="display: none;">Please select an option.</p>
+
+          <!-- DailyActivityInterestScale -->
+          <p class="text-light survey-question">How frequently does your interested in daily activities fluctuate?</p>
+          <div class="form-check form-check-inline">
+            <span class="text-light survey-response">Rarely</span>
+            <label class="radio-label">
+              <input type="radio" name="SleepIssueScale" value="1"/>
+              <span>1</span>
+            </label>
+            <label class="radio-label">
+              <input type="radio" name="SleepIssueScale" value="2"/>
+              <span>2</span>
+            </label>
+            <label class="radio-label">
+              <input type="radio" name="SleepIssueScale" value="3"/>
+              <span>3</span>
+            </label>
+            <label class="radio-label">
+              <input type="radio" name="SleepIssueScale" value="4"/>
+              <span>4</span>
+            </label>
+            <label class="radio-label">
+              <input type="radio" name="SleepIssueScale" value="5"/>
+              <span>5</span>
+            </label>
+            <span class="text-light survey-response">Often</span>
+          </div><br>
+          <p id="radioError11" class="text-danger" style="display: none;">Please select an option.</p>
+
+
+          <!-- SleepIssueScale Question -->
+          <p class="text-light survey-question">How often do you face issues regarding sleep?</p>
+          <div class="form-check form-check-inline">
+            <span class="text-light survey-response">Rarely</span>
+            <label class="radio-label">
+              <input type="radio" name="SocialMediaValidationScale" value="1"/>
+              <span>1</span>
+            </label>
+            <label class="radio-label">
+              <input type="radio" name="SocialMediaValidationScale" value="2"/>
+              <span>2</span>
+            </label>
+            <label class="radio-label">
+              <input type="radio" name="SocialMediaValidationScale" value="3"/>
+              <span>3</span>
+            </label>
+            <label class="radio-label">
+              <input type="radio" name="SocialMediaValidationScale" value="4"/>
+              <span>4</span>
+            </label>
+            <label class="radio-label">
+              <input type="radio" name="SocialMediaValidationScale" value="5"/>
+              <span>5</span>
+            </label>
+            <span class="text-light survey-response">Often</span>
+          </div><br>
+          <p id="radioError12" class="text-danger" style="display: none;">Please select an option.</p>
+
+                      </div>
                     </div>
                     <!-- Submit error message-->
                     <!---->
@@ -553,359 +590,359 @@
                     <div class="text-center"><button class="btn btn-primary btn-xl text-uppercase" id="submitButton" type="submit">SUBMIT SURVEY</button></div><br>
                     <p id="survey-error" class="text-danger text-center"></p>
                     <input type="hidden" id="Timestamp" name="Timestamp">  
-                </form>
-            </div>
-        </section>
-        <footer class="footer py-4">
-          <div class="container">
-              <div class="row align-items-center">
-                  <div>Copyright &copy; Provo City Health 2023</div>
-              </div>
-          </div>
-      </footer>
-        <script>
-            // function validateForm() {
-            //         let userAgeInput = document.getElementById('userAge');
-            //         let totalErrors = 0;
-            //         if (userAgeInput.value.trim() === '') {
-            //             userAgeInput.focus();
-            //             sErrorOutput = '* Please put your age';
-            //             document.getElementById('ageError').innerHTML = sErrorOutput
-            //             totalErrors++; // Prevent form submission
-            //         } else if (userAgeInput.value.trim() < 0) {
-            //             userAgeInput.focus();
-            //             sErrorOutput = '* You have placed an invalid age';
-            //             document.getElementById('ageError').innerHTML = sErrorOutput;
-            //             totalErrors++; // Prevent form submission
-            //         }else {
-            //         document.getElementById('ageError').innerHTML = '';
-            //     }
-
-            //         let sGender = document.getElementById('Gender').value
-            //         if (sGender == 0) {
-            //             sDropboxError1 = '* You have not selected a valid option.';
-            //             document.getElementById('dropboxError1').innerHTML = sDropboxError1;
-            //             totalErrors++; // Prevent form submission
-            //         }else {
-            //             document.getElementById('dropboxError1').innerHTML = '';
-            //         }
-
-            //         let sRelationshipStatus = document.getElementById('RelationshipStatus').value
-            //         if (sRelationshipStatus == 0) {
-            //             sDropboxError2 = '* You have not selected a valid option.';
-            //             document.getElementById('dropboxError2').innerHTML = sDropboxError2;
-            //             totalErrors++; // Prevent form submission
-            //         }else {
-            //             document.getElementById('dropboxError2').innerHTML = '';
-            //         }
-
-            //         let sOccupationStatus = document.getElementById('OccupationStatus').value
-            //         if (sOccupationStatus == 0) {
-            //             sDropboxError3 = '* You have not selected a valid option.';
-            //             document.getElementById('dropboxError3').innerHTML = sDropboxError3;
-            //             totalErrors++; // Prevent form submission
-            //         }else {
-            //             document.getElementById('dropboxError3').innerHTML = '';
-            //         }
-
-            //         let sUseSocialMedia = document.getElementById('UseSocialMedia').value
-            //         if (sUseSocialMedia == 0) {
-            //             sDropboxError4 = '* You have not selected a valid option.';
-            //             document.getElementById('dropboxError4').innerHTML = sDropboxError4;
-            //             totalErrors++; // Prevent form submission
-            //         }else {
-            //             document.getElementById('dropboxError4').innerHTML = '';
-            //         }
-
-            //         let sAverageTime = document.getElementById('AverageTime').value
-            //         if (sAverageTime == 0) {
-            //             sDropboxError5 = '* You have not selected a valid option.';
-            //             document.getElementById('dropboxError5').innerHTML = sDropboxError5;
-            //             totalErrors++; // Prevent form submission
-            //         }else {
-            //             document.getElementById('dropboxError5').innerHTML = '';
-            //         }
-
-            //         var affiliationCheckboxes = document.querySelectorAll('.affiliation-group .form-check-input');
-            //         var ifNoneChecked = Array.from(affiliationCheckboxes).some(checkbox => checkbox.checked);
-
-            //         if (!ifNoneChecked) {
-            //             // alert("Please select at least affiliation.");
-
-            //             var firstCheckbox = document.querySelector('.affiliation-group .form-check-input');
-            //             if (firstCheckbox) {
-            //                 firstCheckbox.focus();
-            //                 sAffiliationError = '* Please select at least one affiliation'
-            //                 document.getElementById('sAffiliationError').innerHTML = sAffiliationError
-            //             }
-                        
-            //             totalErrors++; // Prevent form submission
-            //         }else {
-            //         document.getElementById('sAffiliationError').innerHTML = '';
-            //     }
-
-            //         var socialMediaCheckboxes = document.querySelectorAll('.social-media-group .form-check-input');
-            //         var atLeastOneChecked = Array.from(socialMediaCheckboxes).some(checkbox => checkbox.checked);
-
-            //         if (!atLeastOneChecked) {
-            //             // alert("Please select at least one social media platform.");
-
-            //             var secondCheckbox = document.querySelector('.social-media-group .form-check-input');
-            //             if (secondCheckbox) {
-            //                 secondCheckbox.focus();
-            //                 sCheckboxError = '* Please select at least one social media platform'
-            //                 document.getElementById('sCheckboxError').innerHTML = sCheckboxError
-            //             }
-                        
-            //             totalErrors++; // Prevent form submission
-            //         }else {
-            //             document.getElementById('sCheckboxError').innerHTML = '';
-            //         }
-
-            //         var radioButton1 = document.getElementsByName('option1');
-            //         var radioButton2 = document.getElementsByName('option2');
-            //         var radioButton3 = document.getElementsByName('option3');
-            //         var radioButton4 = document.getElementsByName('option4');
-            //         var radioButton5 = document.getElementsByName('option5');
-            //         var radioButton6 = document.getElementsByName('option6');
-            //         var radioButton7 = document.getElementsByName('option7');
-            //         var radioButton8 = document.getElementsByName('option8');
-            //         var radioButton9 = document.getElementsByName('option9');
-            //         var radioButton10 = document.getElementsByName('option10');
-            //         var radioButton11 = document.getElementsByName('option11');
-            //         var radioButton12 = document.getElementsByName('option12');
-            //         var selected1 = false;
-            //         var selected2 = false;
-            //         var selected3 = false;
-            //         var selected4 = false;
-            //         var selected5 = false;
-            //         var selected6 = false;
-            //         var selected7 = false;
-            //         var selected8 = false;
-            //         var selected9 = false;
-            //         var selected10 = false;
-            //         var selected11 = false;
-            //         var selected12 = false;
-
-            //         for (var i = 0; i < radioButton1.length; i++) {
-            //             if (radioButton1[i].checked) {
-            //                 selected1 = true;
-            //                 break;
-            //             }
-            //         }
-            //         for (var i = 0; i < radioButton2.length; i++) {
-            //             if (radioButton2[i].checked) {
-            //                 selected2 = true;
-            //                 break;
-            //             }
-            //         }
-            //         for (var i = 0; i < radioButton3.length; i++) {
-            //             if (radioButton3[i].checked) {
-            //                 selected3 = true;
-            //                 break;
-            //             }
-            //         }
-            //         for (var i = 0; i < radioButton4.length; i++) {
-            //             if (radioButton4[i].checked) {
-            //                 selected4 = true;
-            //                 break;
-            //             }
-            //         }
-            //         for (var i = 0; i < radioButton5.length; i++) {
-            //             if (radioButton5[i].checked) {
-            //                 selected5 = true;
-            //                 break;
-            //             }
-            //         }
-            //         for (var i = 0; i < radioButton6.length; i++) {
-            //             if (radioButton6[i].checked) {
-            //                 selected6 = true;
-            //                 break;
-            //             }
-            //         }
-            //         for (var i = 0; i < radioButton7.length; i++) {
-            //             if (radioButton7[i].checked) {
-            //                 selected7 = true;
-            //                 break;
-            //             }
-            //         }
-            //         for (var i = 0; i < radioButton8.length; i++) {
-            //             if (radioButton8[i].checked) {
-            //                 selected8 = true;
-            //                 break;
-            //             }
-            //         }
-            //         for (var i = 0; i < radioButton9.length; i++) {
-            //             if (radioButton9[i].checked) {
-            //                 selected9 = true;
-            //                 break;
-            //             }
-            //         }
-            //         for (var i = 0; i < radioButton10.length; i++) {
-            //             if (radioButton10[i].checked) {
-            //                 selected10 = true;
-            //                 break;
-            //             }
-            //         }
-            //         for (var i = 0; i < radioButton11.length; i++) {
-            //             if (radioButton11[i].checked) {
-            //                 selected11 = true;
-            //                 break;
-            //             }
-            //         }
-            //         for (var i = 0; i < radioButton12.length; i++) {
-            //             if (radioButton12[i].checked) {
-            //                 selected12 = true;
-            //                 break;
-            //             }
-            //         }
-
-            //         if (!selected1) {
-            //             // Show error message
-            //             var flaggedError = document.getElementById('radioError1');
-            //             document.getElementById('radioError1').style.display = 'block';
-            //             flaggedError.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'nearest' });
-            //             flaggedError.focus();
-            //             totalErrors++;
-            //         }else {
-            //         // Hide error message
-            //         document.getElementById('radioError1').style.display = 'none';
-            //     }
-
-            //         if (!selected2) {
-            //             // Show error message
-            //             var flaggedError = document.getElementById('radioError2');
-            //             document.getElementById('radioError2').style.display = 'block';
-            //             flaggedError.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'nearest' });
-            //             totalErrors++;
-            //         }else {
-            //         // Hide error message
-            //         document.getElementById('radioError2').style.display = 'none';
-            //     }
-
-            //         if (!selected3) {
-            //             // Show error message
-            //             var flaggedError = document.getElementById('radioError3');
-            //             document.getElementById('radioError3').style.display = 'block';
-            //             flaggedError.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'nearest' });
-            //             totalErrors++;
-            //         }else {
-            //         // Hide error message
-            //         document.getElementById('radioError3').style.display = 'none';
-            //     }
-
-            //         if (!selected4) {
-            //             // Show error message
-            //             var flaggedError = document.getElementById('radioError4');
-            //             document.getElementById('radioError4').style.display = 'block';
-            //             flaggedError.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'nearest' });
-            //             totalErrors++;
-            //         }else {
-            //         // Hide error message
-            //         document.getElementById('radioError4').style.display = 'none';
-            //     }
-
-            //         if (!selected5) {
-            //             // Show error message
-            //             var flaggedError = document.getElementById('radioError5');
-            //             document.getElementById('radioError5').style.display = 'block';
-            //             flaggedError.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'nearest' });
-            //             totalErrors++;
-            //         }else {
-            //         // Hide error message
-            //         document.getElementById('radioError5').style.display = 'none';
-            //     }
-
-            //         if (!selected6) {
-            //             // Show error message
-            //             var flaggedError = document.getElementById('radioError6');
-            //             document.getElementById('radioError6').style.display = 'block';
-            //             flaggedError.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'nearest' });
-            //             totalErrors++;
-            //         }else{
-            //         // Hide error message
-            //         document.getElementById('radioError6').style.display = 'none';
-            //     }
-            //         if (!selected7) {
-            //             // Show error message
-            //             var flaggedError = document.getElementById('radioError7');
-            //             document.getElementById('radioError7').style.display = 'block';
-            //             flaggedError.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'nearest' });
-            //             totalErrors++;
-            //         }else{
-            //         // Hide error message
-            //         document.getElementById('radioError7').style.display = 'none';
-            //     }
-
-            //         if (!selected8) {
-            //             // Show error message
-            //             var flaggedError = document.getElementById('radioError8');
-            //             document.getElementById('radioError8').style.display = 'block';
-            //             flaggedError.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'nearest' });
-            //             totalErrors++;
-            //         }else{
-            //         // Hide error message
-            //         document.getElementById('radioError8').style.display = 'none';
-            //     }
-
-            //         if (!selected9) {
-            //             // Show error message
-            //             var flaggedError = document.getElementById('radioError9');
-            //             document.getElementById('radioError9').style.display = 'block';
-            //             flaggedError.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'nearest' });
-            //             totalErrors++;
-            //         }else{
-            //         // Hide error message
-            //         document.getElementById('radioError9').style.display = 'none';
-            //     }
-
-            //         if (!selected10) {
-            //             // Show error message
-            //             var flaggedError = document.getElementById('radioError10');
-            //             document.getElementById('radioError10').style.display = 'block';
-            //             flaggedError.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'nearest' });
-            //             totalErrors++;
-            //         }else {
-            //         // Hide error message
-            //         document.getElementById('radioError10').style.display = 'none';                        
-            //         }
-
-            //         if (!selected11) {
-            //             // Show error message
-            //             var flaggedError = document.getElementById('radioError11');
-            //             document.getElementById('radioError11').style.display = 'block';
-            //             flaggedError.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'nearest' });
-            //             totalErrors++;
-            //         }else {
-            //         // Hide error message
-            //         document.getElementById('radioError11').style.display = 'none';
-            //     }
-            //         if (!selected12) {
-            //             // Show error message
-            //             var flaggedError = document.getElementById('radioError12');
-            //             document.getElementById('radioError12').style.display = 'block';
-            //             flaggedError.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'nearest' });
-            //             totalErrors++;
-            //         }else {
-            //         // Hide error message
-            //         document.getElementById('radioError12').style.display = 'none';
-            //     }
-
-            //         if (totalErrors > 0) {
-            //             let sSurveyErrorMessage = (`* You have ${totalErrors} errors in your survey.`)
-            //             document.getElementById("survey-error").innerHTML = sSurveyErrorMessage
-            //             return false;
-            //         }
-
-            //         return true; // Continue with form submission
-            // }
-
-            function setTimestamp() {
-              const currentTimestamp = new Date().toISOString().slice(0, 19).replace("T", "Z");
-              document.getElementById("Timestamp").value = currentTimestamp
-              document.getElementById("Timestamp").innerHTML = currentTimestamp
-              return true;
-            }
-        </script>
+                  </form>
+                </div>
+              </section>
+              <footer class="footer py-4">
+                <div class="container">
+                  <div class="row align-items-center">
+                    <div>Copyright &copy; Provo City Health 2023</div>
+                  </div>
+                </div>
+              </footer>
+              <script>
+                function validateForm() {
+                  let userAgeInput = document.getElementById('userAge');
+                  let totalErrors = 0;
+                  if (userAgeInput.value.trim() === '') {
+                    userAgeInput.focus();
+                    sErrorOutput = '* Please put your age';
+                    document.getElementById('ageError').innerHTML = sErrorOutput
+                    totalErrors++; // Prevent form submission
+                  } else if (userAgeInput.value.trim() < 0) {
+                    userAgeInput.focus();
+                    sErrorOutput = '* You have placed an invalid age';
+                    document.getElementById('ageError').innerHTML = sErrorOutput;
+                    totalErrors++; // Prevent form submission
+                  }else {
+                    document.getElementById('ageError').innerHTML = '';
+                  }
+                  
+                  let sGender = document.getElementById('Gender').value
+                  if (sGender == 0) {
+                    sDropboxError1 = '* You have not selected a valid option.';
+                    document.getElementById('dropboxError1').innerHTML = sDropboxError1;
+                    totalErrors++; // Prevent form submission
+                  }else {
+                    document.getElementById('dropboxError1').innerHTML = '';
+                  }
+                  
+                  let sRelationshipStatus = document.getElementById('RelationshipStatus').value
+                  if (sRelationshipStatus == 0) {
+                    sDropboxError2 = '* You have not selected a valid option.';
+                    document.getElementById('dropboxError2').innerHTML = sDropboxError2;
+                    totalErrors++; // Prevent form submission
+                  }else {
+                    document.getElementById('dropboxError2').innerHTML = '';
+                  }
+                  
+                  let sOccupationStatus = document.getElementById('OccupationStatus').value
+                  if (sOccupationStatus == 0) {
+                    sDropboxError3 = '* You have not selected a valid option.';
+                    document.getElementById('dropboxError3').innerHTML = sDropboxError3;
+                    totalErrors++; // Prevent form submission
+                  }else {
+                    document.getElementById('dropboxError3').innerHTML = '';
+                  }
+                  
+                  let sUseSocialMedia = document.getElementById('UseSocialMedia').value
+                  if (sUseSocialMedia == 0) {
+                    sDropboxError4 = '* You have not selected a valid option.';
+                    document.getElementById('dropboxError4').innerHTML = sDropboxError4;
+                    totalErrors++; // Prevent form submission
+                  }else {
+                    document.getElementById('dropboxError4').innerHTML = '';
+                  }
+                  
+                  let sAverageTime = document.getElementById('AverageTime').value
+                  if (sAverageTime == 0) {
+                    sDropboxError5 = '* You have not selected a valid option.';
+                    document.getElementById('dropboxError5').innerHTML = sDropboxError5;
+                    totalErrors++; // Prevent form submission
+                  }else {
+                    document.getElementById('dropboxError5').innerHTML = '';
+                  }
+                  
+                  var affiliationCheckboxes = document.querySelectorAll('.affiliation-group .form-check-input');
+                  var ifNoneChecked = Array.from(affiliationCheckboxes).some(checkbox => checkbox.checked);
+                  
+                  if (!ifNoneChecked) {
+                    // alert("Please select at least affiliation.");
+                    
+                    var firstCheckbox = document.querySelector('.affiliation-group .form-check-input');
+                    if (firstCheckbox) {
+                      firstCheckbox.focus();
+                      sAffiliationError = '* Please select at least one affiliation'
+                      document.getElementById('sAffiliationError').innerHTML = sAffiliationError
+                    }
+                    
+                    totalErrors++; // Prevent form submission
+                  }else {
+                    document.getElementById('sAffiliationError').innerHTML = '';
+                  }
+                  
+                  var socialMediaCheckboxes = document.querySelectorAll('.social-media-group .form-check-input');
+                  var atLeastOneChecked = Array.from(socialMediaCheckboxes).some(checkbox => checkbox.checked);
+                  
+                  if (!atLeastOneChecked) {
+                    // alert("Please select at least one social media platform.");
+                    
+                    var secondCheckbox = document.querySelector('.social-media-group .form-check-input');
+                    if (secondCheckbox) {
+                      secondCheckbox.focus();
+                      sCheckboxError = '* Please select at least one social media platform'
+                      document.getElementById('sCheckboxError').innerHTML = sCheckboxError
+                    }
+                    
+                    totalErrors++; // Prevent form submission
+                  }else {
+                    document.getElementById('sCheckboxError').innerHTML = '';
+                  }
+                  
+                  var radioButton1 = document.getElementsByName('option1');
+                  var radioButton2 = document.getElementsByName('option2');
+                  var radioButton3 = document.getElementsByName('option3');
+                  var radioButton4 = document.getElementsByName('option4');
+                  var radioButton5 = document.getElementsByName('option5');
+                  var radioButton6 = document.getElementsByName('option6');
+                  var radioButton7 = document.getElementsByName('option7');
+                  var radioButton8 = document.getElementsByName('option8');
+                  var radioButton9 = document.getElementsByName('option9');
+                  var radioButton10 = document.getElementsByName('option10');
+                  var radioButton11 = document.getElementsByName('option11');
+                  var radioButton12 = document.getElementsByName('option12');
+                  var selected1 = false;
+                  var selected2 = false;
+                  var selected3 = false;
+                  var selected4 = false;
+                  var selected5 = false;
+                  var selected6 = false;
+                  var selected7 = false;
+                  var selected8 = false;
+                  var selected9 = false;
+                  var selected10 = false;
+                  var selected11 = false;
+                  var selected12 = false;
+                  
+                  for (var i = 0; i < radioButton1.length; i++) {
+                    if (radioButton1[i].checked) {
+                      selected1 = true;
+                      break;
+                    }
+                  }
+                  for (var i = 0; i < radioButton2.length; i++) {
+                    if (radioButton2[i].checked) {
+                      selected2 = true;
+                      break;
+                    }
+                  }
+                  for (var i = 0; i < radioButton3.length; i++) {
+                    if (radioButton3[i].checked) {
+                      selected3 = true;
+                      break;
+                    }
+                  }
+                  for (var i = 0; i < radioButton4.length; i++) {
+                    if (radioButton4[i].checked) {
+                      selected4 = true;
+                      break;
+                    }
+                  }
+                  for (var i = 0; i < radioButton5.length; i++) {
+                    if (radioButton5[i].checked) {
+                      selected5 = true;
+                      break;
+                    }
+                  }
+                  for (var i = 0; i < radioButton6.length; i++) {
+                    if (radioButton6[i].checked) {
+                      selected6 = true;
+                      break;
+                    }
+                  }
+                  for (var i = 0; i < radioButton7.length; i++) {
+                    if (radioButton7[i].checked) {
+                      selected7 = true;
+                      break;
+                    }
+                  }
+                  for (var i = 0; i < radioButton8.length; i++) {
+                    if (radioButton8[i].checked) {
+                      selected8 = true;
+                      break;
+                    }
+                  }
+                  for (var i = 0; i < radioButton9.length; i++) {
+                    if (radioButton9[i].checked) {
+                      selected9 = true;
+                      break;
+                    }
+                  }
+                  for (var i = 0; i < radioButton10.length; i++) {
+                    if (radioButton10[i].checked) {
+                      selected10 = true;
+                      break;
+                    }
+                  }
+                  for (var i = 0; i < radioButton11.length; i++) {
+                    if (radioButton11[i].checked) {
+                      selected11 = true;
+                      break;
+                    }
+                  }
+                  for (var i = 0; i < radioButton12.length; i++) {
+                    if (radioButton12[i].checked) {
+                      selected12 = true;
+                      break;
+                    }
+                  }
+                  
+                  if (!selected1) {
+                    // Show error message
+                    var flaggedError = document.getElementById('radioError1');
+                    document.getElementById('radioError1').style.display = 'block';
+                    flaggedError.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'nearest' });
+                    flaggedError.focus();
+                    totalErrors++;
+                  }else {
+                    // Hide error message
+                    document.getElementById('radioError1').style.display = 'none';
+                  }
+                  
+                  if (!selected2) {
+                    // Show error message
+                    var flaggedError = document.getElementById('radioError2');
+                    document.getElementById('radioError2').style.display = 'block';
+                    flaggedError.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'nearest' });
+                    totalErrors++;
+                  }else {
+                    // Hide error message
+                    document.getElementById('radioError2').style.display = 'none';
+                  }
+                  
+                  if (!selected3) {
+                    // Show error message
+                    var flaggedError = document.getElementById('radioError3');
+                    document.getElementById('radioError3').style.display = 'block';
+                    flaggedError.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'nearest' });
+                    totalErrors++;
+                  }else {
+                    // Hide error message
+                    document.getElementById('radioError3').style.display = 'none';
+                  }
+                  
+                  if (!selected4) {
+                    // Show error message
+                    var flaggedError = document.getElementById('radioError4');
+                    document.getElementById('radioError4').style.display = 'block';
+                    flaggedError.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'nearest' });
+                    totalErrors++;
+                  }else {
+                    // Hide error message
+                    document.getElementById('radioError4').style.display = 'none';
+                  }
+                  
+                  if (!selected5) {
+                    // Show error message
+                    var flaggedError = document.getElementById('radioError5');
+                    document.getElementById('radioError5').style.display = 'block';
+                    flaggedError.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'nearest' });
+                    totalErrors++;
+                  }else {
+                    // Hide error message
+                    document.getElementById('radioError5').style.display = 'none';
+                  }
+                  
+                  if (!selected6) {
+                    // Show error message
+                    var flaggedError = document.getElementById('radioError6');
+                    document.getElementById('radioError6').style.display = 'block';
+                    flaggedError.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'nearest' });
+                    totalErrors++;
+                  }else{
+                    // Hide error message
+                    document.getElementById('radioError6').style.display = 'none';
+                  }
+                  if (!selected7) {
+                    // Show error message
+                    var flaggedError = document.getElementById('radioError7');
+                    document.getElementById('radioError7').style.display = 'block';
+                    flaggedError.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'nearest' });
+                    totalErrors++;
+                  }else{
+                    // Hide error message
+                    document.getElementById('radioError7').style.display = 'none';
+                  }
+                  
+                  if (!selected8) {
+                    // Show error message
+                    var flaggedError = document.getElementById('radioError8');
+                    document.getElementById('radioError8').style.display = 'block';
+                    flaggedError.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'nearest' });
+                    totalErrors++;
+                  }else{
+                    // Hide error message
+                    document.getElementById('radioError8').style.display = 'none';
+                  }
+                  
+                  if (!selected9) {
+                    // Show error message
+                    var flaggedError = document.getElementById('radioError9');
+                    document.getElementById('radioError9').style.display = 'block';
+                    flaggedError.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'nearest' });
+                    totalErrors++;
+                  }else{
+                    // Hide error message
+                    document.getElementById('radioError9').style.display = 'none';
+                  }
+                  
+                  if (!selected10) {
+                    // Show error message
+                    var flaggedError = document.getElementById('radioError10');
+                    document.getElementById('radioError10').style.display = 'block';
+                    flaggedError.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'nearest' });
+                    totalErrors++;
+                  }else {
+                    // Hide error message
+                    document.getElementById('radioError10').style.display = 'none';                        
+                  }
+                  
+                  if (!selected11) {
+                    // Show error message
+                    var flaggedError = document.getElementById('radioError11');
+                    document.getElementById('radioError11').style.display = 'block';
+                    flaggedError.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'nearest' });
+                    totalErrors++;
+                  }else {
+                    // Hide error message
+                    document.getElementById('radioError11').style.display = 'none';
+                  }
+                  if (!selected12) {
+                    // Show error message
+                    var flaggedError = document.getElementById('radioError12');
+                    document.getElementById('radioError12').style.display = 'block';
+                    flaggedError.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'nearest' });
+                    totalErrors++;
+                  }else {
+                    // Hide error message
+                    document.getElementById('radioError12').style.display = 'none';
+                  }
+                  
+                  if (totalErrors > 0) {
+                    let sSurveyErrorMessage = (`* You have ${totalErrors} errors in your survey.`)
+                    document.getElementById("survey-error").innerHTML = sSurveyErrorMessage
+                    return false;
+                  }
+                  setTimestamp();
+                  return true; // Continue with form submission
+                }
+                
+                function setTimestamp() {
+                  const currentTimestamp = new Date().toISOString().slice(0, 19).replace("T", "Z");
+                  document.getElementById("Timestamp").value = currentTimestamp
+                  document.getElementById("Timestamp").innerHTML = currentTimestamp
+                  return true;
+                }
+                </script>
   </body>
-</html>
+  </html>
