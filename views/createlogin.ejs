@@ -1,41 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-   <meta charset="UTF-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Create a Login</title>
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create a Login</title>
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+   <!-- Font Awesome icons (free version)-->
+   <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+   <!-- Google fonts-->
+   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+   <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
+   <!-- Core theme CSS (includes Bootstrap)-->
+   <link href="/public/css/styles.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-   <form action="/createlogin" method="POST">
-     <fieldset style="width: 0px;">
-       <legend>Create a User:</legend>
-       <input type="hidden" id="LoginID" name="LoginID" >
-       <label for="Username">Username:</label>
-       <input type="text" id="Username" name="Username" >
-       <br><br>
-       <label for="Password">Password:</label>
-       <input type="password" id="Password" name="Password" >
-       <br><br>
-       <label for="FirstName">First Name:</label>
-       <input type="text" id="FirstName" name="FirstName" >
-       <br><br>
-       <label for="LastName">Last Name:</label>
-       <input type="text" id="LastName" name="LastName" >
-       <br><br>
-       <label for="Email">Email:</label>
-       <input type="text" id="Email" name="Email" >
-       <br><br>
-       <div class="form-row align-items-center">
-        <div class="col-auto my-1">
-          <select class="custom-select mr-sm-2" id="UserRole" name="UserRole">
-            <option value="Employee">Employee</option>
-            <option value="Admin" disabled>Admin</option>
-          </select>
+  <div class="container" style="padding-top: 20px; width: 500px; margin: 0 auto;">
+    <div class="text-center">
+        <h2 class="section-heading text-uppercase">CREATE A USER</h2>
+        <h5 class="text-muted">Please enter information below.</h5>
+    </div>
+    <br>
+
+    <form data-sb-form-api-token="API_TOKEN" action="/createlogin" method="POST">
+            <div class="col-md-6">
+                <div class="form-group">
+                  <input type="hidden" id="LoginID" name="LoginID" >
+                  <label for="Username">Username:</label><br>
+                  <input type="text" id="Username" name="Username" >
+                </div>
+                <br>
+                <div class="form-group">
+                  <label for="Password">Password:</label><br>
+                  <input type="password" id="Password" name="Password" >
+                </div>
+                <br>
+                <div class="form-group">
+                  <label for="FirstName">First Name:</label><br>
+                  <input type="text" id="FirstName" name="FirstName" >
+                </div>
+                <br>
+                <div class="form-group">
+                  <label for="LastName">Last Name:</label><br>
+                  <input type="text" id="LastName" name="LastName" >
+                </div>
+                <br>
+                <div class="form-group">
+                  <label for="Email">Email:</label><br>
+                  <input type="text" id="Email" name="Email" >
+                </div>
+            </div>
+            <br>
+        <!-- Submit Button-->
+        <div class="text-center">
+          <button class="btn btn-primary text-uppercase" id="submitButton" type="submit">SAVE</button>
+          <a class="btn btn-primary text-uppercase" href="/databaseadmin">GO BACK</a>
         </div>
-    </div><br>
-     </fieldset>
-     <button type="submit">Save</button>
-   </form>
+    </form>
+</div>
 </body>
 </html>
