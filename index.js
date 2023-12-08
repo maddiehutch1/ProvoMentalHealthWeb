@@ -239,7 +239,6 @@ app.get('/logout', (req, res) => {
 });
 
 const { format } = require('date-fns');
-const affiliations = req.body['affiliations[]'];
 
 app.post("/createResponse", async (req, res)=> {
     console.log(req.body);
@@ -247,6 +246,7 @@ app.post("/createResponse", async (req, res)=> {
     try {
         const submittedTimestamp = req.body.Timestamp;
         const formattedTimestamp = submittedTimestamp ? format(new Date(submittedTimestamp), 'yyyy-MM-dd HH:mm:ss') : null;
+        const affiliations = req.body['affiliations[]'];
         // Insert data into the SurveyResponse table
         const[SurveyID] = await knex("SurveyResponse").insert({
             Timestamp: formattedTimestamp,
