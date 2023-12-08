@@ -62,12 +62,13 @@ app.get("/modify", (req, res) => {
 
 app.get("/adminlanding", (req, res) => {
     const role = req.session.role;
-    res.render("adminlanding", { session:req.session, role });
+    const user = req.session.user;
+    res.render("adminlanding", { session:req.session, role, user});
 });
 
 app.get("/ourmission", (req, res) => {
     const role = req.session.role;
-    res.render("ourmission", { session:req.session });
+    res.render("ourmission", { session:req.session, role });
 });
 
 app.get("/databaseadmin", (req, res) => {
@@ -162,6 +163,34 @@ app.post("/editemployee", (req, res)=> {
       res.redirect("/databaseadmin");
    })
 });
+
+app.get("/editindividual", (req, res) => {
+    const user = req.session.user;
+    res.render("editindividual", { user });
+});
+
+app.post("/editindividual", async (req, res) => {
+    const { LoginID, Username, Password, FirstName, LastName, Email } = req.body;
+
+    try {
+        // Update the fields excluding LoginID
+        const result = await knex("Login")
+            .where("LoginID", parseInt(req.body.LoginID))
+            .update({
+                Username,
+                Password,
+                FirstName,
+                LastName,
+                Email
+            });
+
+        res.redirect("/adminlanding");
+    } catch (error) {
+        console.error(error);
+        res.status(500).send("Internal Server Error");
+    }
+});
+
 
 app.get("/surveydata", (req, res) => {
     knex.select().from("SurveyResponse").then(SurveyResponse => {
