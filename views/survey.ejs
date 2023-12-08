@@ -928,6 +928,8 @@
                     // Hide error message
                     document.getElementById('radioError12').style.display = 'none';
                   }
+
+                  alert(totalErrors + ' errors in your survey');
                   
                   if (totalErrors > 0) {
                     let sSurveyErrorMessage = (`* You have ${totalErrors} errors in your survey.`)
