@@ -17,8 +17,6 @@ app.use(bodyparser.urlencoded({extended: true}));
 
 app.set('view engine', 'ejs');
 
-// const router = express.Router();
-
 app.use(express.urlencoded({extended:true}));
 
 app.use('/public', express.static('public'));
@@ -305,32 +303,6 @@ app.post("/createResponse", async (req, res)=> {
           });
         }));
 
-                // // Insert affiliations into the Affiliations table
-                // if (affiliations && Array.isArray(affiliations)) {
-                // await Promise.all(
-                //     affiliations.map(async (affiliation) => {
-                //         await knex("Affiliations").insert({
-                //             SurveyID: SurveyID, // Use the SurveyID from SurveyResponse        
-                //             AffiliationID: affiliation,
-                //             // Other columns or values you might want to insert
-                //         });
-                //     })
-                // );
-                // }
-
-
-                // if (platforms && Array.isArray(platforms)) {
-                // await Promise.all(
-                //     platforms.map(async (platform) => {
-                //         await knex("Platforms").insert({
-                //             SurveyID: SurveyID, // Use the SurveyID from SurveyResponse
-                //             PlatformID: platform        
-                //             // Other columns or values you might want to insert
-                //         });
-                //     })
-                // );
-                // }
-            // console.log('Generated SurveyID:', SurveyID);
 
             res.render('survey', { session:req.session , submitSuccessMessage: "Submission Successful" });
     } catch (error) {
@@ -340,25 +312,6 @@ app.post("/createResponse", async (req, res)=> {
 
 });
 
-// router.get('/search', async (req, res) => {
-//     const surveyID = req.query.surveyID;
-
-//     try {
-//         // Perform a query to retrieve the survey data by SurveyID
-//         const surveyData = await knex('SurveyResponse').where('SurveyID', surveyID).first();
-
-//         if (surveyData) {
-//             // Render a template or send the survey data as JSON
-//             res.render('surveyDetails', { surveyData });
-//         } else {
-//             // Handle case where SurveyID is not found
-//             res.status(404).send('Survey not found');
-//         }
-//     } catch (error) {
-//         console.error('Error retrieving survey data:', error);
-//         res.status(500).send('Internal Server Error');
-//     }
-// });
 
 app.get('/surveyResults/:surveyId', function(req, res) {
     knex.select().from("SurveyResponse").then(SurveyResponse => {
@@ -381,25 +334,5 @@ app.post("/search", (req, res) => {
             res.status(500).json({ err });
         });
 });
-
-// router.get('/surveydata/:SurveyID', async (req, res) => {
-//     const surveyID = req.params.SurveyID;
-
-//     try {
-//         // Perform a query to retrieve the survey data by SurveyID
-//         const surveyData = await knex('SurveyResponse').where('SurveyID', surveyID).first();
-
-//         if (surveyData) {
-//             // Render a template or send the survey data as JSON
-//             res.render('surveyDetails', { surveyData });
-//         } else {
-//             // Handle case where SurveyID is not found
-//             res.status(404).send('Survey not found');
-//         }
-//     } catch (error) {
-//         console.error('Error retrieving survey data:', error);
-//         res.status(500).send('Internal Server Error');
-//     }
-// });
 
 app.listen(port, () => console.log("Server is listening."));
