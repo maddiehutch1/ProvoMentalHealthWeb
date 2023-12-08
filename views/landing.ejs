@@ -17,7 +17,7 @@
         <link href="/public/css/styles.css" rel="stylesheet" type="text/css" />
     </head>
     <body id="page-top">
-        <!-- Navigation-->
+        <!-- Navigation bar that displays all the links to other views and pages -->
         <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
             <div class="container">
                 <a class="navbar-brand" href="#page-top"><img id="logo" src="/public/assets/img/provo-logo-NEW.png" alt="..." /></a>
@@ -30,6 +30,8 @@
                         <li class="nav-item"><a class="nav-link" href="/survey">Survey</a></li>
                         <li class="nav-item"><a class="nav-link" href="/tableau">Results</a></li>
                         <li class="nav-item"><a class="nav-link" href="/ourmission">LookUp Campaign</a></li>
+                        
+                        <!-- only displays when logged in, or logged out of session -->
                         <% if (locals.session.loggedIn) { %>
                             <li class="nav-item"><a class="nav-link" href="/adminlanding">Account</a></li>
                             <li class="nav-item"><a class="nav-link" href="/logout">Logout</a></li>
@@ -40,7 +42,7 @@
                 </div>
             </div>
         </nav>
-        <!-- Masthead-->
+        <!-- Masthead showing main info and title -->
         <header class="masthead">
             <div class="container">
                 <div class="masthead-heading text-uppercase">Welcome To <br> Provo City Health</div>
@@ -48,7 +50,7 @@
                 <a class="btn btn-primary btn-xl text-uppercase" href="survey">Take the Survey</a>
             </div>
         </header>
-        <!-- Services-->
+        <!-- section of code displays text but also links to other pages by hyperlinking images to it -->
         <section class="page-section bg-light" id="team">
             <div class="container">
                 <div class="text-center">
@@ -77,7 +79,7 @@
                             <p class="text-muted">Help us help you by participating in our new health survey</p>
                         </div>
                     </div>
-                    <!-- Admin? -->
+                    <!-- ADMIN -->
                     <div class="col-lg-4">
                         <div id="coolicon2" class="team-member">
                             <a href="login">
@@ -90,6 +92,7 @@
                 </div>
             </div>
         </section>
+        <!-- Section that displays info of the purpose of website, and has a button to another site that shows info -->
         <section class="page-section">
             <div class="text-center">
                 <h2 class="section-heading text-uppercase">OUR MISSION</h2>
@@ -113,7 +116,7 @@
                 </div>
             </div>
         </section>
-        <!-- Contact-->
+        <!-- Fun images that can link you to ways to contact Provo City council/government -->
         <section class="page-section" id="contact">
             <div class="container">
                 <div class="text-center">
@@ -127,13 +130,6 @@
                     <a href="https://www.provo.org/"><h3 id="website" class="section-subheading">PROVO CITY WEBSITE</h3></a>
                     <h3 class="section-subheading text-light">Phone: (801) 852-6000</h3>
                 </div>
-                <!-- * * * * * * * * * * * * * * *-->
-                <!-- * * SB Forms Contact Form * *-->
-                <!-- * * * * * * * * * * * * * * *-->
-                <!-- This form is pre-integrated with SB Forms.-->
-                <!-- To make this form functional, sign up at-->
-                <!-- https://startbootstrap.com/solution/contact-forms-->
-                <!-- to get an API token!-->
             </div>
         </section>
         <!-- Footer-->

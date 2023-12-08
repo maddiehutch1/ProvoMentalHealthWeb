@@ -1,6 +1,9 @@
+// Import the Express framework
 const express = require('express');
 
-// if we need to comment this out
+// Import the body-parser middleware for handling request data
+// Import the uuid library for generating unique identifiers
+// Import the express-session middleware for managing user sessions
 const bodyparser = require('body-parser');
 const { v4:uuidv4 } = require('uuid');
 const session = require('express-session');
@@ -11,23 +14,30 @@ let path = require('path');
 
 const port = process.env.PORT || 3000;
 
-// comment this code out if necessary
+// Parse incoming JSON data
 app.use(bodyparser.json());
+
+// Parse incoming URL-encoded form data with extended options
 app.use(bodyparser.urlencoded({extended: true}));
 
+// Set the view engine for rendering HTML using EJS templates
 app.set('view engine', 'ejs');
 
+// Parse incoming URL-encoded form data with extended options using Express
 app.use(express.urlencoded({extended:true}));
 
+// connect to public folder with all the files and images, as well as views
 app.use('/public', express.static('public'));
 app.set('views', path.join(__dirname, 'views'));
 
+// here is the code to initiate when a session starts (after someone logs in)
 app.use(session({
     secret: uuidv4(),
     resave: false,
     saveUninitialized: true
 }));
 
+// imports the pg admin database
 const knex = require('knex') ({
     client: 'pg',
     connection: {
@@ -40,47 +50,57 @@ const knex = require('knex') ({
     }
 });
 
+// connect to landing page
 app.get("/", (req, res)=> {
     res.render('landing', { session:req.session });
 });
 
+// connect to the login page
 app.get("/login", (req, res) => {
     res.render("login");
 });
 
+// connect to the survey page
 app.get("/survey", (req, res) => {
     res.render("survey", { session:req.session });
 });
 
+// connect to the tableau page with the active tableau running, showing that one is logged in or not
 app.get("/tableau", (req, res) => {
     res.render("tableau", { session:req.session });
 });
 
+// connect to modify page
 app.get("/modify", (req, res) => {
     res.render("modify");
 });
 
+// connect to adminlanding page that shows if you are logged in or not 
 app.get("/adminlanding", (req, res) => {
     const role = req.session.role;
     const user = req.session.user;
     res.render("adminlanding", { session:req.session, role, user});
 });
 
+// gets access to the ourmission page
 app.get("/ourmission", (req, res) => {
     const role = req.session.role;
     res.render("ourmission", { session:req.session, role });
 });
 
+// accesses the databaseadmin page, displaying the knex database info
 app.get("/databaseadmin", (req, res) => {
     knex.select().from("Login").then(Login => {
         res.render("databaseadmin", {mylogin: Login, session:req.session });
     });
 });
 
+// opens to the createlogin page
 app.get("/createlogin", (req, res) => {
     res.render("createlogin");
 });
 
+// this is when the login page is submitted
 app.post("/login", async (req, res)=> {
     const user_username = req.body.username;
     const user_password = req.body.password;
@@ -114,6 +134,7 @@ app.post("/login", async (req, res)=> {
     }
 });
 
+// this is the create login page to add in another page
 app.post("/createlogin", (req, res)=> {
     knex("Login").insert({
       Username: req.body.Username,
@@ -127,6 +148,7 @@ app.post("/createlogin", (req, res)=> {
    })
 });
 
+// this is what deletes the user info
 app.post("/deleteUser/:id", (req, res) => {
     knex("Login").where("LoginID",req.params.id).del().then( mylogin => {
       res.redirect("/databaseadmin");
@@ -136,6 +158,7 @@ app.post("/deleteUser/:id", (req, res) => {
    });
 });
 
+// edit employee tab that shows the form and retrieves the current data
 app.get("/editemployee/:id", (req, res)=> {
     knex.select("LoginID",
           "Username",
@@ -151,6 +174,7 @@ app.get("/editemployee/:id", (req, res)=> {
    });
 });
 
+// when submitting the edit employee form, it runs through this code
 app.post("/editemployee", (req, res)=> {
     knex("Login").where("LoginID", parseInt(req.body.LoginID)).update({
       Username: req.body.Username,
@@ -164,11 +188,13 @@ app.post("/editemployee", (req, res)=> {
    })
 });
 
+// gets view of editindividual
 app.get("/editindividual", (req, res) => {
     const user = req.session.user;
     res.render("editindividual", { user });
 });
 
+// when submitting the edit form for the individual account, it runs this POST code
 app.post("/editindividual", async (req, res) => {
     const { LoginID, Username, Password, FirstName, LastName, Email } = req.body;
 

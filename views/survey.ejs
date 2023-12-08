@@ -18,7 +18,7 @@
     <link href="/public/css/styles.css" rel="stylesheet" type="text/css" />
   </head>
   <body id="page-top">
-    <!-- Navigation-->
+    <!-- Navigation with all the tabs that link to the other sites and pages-->
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
       <div class="container">
         <a class="navbar-brand" href="/"><img id="logo" src="/public/assets/img/provo-logo-NEW.png" alt="..." /></a>
@@ -31,6 +31,7 @@
             <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
             <li class="nav-item"><a class="nav-link" href="tableau">Results</a></li>
             <li class="nav-item"><a class="nav-link" href="/ourmission">LookUp Campaign</a></li>
+            <!-- again, only will show up depending on if they are logged in or not -->
             <% if (locals.session.loggedIn) { %>
               <li class="nav-item"><a class="nav-link" href="/adminlanding">Account</a></li>
               <li class="nav-item"><a class="nav-link" href="/logout">Logout</a></li>
@@ -40,12 +41,14 @@
               </div>
             </div>
           </nav>
+          <!-- Section that holds title page -->
           <section class="page-section" id="contact">
             <div class="container">
               <div class="text-center">
                 <h2 class="section-heading text-uppercase">Participate in the Survey</h2>
                 <h3 class="section-subheading text-muted">Help make our community be better informed to help YOU!</h3>
               </div>
+              <!-- displays the message only if the submission is successful -->
               <% if (locals.submitSuccessMessage) { %>
                 <div id="submitSuccessMessage" class="alert alert-success text-center">
                   <%= submitSuccessMessage %>
@@ -56,7 +59,7 @@
                     <div class="col-md-6">
 
 
-        <!-- AGE Question-->
+        <!-- AGE Question form -->
         <p class="text-light">What is your age?</p>
         <div class="form-group">
           <input class="form-control" id="Age" type="text" placeholder="Age" name="Age"/>
@@ -65,7 +68,7 @@
         <p class="failed-input" id="ageError"></p>
         
 
-        <!-- GENDER Question -->
+        <!-- GENDER Question form -->
         <p class="text-light">What is your gender?</p>
         <div class="form-row align-items-center">
           <div class="col-auto my-1">
@@ -80,7 +83,7 @@
         <p id="dropboxError1" class="text-danger"></p>
 
 
-        <!-- Relationship Status Question -->
+        <!-- Relationship Status Question form -->
         <p class="text-light">Relationship Status:</p>
         <div class="form-row align-items-center">
           <div class="col-auto my-1">
@@ -96,7 +99,7 @@
         <p id="dropboxError2" class="text-danger"></p>
 
 
-        <!-- Occupation Status Question -->
+        <!-- Occupation Status Question form -->
         <p class="text-light">Occupation Status:</p>
         <div class="form-row align-items-center">
           <div class="col-auto my-1">
@@ -114,7 +117,7 @@
         <p id="dropboxError3" class="text-danger"></p>
 
 
-        <!-- Affiliations Check Box Question -->
+        <!-- Affiliations Check Box Question form -->
         <p class="text-light">What type of Organizations are you affiliated with?</p>
         <div class="form-check affiliation-group">
           <div class="row">
@@ -150,7 +153,7 @@
           <p class="failed-input" id="sAffiliationError"></p>
 
 
-          <!-- UseSocialMedia Question -->
+          <!-- UseSocialMedia Question form -->
           <div class="form-row align-items-center">
             <div class="col-auto my-1">
               <p class="text-light">Do you use social media?</p>
@@ -164,7 +167,7 @@
           <p id="dropboxError4" class="text-danger"></p>
 
 
-          <!-- Platforms Check Box Question -->
+          <!-- Platforms Check Box Question form -->
           <p class="text-light">What social media platforms do you commonly use?</p>
           <div class="form-check social-media-group">
             <div class="row">
@@ -217,7 +220,7 @@
           <p class="failed-input" id="sCheckboxError"></p>
 
 
-          <!-- AverageTime Question -->
+          <!-- AverageTime Question form -->
           <div class="form-row align-items-center">
             <div class="col-auto my-1">
               <p class="text-light">Average time spent on social media:</p>
@@ -235,7 +238,7 @@
           <p id="dropboxError5" class="text-danger"></p>
 
 
-          <!-- DoomscrollingScale Question -->
+          <!-- DoomscrollingScale Question form -->
           <p class="text-light survey-question">How often do you find yourself using social media without a specific purpose?</p>
           <div class="form-check form-check-inline">
             <span class="text-light survey-response">Rarely</span>
@@ -264,7 +267,7 @@
           <p id="radioError1" class="text-danger" style="display: none;">Please select an option.</p>
 
 
-          <!-- PhoneDistractsYouScale Question -->
+          <!-- PhoneDistractsYouScale Question form-->
           <p class="text-light survey-question">How often do you get distracted by social media when you are busy doing something?</p>
           <div class="form-check form-check-inline">
             <span class="text-light survey-response">Rarely</span>
@@ -293,7 +296,7 @@
           <p id="radioError2" class="text-danger" style="display: none;">Please select an option.</p>
 
 
-          <!-- Restlessness Question -->
+          <!-- Restlessness Question form -->
           <p class="text-light survey-question">Do you feel restless if you haven’t used social media in a while?</p>
           <div class="form-check form-check-inline">
             <span class="text-light survey-response">Rarely</span>
@@ -322,7 +325,7 @@
           <p id="radioError3" class="text-danger" style="display: none;">Please select an option.</p>
 
 
-          <!-- HowEasilyDistractedScale Question -->
+          <!-- HowEasilyDistractedScale Question form -->
           <p class="text-light survey-question">How easily distracted are you?</p>
           <div class="form-check form-check-inline">    
             <span class="text-light survey-response">Rarely</span>
@@ -351,7 +354,7 @@
           <p id="radioError4" class="text-danger" style="display: none;">Please select an option.</p>
 
 
-          <!-- BotherByWorries Question -->
+          <!-- BotherByWorries Question form -->
           <p class="text-light survey-question">How much are you bothered by worries?</p>
           <div class="form-check form-check-inline">
             <span class="text-light survey-response">Rarely</span>
@@ -380,7 +383,7 @@
           <p id="radioError5" class="text-danger" style="display: none;">Please select an option.</p>
 
 
-          <!-- DifficultyConcentratingScale Question -->
+          <!-- DifficultyConcentratingScale Question form -->
           <p class="text-light survey-question">Do you find it difficult to concentrate on things?</p>
           <div class="form-check form-check-inline">
             <span class="text-light survey-response">Rarely</span>
@@ -409,7 +412,7 @@
           <p id="radioError6" class="text-danger" style="display: none;">Please select an option.</p>
 
 
-          <!-- SocialMediaComparisonScale Question -->
+          <!-- SocialMediaComparisonScale Question form -->
           <p class="text-light survey-question">How often do you compare yourself to other successful people through the use of social media?</p>
           <div class="form-check form-check-inline">
             <span class="text-light survey-response">Rarely</span>
@@ -437,7 +440,7 @@
           </div><br>
           <p id="radioError7" class="text-danger" style="display: none;">Please select an option.</p>
 
-          <!-- PreviousQuestionFeelAboutComparison Question -->
+          <!-- PreviousQuestionFeelAboutComparison Question form -->
           <p class="text-light survey-question">Following the previous question, how do you feel about these comparisons, generally speaking?</p>
           <div class="form-check form-check-inline">
             <span class="text-light survey-response">Rarely</span>
@@ -465,7 +468,7 @@
           </div><br>
           <p id="radioError8" class="text-danger" style="display: none;">Please select an option.</p>
 
-          <!-- SocialMediaValidationScale Question -->
+          <!-- SocialMediaValidationScale Question form -->
           <p class="text-light survey-question">How often do you look to seek validation from features of social media?</p>
           <div class="form-check form-check-inline">
             <span class="text-light survey-response">Rarely</span>
@@ -494,7 +497,7 @@
           <p id="radioError9" class="text-danger" style="display: none;">Please select an option.</p>
 
 
-          <!-- DepressionOrDownScale Question -->
+          <!-- DepressionOrDownScale Question form -->
           <p class="text-light survey-question">How often do you feel depressed or down?</p>
           <div class="form-check form-check-inline">
             <span class="text-light survey-response">Rarely</span>
@@ -522,7 +525,7 @@
           </div><br>
           <p id="radioError10" class="text-danger" style="display: none;">Please select an option.</p>
 
-          <!-- DailyActivityInterestScale -->
+          <!-- DailyActivityInterestScale form -->
           <p class="text-light survey-question">How frequently does your interested in daily activities fluctuate?</p>
           <div class="form-check form-check-inline">
             <span class="text-light survey-response">Rarely</span>
@@ -551,7 +554,7 @@
           <p id="radioError11" class="text-danger" style="display: none;">Please select an option.</p>
 
 
-          <!-- SleepIssueScale Question -->
+          <!-- SleepIssueScale Question form -->
           <p class="text-light survey-question">How often do you face issues regarding sleep?</p>
           <div class="form-check form-check-inline">
             <span class="text-light survey-response">Rarely</span>
