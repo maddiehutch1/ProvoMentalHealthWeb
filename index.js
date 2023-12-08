@@ -164,10 +164,10 @@ app.post("/editemployee", (req, res)=> {
    })
 });
 
-// app.get("/editindividual", (req, res) => {
-//     const user = req.session.user;
-//     res.render("editindividual", { user });
-// });
+app.get("/editindividual", (req, res) => {
+    const user = req.session.user;
+    res.render("editindividual", { user });
+});
 
 // app.post("/editindividual", async (req, res) => {
 //     const { LoginID, Username, Password, FirstName, LastName, Email } = req.body;
