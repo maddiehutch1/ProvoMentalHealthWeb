@@ -348,8 +348,8 @@ app.post("/createResponse", async (req, res)=> {
 
 });
 
-router.get('/surveydata/:SurveyID', async (req, res) => {
-    const surveyID = req.params.SurveyID;
+router.get('/search', async (req, res) => {
+    const surveyID = req.query.surveyID;
 
     try {
         // Perform a query to retrieve the survey data by SurveyID
@@ -367,5 +367,26 @@ router.get('/surveydata/:SurveyID', async (req, res) => {
         res.status(500).send('Internal Server Error');
     }
 });
+
+
+// router.get('/surveydata/:SurveyID', async (req, res) => {
+//     const surveyID = req.params.SurveyID;
+
+//     try {
+//         // Perform a query to retrieve the survey data by SurveyID
+//         const surveyData = await knex('SurveyResponse').where('SurveyID', surveyID).first();
+
+//         if (surveyData) {
+//             // Render a template or send the survey data as JSON
+//             res.render('surveyDetails', { surveyData });
+//         } else {
+//             // Handle case where SurveyID is not found
+//             res.status(404).send('Survey not found');
+//         }
+//     } catch (error) {
+//         console.error('Error retrieving survey data:', error);
+//         res.status(500).send('Internal Server Error');
+//     }
+// });
 
 app.listen(port, () => console.log("Server is listening."));
