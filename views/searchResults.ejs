@@ -9,7 +9,7 @@
 <body>
     <h1>Search Results</h1>
 
-    <% if (surveyResponses.length > 0) { %>
+    <% if (mySurvey.length > 0) { %>
         <table>
             <thead>
                 <tr>
@@ -26,23 +26,24 @@
             <tbody>
                 <% for (let iCount = 0; iCount < mySurvey.length; iCount++) { %>
                     <tr>
-                        <td><%= response.SurveyID %></td>
-                        <td><%= response.Timestamp %></td>
-                        <td><%= response.Age %></td>
-                        <td><%= response.Gender %></td>
-                        <td><%= response.OccupationStatus %></td>
-                        <td><%= response.RelationshipStatus %></td>
+                        <td><%= mySurvey[iCount].SurveyID %></td>
+                        <td><%= mySurvey[iCount].Timestamp %></td>
+                        <td><%= mySurvey[iCount].Age %></td>
+                        <td><%= mySurvey[iCount].Gender %></td>
+                        <td><%= mySurvey[iCount].OccupationStatus %></td>
+                        <td><%= mySurvey[iCount].RelationshipStatus %></td>
                         <td style="text-align: center;">
                             <form action="/editresponse/<%= mySurvey[iCount].SurveyID %>" method="GET">
-                              <button type="submit">Edit</button>
+                                <button type="submit">Edit</button>
                             </form>
-                          </td>
-                          <td style="text-align: center;">
-                          <form action="/deleteresponse/<%= mySurvey[iCount].SurveyID %>" method="POST">
-                            <button type="submit" disabled >Delete</button>
-                          </form>
                         </td>
-                      </tr>
+                        <td style="text-align: center;">
+                            <form action="/deleteresponse/<%= mySurvey[iCount].SurveyID %>" method="POST">
+                                <button type="submit" disabled>Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                <% } %>
             </tbody>
         </table>
     <% } else { %>

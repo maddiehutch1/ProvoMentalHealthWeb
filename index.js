@@ -194,14 +194,42 @@ app.get("/editindividual", (req, res) => {
     res.render("editindividual", { user });
 });
 
-// when submitting the edit form for the individual account, it runs this POST code
+// app.post("/editindividual", async (req, res) => {
+//     const { LoginID, Username, Password, FirstName, LastName, Email } = req.body;
+
+//     try {
+//         // Update the fields excluding LoginID
+//         const result = await knex("Login")
+//             .where("LoginID", parseInt(req.body.LoginID))
+//             .update({
+//                 Username,
+//                 Password,
+//                 FirstName,
+//                 LastName,
+//                 Email
+//             });
+
+//         res.redirect("/adminlanding");
+//     } catch (error) {
+//         console.error(error);
+//         res.status(500).send("Internal Server Error");
+//     }
+// });
+
 app.post("/editindividual", async (req, res) => {
     const { LoginID, Username, Password, FirstName, LastName, Email } = req.body;
+
+    // Validate that LoginID is a valid integer
+    const parsedLoginID = parseInt(LoginID);
+    if (isNaN(parsedLoginID)) {
+        // If LoginID is not a valid integer, respond with an error
+        return res.status(400).send("Invalid LoginID");
+    }
 
     try {
         // Update the fields excluding LoginID
         const result = await knex("Login")
-            .where("LoginID", parseInt(req.body.LoginID))
+            .where("LoginID", parsedLoginID)
             .update({
                 Username,
                 Password,
@@ -374,7 +402,7 @@ app.post("/search", (req, res) => {
         .where("SurveyID", surveyID)
         .then((surveyResponses) => {
             // Handle the found surveyResponses
-            res.render("searchResults", { mySurvey: SurveyResponse, session:req.session });
+            res.render("searchResults", { mySurvey: surveyResponses, session:req.session });
         })
         .catch((err) => {
             console.log(err);
