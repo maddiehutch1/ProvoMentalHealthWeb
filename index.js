@@ -164,18 +164,47 @@ app.post("/editemployee", (req, res)=> {
    })
 });
 
-app.get("/editindividual", (req, res) => {
-    const user = req.session.user;
-    res.render("editindividual", { user });
-});
+// app.get("/editindividual", (req, res) => {
+//     const user = req.session.user;
+//     res.render("editindividual", { user });
+// });
+
+// app.post("/editindividual", async (req, res) => {
+//     const { LoginID, Username, Password, FirstName, LastName, Email } = req.body;
+
+//     try {
+//         // Update the fields excluding LoginID
+//         const result = await knex("Login")
+//             .where("LoginID", parseInt(req.body.LoginID))
+//             .update({
+//                 Username,
+//                 Password,
+//                 FirstName,
+//                 LastName,
+//                 Email
+//             });
+
+//         res.redirect("/adminlanding");
+//     } catch (error) {
+//         console.error(error);
+//         res.status(500).send("Internal Server Error");
+//     }
+// });
 
 app.post("/editindividual", async (req, res) => {
     const { LoginID, Username, Password, FirstName, LastName, Email } = req.body;
 
+    // Validate that LoginID is a valid integer
+    const parsedLoginID = parseInt(LoginID);
+    if (isNaN(parsedLoginID)) {
+        // If LoginID is not a valid integer, respond with an error
+        return res.status(400).send("Invalid LoginID");
+    }
+
     try {
         // Update the fields excluding LoginID
         const result = await knex("Login")
-            .where("LoginID", parseInt(req.body.LoginID))
+            .where("LoginID", parsedLoginID)
             .update({
                 Username,
                 Password,
