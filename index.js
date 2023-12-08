@@ -312,14 +312,6 @@ app.post("/createResponse", async (req, res)=> {
 
 });
 
-
-app.get('/surveyResults/:surveyId', function(req, res) {
-    knex.select().from("SurveyResponse").then(SurveyResponse => {
-        res.render("surveydata", {mySurvey: SurveyResponse, session:req.session });
-    });
-})
-
-
 app.post("/search", (req, res) => {
     const surveyID = req.body.surveyID;
 
@@ -327,7 +319,7 @@ app.post("/search", (req, res) => {
         .where("SurveyID", surveyID)
         .then((surveyResponses) => {
             // Handle the found surveyResponses
-            res.render("searchResults", { surveyResponses });
+            res.render("searchResults", { mySurvey: SurveyResponse, session:req.session });
         })
         .catch((err) => {
             console.log(err);
