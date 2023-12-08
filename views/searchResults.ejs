@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results</title>
+</head>
+<body>
+    <h1>Search Results</h1>
+
+    <% if (surveyResponses.length > 0) { %>
+        <table>
+            <thead>
+                <tr>
+                    <th>Survey ID</th>
+                    <th>Timestamp</th>
+                    <th>Age</th>
+                    <th>Gender</th>
+                    <th>Occupation Status</th>
+                    <th>Relationship Status</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% for (let iCount = 0; iCount < mySurvey.length; iCount++) { %>
+                    <tr>
+                        <td><%= response.SurveyID %></td>
+                        <td><%= response.Timestamp %></td>
+                        <td><%= response.Age %></td>
+                        <td><%= response.Gender %></td>
+                        <td><%= response.OccupationStatus %></td>
+                        <td><%= response.RelationshipStatus %></td>
+                        <td style="text-align: center;">
+                            <form action="/editresponse/<%= mySurvey[iCount].SurveyID %>" method="GET">
+                              <button type="submit">Edit</button>
+                            </form>
+                          </td>
+                          <td style="text-align: center;">
+                          <form action="/deleteresponse/<%= mySurvey[iCount].SurveyID %>" method="POST">
+                            <button type="submit" disabled >Delete</button>
+                          </form>
+                        </td>
+                      </tr>
+            </tbody>
+        </table>
+    <% } else { %>
+        <p>No results found.</p>
+    <% } %>
+
+    <a href="/databaseadmin">Back to Database Admin</a>
+</body>
+</html>

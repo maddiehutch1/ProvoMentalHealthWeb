@@ -41,6 +41,11 @@
   <div class="container">
     <h2 class="section-heading text-uppercase"><b>Survey Data</b></h2>
     <br><br> 
+    <form action="/search" method="POST">
+      <label for="surveyIDInput">Enter SurveyID:</label>
+      <input type="text" id="surveyIDInput" name="surveyID" required>
+      <button type="submit">Search</button>
+  </form>
     <table class="table table-striped">
       <thead>
         <tr>

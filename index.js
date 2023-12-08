@@ -251,14 +251,6 @@ app.post("/editresponse", (req, res)=> {
    })
 });
 
-app.post("/deleteresponse/:id", (req, res) => {
-    knex("SurveyResponse").where("SurveyID",req.params.id).del().then( mySurvey => {
-      res.redirect("/surveydata");
-   }).catch( err => {
-      console.log(err);
-      res.status(500).json({err});
-   });
-});
 
 app.get('/logout', (req, res) => {
     req.session.destroy(function(err){
@@ -340,32 +332,6 @@ app.post("/createResponse", async (req, res)=> {
           });
         }));
 
-                // // Insert affiliations into the Affiliations table
-                // if (affiliations && Array.isArray(affiliations)) {
-                // await Promise.all(
-                //     affiliations.map(async (affiliation) => {
-                //         await knex("Affiliations").insert({
-                //             SurveyID: SurveyID, // Use the SurveyID from SurveyResponse        
-                //             AffiliationID: affiliation,
-                //             // Other columns or values you might want to insert
-                //         });
-                //     })
-                // );
-                // }
-
-
-                // if (platforms && Array.isArray(platforms)) {
-                // await Promise.all(
-                //     platforms.map(async (platform) => {
-                //         await knex("Platforms").insert({
-                //             SurveyID: SurveyID, // Use the SurveyID from SurveyResponse
-                //             PlatformID: platform        
-                //             // Other columns or values you might want to insert
-                //         });
-                //     })
-                // );
-                // }
-            // console.log('Generated SurveyID:', SurveyID);
 
             res.render('survey', { session:req.session , submitSuccessMessage: "Submission Successful" });
     } catch (error) {
@@ -373,6 +339,21 @@ app.post("/createResponse", async (req, res)=> {
         res.status(500).send('Internal Server Error');
     }
 
+});
+
+app.post("/search", (req, res) => {
+    const surveyID = req.body.surveyID;
+
+    knex("SurveyResponse")
+        .where("SurveyID", surveyID)
+        .then((surveyResponses) => {
+            // Handle the found surveyResponses
+            res.render("searchResults", { mySurvey: SurveyResponse, session:req.session });
+        })
+        .catch((err) => {
+            console.log(err);
+            res.status(500).json({ err });
+        });
 });
 
 app.listen(port, () => console.log("Server is listening."));
