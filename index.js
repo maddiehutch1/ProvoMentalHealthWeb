@@ -238,29 +238,67 @@ app.get('/logout', (req, res) => {
     })
 });
 
-app.post("/createResponse", (req, res)=> {
-    knex("SurveyResponse").insert({
-      Age: req.body.Age,
-      Gender: req.body.Gender,
-      RelationshipStatus: req.body.RelationshipStatus,
-      OccupationStatus: req.body.OccupationStatus,
-      UseSocialMedia: req.body.UseSocialMedia,
-      AverageTime: req.body.AverageTime,
-      DoomscrollingScale: req.body.DoomscrollingScale,
-      PhoneDistractsYouScale: req.body.PhoneDistractsYouScale,
-      RestlessnessScale: req.body.RestlessnessScale,
-      HowEasilyDistractedScale: req.body.HowEasilyDistractedScale,
-      BotherByWorriesScale: req.body.BotherByWorriesScale,
-      DifficultyConcentratingScale: req.body.DifficultyConcentratingScale,
-      SocialMediaComparisonScale: req.body.SocialMediaComparisonScale,
-      PreviousQuestionFeelAboutComparison: req.body.PreviousQuestionFeelAboutComparison,
-      SocialMediaValidationScale: req.body.SocialMediaValidationScale,
-      DepressionOrDownScale: req.body.DepressionOrDownScale,
-      DailyActivityInterestScale: req.body.DailyActivityInterestScale,
-      SleepIssueScale: req.body.SleepIssueScale
-   }).then(mylogin => {
-      res.redirect("/");
-   })
+const { format } = require('date-fns');
+
+app.post("/createResponse", async (req, res)=> {
+    console.log(req.body);
+    // const affiliations = req.body.affiliations;
+    // const platforms = req.body.platforms;
+
+    try {
+        // Insert data into the SurveyResponse table
+        const[SurveyID] = await knex("SurveyResponse").insert({
+            Timestamp: req.body.Timestamp,
+            Age: req.body.Age,
+            Gender: req.body.Gender,
+            Origin: "Provo",
+            OccupationStatus: req.body.OccupationStatus,
+            RelationshipStatus: req.body.RelationshipStatus,
+            UseSocialMedia: req.body.UseSocialMedia,
+            AverageTime: req.body.AverageTime,
+            DoomscrollingScale: req.body.DoomscrollingScale,
+            PhoneDistractsYouScale: req.body.PhoneDistractsYouScale,
+            RestlessnessScale: req.body.RestlessnessScale,
+            HowEasilyDistractedScale: req.body.HowEasilyDistractedScale,
+            BotherByWorriesScale: req.body.BotherByWorriesScale,
+            DifficultyConcentratingScale: req.body.DifficultyConcentratingScale,
+            SocialMediaComparisonScale: req.body.SocialMediaComparisonScale,
+            PreviousQuestionFeelAboutComparison: req.body.PreviousQuestionFeelAboutComparison,
+            DepressionOrDownScale: req.body.DepressionOrDownScale,
+            DailyActivityInterestScale: req.body.DailyActivityInterestScale,
+            SleepIssueScale: req.body.SleepIssueScale,
+            SocialMediaValidationScale: req.body.SocialMediaValidationScale // Other columns...
+        }).returning("SurveyID");
+                // Insert affiliations into the Affiliations table
+                // await Promise.all(
+                //     affiliations.map(async (affiliation) => {
+                //         await knex("Affiliations").insert({
+                //             SurveyID: surveyResponseID, // Use the SurveyID from SurveyResponse        
+                //             AffiliationID: affiliation,
+                //             // Other columns or values you might want to insert
+                //         });
+                //     })
+                // );
+        
+                // await Promise.all(
+                //     platforms.map(async (platform) => {
+                //         await knex("Platforms").insert({
+                //             SurveyID: surveyResponseID, // Use the SurveyID from SurveyResponse
+                //             PlatformID: platform        
+                //             // Other columns or values you might want to insert
+                //         });
+                //     })
+                // );
+
+            // console.log('Generated SurveyID:', SurveyID);
+
+            const formattedTimestamp = Timestamp ? format(new Date(Timestamp), 'yyyy-MM-dd HH:mm:ss') :null;
+        res.redirect("/");
+    } catch (error) {
+        console.error('Error creating survey response:', error);
+        res.status(500).send('Internal Server Error');
+    }
+
 });
 
 app.listen(port, () => console.log("Server is listening."));
