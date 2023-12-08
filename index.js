@@ -239,6 +239,7 @@ app.get('/logout', (req, res) => {
 });
 
 const { format } = require('date-fns');
+const affiliations = req.body['affiliations[]'];
 
 app.post("/createResponse", async (req, res)=> {
     console.log(req.body);
