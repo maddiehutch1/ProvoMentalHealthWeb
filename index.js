@@ -239,6 +239,7 @@ app.get('/logout', (req, res) => {
 });
 
 app.post("/createResponse", async (req, res)=> {
+    console.log(req.body);
     // const affiliations = req.body.affiliations;
     // const platforms = req.body.platforms;
 
