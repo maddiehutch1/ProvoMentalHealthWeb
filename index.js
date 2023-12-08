@@ -252,7 +252,7 @@ app.post("/createResponse", async (req, res)=> {
             RelationshipStatus: req.body.RelationshipStatus,
             UseSocialMedia: req.body.UseSocialMedia,
             AverageTime: req.body.AverageTime,
-            DoomscrollingScale: req.body.DoomscroolingScale,
+            DoomscrollingScale: req.body.DoomscrollingScale,
             PhoneDistractsYouScale: req.body.PhoneDistractsYouScale,
             RestlessnessScale: req.body.RestlessnessScale,
             HowEasilyDistractedScale: req.body.HowEasilyDistractedScale,
