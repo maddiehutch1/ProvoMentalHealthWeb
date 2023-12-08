@@ -898,6 +898,7 @@
             function setTimestamp() {
               const currentTimestamp = new Date().toISOString().slice(0, 19).replace("T", "Z");
               document.getElementById("Timestamp").value = currentTimestamp
+              document.getElementById("Timestamp").innerHTML = currentTimestamp
               return true;
             }
         </script>
