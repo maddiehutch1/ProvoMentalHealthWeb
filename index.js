@@ -247,7 +247,7 @@ app.post("/createResponse", async (req, res)=> {
         const submittedTimestamp = req.body.Timestamp;
         const formattedTimestamp = submittedTimestamp ? format(new Date(submittedTimestamp), 'yyyy-MM-dd HH:mm:ss') : null;
         // Insert data into the SurveyResponse table
-        const[SurveyID] = await knex("SurveyResponse").insert({
+        const[insertedSurvey] = await knex("SurveyResponse").insert({
             Timestamp: formattedTimestamp,
             Age: req.body.Age,
             Gender: req.body.Gender,
@@ -269,6 +269,8 @@ app.post("/createResponse", async (req, res)=> {
             SleepIssueScale: req.body.SleepIssueScale,
             SocialMediaValidationScale: req.body.SocialMediaValidationScale // Other columns...
         }).returning("SurveyID");
+
+        const SurveyID = insertedSurvey.SurveyID;
 
         const checkboxAffiliations = [];
 
