@@ -247,6 +247,7 @@ app.post("/createResponse", async (req, res)=> {
         const submittedTimestamp = req.body.Timestamp;
         const formattedTimestamp = submittedTimestamp ? format(new Date(submittedTimestamp), 'yyyy-MM-dd HH:mm:ss') : null;
         const affiliations = req.body['affiliations[]'];
+        const platforms = req.body['platforms[]'];
         // Insert data into the SurveyResponse table
         const[SurveyID] = await knex("SurveyResponse").insert({
             Timestamp: formattedTimestamp,
@@ -271,6 +272,7 @@ app.post("/createResponse", async (req, res)=> {
             SocialMediaValidationScale: req.body.SocialMediaValidationScale // Other columns...
         }).returning("SurveyID");
                 // Insert affiliations into the Affiliations table
+                if (affiliations && Array.isArray(affiliations)) {
                 await Promise.all(
                     affiliations.map(async (affiliation) => {
                         await knex("Affiliations").insert({
@@ -280,7 +282,8 @@ app.post("/createResponse", async (req, res)=> {
                         });
                     })
                 );
-        
+                }
+                if (platforms && Array.isArray(platforms)) {
                 await Promise.all(
                     platforms.map(async (platform) => {
                         await knex("Platforms").insert({
@@ -290,7 +293,7 @@ app.post("/createResponse", async (req, res)=> {
                         });
                     })
                 );
-
+                }
             // console.log('Generated SurveyID:', SurveyID);
 
             res.render('survey', { session:req.session , submitSuccessMessage: "Submission Successful" });
