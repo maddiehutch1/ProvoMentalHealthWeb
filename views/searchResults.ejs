@@ -24,7 +24,7 @@
                 </tr>
             </thead>
             <tbody>
-                <% surveyResponses.forEach((response) => { %>
+                <% for (let iCount = 0; iCount < mySurvey.length; iCount++) { %>
                     <tr>
                         <td><%= response.SurveyID %></td>
                         <td><%= response.Timestamp %></td>
@@ -43,7 +43,6 @@
                           </form>
                         </td>
                       </tr>
-                <% }); %>
             </tbody>
         </table>
     <% } else { %>
