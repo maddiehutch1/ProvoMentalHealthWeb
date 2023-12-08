@@ -348,7 +348,7 @@ app.post("/search", (req, res) => {
         .where("SurveyID", surveyID)
         .then((surveyResponses) => {
             // Handle the found surveyResponses
-            res.render("searchResults", { mySurvey: SurveyResponse, session:req.session });
+            res.render("searchResults", { mySurvey: surveyResponses, session:req.session });
         })
         .catch((err) => {
             console.log(err);
