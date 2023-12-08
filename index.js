@@ -194,28 +194,6 @@ app.get("/editindividual", (req, res) => {
     res.render("editindividual", { user });
 });
 
-// app.post("/editindividual", async (req, res) => {
-//     const { LoginID, Username, Password, FirstName, LastName, Email } = req.body;
-
-//     try {
-//         // Update the fields excluding LoginID
-//         const result = await knex("Login")
-//             .where("LoginID", parseInt(req.body.LoginID))
-//             .update({
-//                 Username,
-//                 Password,
-//                 FirstName,
-//                 LastName,
-//                 Email
-//             });
-
-//         res.redirect("/adminlanding");
-//     } catch (error) {
-//         console.error(error);
-//         res.status(500).send("Internal Server Error");
-//     }
-// });
-
 app.post("/editindividual", async (req, res) => {
     const { LoginID, Username, Password, FirstName, LastName, Email } = req.body;
 
