@@ -14,8 +14,31 @@
    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 </head>
 <body>
-    <h1> Edit Survey Data </h1>
-    <label><b>Survey Data:</b></label>
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+    <div class="container">
+        <a class="navbar-brand" href="#page-top"><img id="logo" src="/public/assets/img/provo-logo-NEW.png" alt="..." /></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            Menu
+            <i class="fas fa-bars ms-1"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
+                <li class="nav-item"><a class="nav-link" href="survey">Survey</a></li>
+                <li class="nav-item"><a class="nav-link" href="tableau">Results</a></li>
+                <% if (locals.session.loggedIn) { %>
+                    <li class="nav-item"><a class="nav-link" href="/adminlanding">Account</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/logout">Logout</a></li>
+                <% } else { %>
+                    <li class="nav-item"><a class="nav-link" href="/login">Login</a></li>
+                <% } %>
+            </ul>
+        </div>
+    </div>
+  </nav>
+  <br><br><br><br>
+
+  <div class="container">
+    <h2 class="section-heading text-uppercase"><b>Survey Data</b></h2>
     <br><br> 
     <table class="table table-striped">
       <thead>
@@ -32,28 +55,30 @@
       </thead>
       <tbody>
         <% for (let iCount = 0; iCount < mySurvey.length; iCount++) { %>
-             <tr>
-               <td><%= mySurvey[iCount].SurveyID %></td>
-               <td><%= mySurvey[iCount].Timestamp %></td>
-               <td><%= mySurvey[iCount].Age %></td>
-               <td><%= mySurvey[iCount].Gender %></td>
-               <td><%= mySurvey[iCount].OccupationStatus %></td>
-               <td><%= mySurvey[iCount].RelationshipStatus %></td>
-               <td style="text-align: center;">
-                 <form action="/editresponse/<%= mySurvey[iCount].SurveyID %>" method="GET">
-                   <button type="submit">Edit</button>
-                 </form>
-               </td>
-               <td style="text-align: center;">
-                <form action="/deleteresponse/<%= mySurvey[iCount].SurveyID %>" method="POST">
-                  <button type="submit" disabled >Delete</button>
-                </form>
-              </td>
-             </tr>
-          <% } %>
-         </tbody>
-       </table>
-       <br><br>
+          <tr>
+            <td><%= mySurvey[iCount].SurveyID %></td>
+            <td><%= mySurvey[iCount].Timestamp %></td>
+            <td><%= mySurvey[iCount].Age %></td>
+            <td><%= mySurvey[iCount].Gender %></td>
+            <td><%= mySurvey[iCount].OccupationStatus %></td>
+            <td><%= mySurvey[iCount].RelationshipStatus %></td>
+            <td style="text-align: center;">
+              <form action="/editresponse/<%= mySurvey[iCount].SurveyID %>" method="GET">
+                <button type="submit">Edit</button>
+              </form>
+            </td>
+            <td style="text-align: center;">
+            <form action="/deleteresponse/<%= mySurvey[iCount].SurveyID %>" method="POST">
+              <button type="submit" disabled >Delete</button>
+            </form>
+          </td>
+          </tr>
+        <% } %>
+      </tbody>
+    </table>
+  </div>
+
+  <br><br>
     <footer class="footer py-4">
       <div class="container">
           <div class="row align-items-center">
