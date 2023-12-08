@@ -67,7 +67,7 @@ app.get("/adminlanding", (req, res) => {
 
 app.get("/databaseadmin", (req, res) => {
     knex.select().from("Login").then(Login => {
-        res.render("databaseadmin", {mylogin: Login});
+        res.render("databaseadmin", {mylogin: Login, session:req.session });
     });
 });
 
@@ -160,7 +160,7 @@ app.post("/editemployee", (req, res)=> {
 
 app.get("/surveydata", (req, res) => {
     knex.select().from("SurveyResponse").then(SurveyResponse => {
-        res.render("surveydata", {mySurvey: SurveyResponse});
+        res.render("surveydata", {mySurvey: SurveyResponse, session:req.session });
     });
 });
 
