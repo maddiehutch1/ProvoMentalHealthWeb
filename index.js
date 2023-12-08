@@ -291,10 +291,8 @@ app.post("/createResponse", async (req, res)=> {
                 // );
 
             // console.log('Generated SurveyID:', SurveyID);
-            console.log('Received Timestamp:', Timestamp);
 
             const formattedTimestamp = Timestamp ? format(new Date(Timestamp), 'yyyy-MM-dd HH:mm:ss') :null;
-            console.log('Formatted Timestamp:', formattedTimestamp);
         res.redirect("/");
     } catch (error) {
         console.error('Error creating survey response:', error);
