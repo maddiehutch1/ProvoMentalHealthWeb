@@ -238,8 +238,6 @@ app.get('/logout', (req, res) => {
     })
 });
 
-const formattedTimestamp = Timestamp ? format(new Date(Timestamp), 'yyyy-MM-dd HH:mm:ss') :null;
-
 app.post("/createResponse", async (req, res)=> {
     console.log(req.body);
 
