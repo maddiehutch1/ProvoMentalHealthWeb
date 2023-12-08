@@ -15,12 +15,9 @@ const port = process.env.PORT || 3000;
 app.use(bodyparser.json());
 app.use(bodyparser.urlencoded({extended: true}));
 
-// Comment this code if website breaks
-app.use('/', router);
-
 app.set('view engine', 'ejs');
 
-const router = express.Router();
+// const router = express.Router();
 
 app.use(express.urlencoded({extended:true}));
 
@@ -351,25 +348,25 @@ app.post("/createResponse", async (req, res)=> {
 
 });
 
-router.get('/search', async (req, res) => {
-    const surveyID = req.query.surveyID;
+// router.get('/search', async (req, res) => {
+//     const surveyID = req.query.surveyID;
 
-    try {
-        // Perform a query to retrieve the survey data by SurveyID
-        const surveyData = await knex('SurveyResponse').where('SurveyID', surveyID).first();
+//     try {
+//         // Perform a query to retrieve the survey data by SurveyID
+//         const surveyData = await knex('SurveyResponse').where('SurveyID', surveyID).first();
 
-        if (surveyData) {
-            // Render a template or send the survey data as JSON
-            res.render('surveyDetails', { surveyData });
-        } else {
-            // Handle case where SurveyID is not found
-            res.status(404).send('Survey not found');
-        }
-    } catch (error) {
-        console.error('Error retrieving survey data:', error);
-        res.status(500).send('Internal Server Error');
-    }
-});
+//         if (surveyData) {
+//             // Render a template or send the survey data as JSON
+//             res.render('surveyDetails', { surveyData });
+//         } else {
+//             // Handle case where SurveyID is not found
+//             res.status(404).send('Survey not found');
+//         }
+//     } catch (error) {
+//         console.error('Error retrieving survey data:', error);
+//         res.status(500).send('Internal Server Error');
+//     }
+// });
 
 
 app.post("/search", (req, res) => {
