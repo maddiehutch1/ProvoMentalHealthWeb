@@ -238,6 +238,8 @@ app.get('/logout', (req, res) => {
     })
 });
 
+const { format } = require('date-fns');
+
 app.post("/createResponse", async (req, res)=> {
     console.log(req.body);
     // const affiliations = req.body.affiliations;
@@ -246,8 +248,10 @@ app.post("/createResponse", async (req, res)=> {
     try {
         // Insert data into the SurveyResponse table
         const[SurveyID] = await knex("SurveyResponse").insert({
+            Timestamp: req.body.Timestamp,
             Age: req.body.Age,
             Gender: req.body.Gender,
+            Origin: "Provo",
             OccupationStatus: req.body.OccupationStatus,
             RelationshipStatus: req.body.RelationshipStatus,
             UseSocialMedia: req.body.UseSocialMedia,
@@ -287,7 +291,10 @@ app.post("/createResponse", async (req, res)=> {
                 // );
 
             // console.log('Generated SurveyID:', SurveyID);
+            console.log('Received Timestamp:', Timestamp);
 
+            const formattedTimestamp = Timestamp ? format(new Date(Timestamp), 'yyyy-MM-dd HH:mm:ss') :null;
+            console.log('Formatted Timestamp:', formattedTimestamp);
         res.redirect("/");
     } catch (error) {
         console.error('Error creating survey response:', error);
