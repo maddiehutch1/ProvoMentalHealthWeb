@@ -251,10 +251,8 @@ app.post("/createResponse", async (req, res)=> {
     try {
         const submittedTimestamp = req.body.Timestamp;
         const formattedTimestamp = submittedTimestamp ? format(new Date(submittedTimestamp), 'yyyy-MM-dd HH:mm:ss') : null;
-        const affiliations = req.body['affiliations[]'];
-        const platforms = req.body['platforms[]'];
         // Insert data into the SurveyResponse table
-        const[SurveyID] = await knex("SurveyResponse").insert({
+        const[insertedSurvey] = await knex("SurveyResponse").insert({
             Timestamp: formattedTimestamp,
             Age: req.body.Age,
             Gender: req.body.Gender,
@@ -276,29 +274,68 @@ app.post("/createResponse", async (req, res)=> {
             SleepIssueScale: req.body.SleepIssueScale,
             SocialMediaValidationScale: req.body.SocialMediaValidationScale // Other columns...
         }).returning("SurveyID");
-                // Insert affiliations into the Affiliations table
-                if (affiliations && Array.isArray(affiliations)) {
-                await Promise.all(
-                    affiliations.map(async (affiliation) => {
-                        await knex("Affiliations").insert({
-                            SurveyID: SurveyID, // Use the SurveyID from SurveyResponse        
-                            AffiliationID: affiliation,
-                            // Other columns or values you might want to insert
-                        });
-                    })
-                );
-                }
-                if (platforms && Array.isArray(platforms)) {
-                await Promise.all(
-                    platforms.map(async (platform) => {
-                        await knex("Platforms").insert({
-                            SurveyID: SurveyID, // Use the SurveyID from SurveyResponse
-                            PlatformID: platform        
-                            // Other columns or values you might want to insert
-                        });
-                    })
-                );
-                }
+
+        const SurveyID = insertedSurvey.SurveyID;
+
+        const checkboxAffiliations = [];
+
+        for (let iCount = 1; iCount <= 6; iCount++)
+        {
+          const name = `affiliation${iCount}`;
+          if (req.body[name])
+          {
+            checkboxAffiliations.push(req.body[name]);
+          };
+        };
+        await Promise.all(checkboxAffiliations.map(async (affiliation_id) => {
+          await knex("Affiliations").insert({
+            SurveyID: SurveyID,
+            AffiliationID: affiliation_id
+          });
+        }));
+        //gather social media types in an array
+        const checkboxPlatforms = [];
+        //loop through options on array values
+        for (let iCount = 1; iCount <= 9; iCount++)
+        {
+          const name = `platform${iCount}`;
+          if (req.body[name])
+          {
+            checkboxPlatforms.push(req.body[name]);
+          };
+        };
+        await Promise.all(checkboxPlatforms.map(async (platform_id) => {
+          await knex("Platforms").insert({
+            SurveyID: SurveyID,
+            PlatformID: platform_id
+          });
+        }));
+
+                // // Insert affiliations into the Affiliations table
+                // if (affiliations && Array.isArray(affiliations)) {
+                // await Promise.all(
+                //     affiliations.map(async (affiliation) => {
+                //         await knex("Affiliations").insert({
+                //             SurveyID: SurveyID, // Use the SurveyID from SurveyResponse        
+                //             AffiliationID: affiliation,
+                //             // Other columns or values you might want to insert
+                //         });
+                //     })
+                // );
+                // }
+
+
+                // if (platforms && Array.isArray(platforms)) {
+                // await Promise.all(
+                //     platforms.map(async (platform) => {
+                //         await knex("Platforms").insert({
+                //             SurveyID: SurveyID, // Use the SurveyID from SurveyResponse
+                //             PlatformID: platform        
+                //             // Other columns or values you might want to insert
+                //         });
+                //     })
+                // );
+                // }
             // console.log('Generated SurveyID:', SurveyID);
 
             res.render('survey', { session:req.session , submitSuccessMessage: "Submission Successful" });
