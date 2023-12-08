@@ -270,25 +270,25 @@ app.post("/createResponse", async (req, res)=> {
             SocialMediaValidationScale: req.body.SocialMediaValidationScale // Other columns...
         }).returning("SurveyID");
                 // Insert affiliations into the Affiliations table
-                // await Promise.all(
-                //     affiliations.map(async (affiliation) => {
-                //         await knex("Affiliations").insert({
-                //             SurveyID: surveyResponseID, // Use the SurveyID from SurveyResponse        
-                //             AffiliationID: affiliation,
-                //             // Other columns or values you might want to insert
-                //         });
-                //     })
-                // );
+                await Promise.all(
+                    affiliations.map(async (affiliation) => {
+                        await knex("Affiliations").insert({
+                            SurveyID: SurveyID, // Use the SurveyID from SurveyResponse        
+                            AffiliationID: affiliation,
+                            // Other columns or values you might want to insert
+                        });
+                    })
+                );
         
-                // await Promise.all(
-                //     platforms.map(async (platform) => {
-                //         await knex("Platforms").insert({
-                //             SurveyID: surveyResponseID, // Use the SurveyID from SurveyResponse
-                //             PlatformID: platform        
-                //             // Other columns or values you might want to insert
-                //         });
-                //     })
-                // );
+                await Promise.all(
+                    platforms.map(async (platform) => {
+                        await knex("Platforms").insert({
+                            SurveyID: SurveyID, // Use the SurveyID from SurveyResponse
+                            PlatformID: platform        
+                            // Other columns or values you might want to insert
+                        });
+                    })
+                );
 
             // console.log('Generated SurveyID:', SurveyID);
 
