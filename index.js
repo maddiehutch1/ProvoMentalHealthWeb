@@ -15,6 +15,9 @@ const port = process.env.PORT || 3000;
 app.use(bodyparser.json());
 app.use(bodyparser.urlencoded({extended: true}));
 
+// Comment this code if website breaks
+app.use('/', router);
+
 app.set('view engine', 'ejs');
 
 const router = express.Router();
@@ -368,6 +371,21 @@ router.get('/search', async (req, res) => {
     }
 });
 
+
+app.post("/search", (req, res) => {
+    const surveyID = req.body.surveyID;
+
+    knex("SurveyResponse")
+        .where("SurveyID", surveyID)
+        .then((surveyResponses) => {
+            // Handle the found surveyResponses
+            res.render("searchResults", { surveyResponses });
+        })
+        .catch((err) => {
+            console.log(err);
+            res.status(500).json({ err });
+        });
+});
 
 // router.get('/surveydata/:SurveyID', async (req, res) => {
 //     const surveyID = req.params.SurveyID;
