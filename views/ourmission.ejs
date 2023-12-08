@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Provo City Health</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <!-- Font Awesome icons (free version)-->
+        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="/public/css/styles.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body id="page-top">
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+            <div class="container">
+                <a class="navbar-brand" href="#page-top"><img id="logo" src="/public/assets/img/provo-logo-NEW.png" alt="..." /></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    Menu
+                    <i class="fas fa-bars ms-1"></i>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
+                        <li class="nav-item"><a class="nav-link" href="survey">Survey</a></li>
+                        <li class="nav-item"><a class="nav-link" href="tableau">Results</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/ourmission">LookUp Campaign</a></li>
+                        <% if (locals.session.loggedIn) { %>
+                            <li class="nav-item"><a class="nav-link" href="/adminlanding">Account</a></li>
+                            <li class="nav-item"><a class="nav-link" href="/logout">Logout</a></li>
+                        <% } else { %>
+                            <li class="nav-item"><a class="nav-link" href="/login">Login</a></li>
+                        <% } %>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- Services-->
+        <section class="page-section bg-light" id="team">
+            <div class="container">
+                <div class="text-center">
+                    <h2 class="section-heading text-uppercase">Join the LookUp Campaign</h2>
+                    <!-- <h3 class="section-subheading text-muted">Discover interesting trends and correlations in health here in Provo and local areas!</h3> -->
+                </div>
+                <br>
+                <div class="row">
+                    <!-- SURVEY -->
+                    <div class="col-lg-4">
+                        <div class="team-member">
+                            <img class="mx-auto rounded-circle" src="public/assets/img/office-charts-image1.jpg" alt="..." />
+                            <h4>Discover</h4>
+                        </div>
+                    </div>
+                    <!-- TABLEAU -->
+                    <div class="col-lg-8">
+                            <p class="text-muted" style="word-wrap: break-word;">
+                                Provo City’s Residents are a young population with 
+                                the average age of 23. Our data gathered through our survey indicates 
+                                that 30% of University and School students spend over 5 hours on social
+                                media. Which leads to poor mental health and bad habits. Those effects
+                                include depression, anxiety, difficulty concentrating, and difficulty
+                                sleeping. <br><br>
+                                We understand that to improve mental health and beat poor social media
+                                habits it takes a village. Look Up is a campaign that focuses on teaching 
+                                youth and young adults. The program can be implemented in middles schools, 
+                                high schools, and colleges where the school takes 3 days a year to talk 
+                                about the negative effects of social media. <br><br>
+                                Implementing the campaign includes playing informational or personal 
+                                videos of the dangers of social media. It also includes a small workshop 
+                                on how to leave bad habits and build healthy ones. Lastly it provides a 
+                                range of ideas and ways to improve personal talents. <br><br>
+                                By instilling better habits, Look Up aims to enhance the mental 
+                                well-being of Provo's residents, encouraging them to enjoy life, 
+                                discover new possibilities, all by simply looking up.</p>                        
+                </div>
+            </div>
+        </section>
+    </body>
+</html>

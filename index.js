@@ -65,6 +65,11 @@ app.get("/adminlanding", (req, res) => {
     res.render("adminlanding", { session:req.session, role });
 });
 
+app.get("/ourmission", (req, res) => {
+    const role = req.session.role;
+    res.render("ourmission", { session:req.session });
+});
+
 app.get("/databaseadmin", (req, res) => {
     knex.select().from("Login").then(Login => {
         res.render("databaseadmin", {mylogin: Login, session:req.session });
