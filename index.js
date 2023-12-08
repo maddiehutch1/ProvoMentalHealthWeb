@@ -246,6 +246,7 @@ app.post("/createResponse", async (req, res)=> {
     try {
         const submittedTimestamp = req.body.Timestamp;
         const formattedTimestamp = submittedTimestamp ? format(new Date(submittedTimestamp), 'yyyy-MM-dd HH:mm:ss') : null;
+        const affiliations = req.body['affiliations[]'];
         // Insert data into the SurveyResponse table
         const[SurveyID] = await knex("SurveyResponse").insert({
             Timestamp: formattedTimestamp,
