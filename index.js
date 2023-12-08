@@ -293,7 +293,7 @@ app.post("/createResponse", async (req, res)=> {
 
             // console.log('Generated SurveyID:', SurveyID);
 
-        res.redirect("/");
+            res.render('survey', { session:req.session , submitSuccessMessage: "Submission Successful" });
     } catch (error) {
         console.error('Error creating survey response:', error);
         res.status(500).send('Internal Server Error');

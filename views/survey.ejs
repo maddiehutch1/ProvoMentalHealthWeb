@@ -45,13 +45,11 @@
                     <h2 class="section-heading text-uppercase">Participate in the Survey</h2>
                     <h3 class="section-subheading text-muted">Help make our community be better informed to help YOU!</h3>
                 </div>
-                <!-- * * * * * * * * * * * * * * *-->
-                <!-- * * SB Forms Contact Form * *-->
-                <!-- * * * * * * * * * * * * * * *-->
-                <!-- This form is pre-integrated with SB Forms.-->
-                <!-- To make this form functional, sign up at-->
-                <!-- https://startbootstrap.com/solution/contact-forms-->
-                <!-- to get an API token!-->
+                <% if (locals.submitSuccessMessage) { %>
+                  <div id="submitSuccessMessage" class="alert alert-success text-center">
+                      <%= submitSuccessMessage %>
+                  </div>
+                <% } %>                
                 <form id="contactForm" data-sb-form-api-token="API_TOKEN" onsubmit="return setTimestamp()" action="/createResponse" method="POST">
                     <div class="row align-items-stretch mb-5">
                         <div class="col-md-6">
