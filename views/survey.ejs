@@ -602,7 +602,6 @@
               </footer>
               <script>
                 function validateForm() {
-                  alert('Validation is Running');
                   let userAgeInput = document.getElementById('Age');
                   let totalErrors = 0;
                   if (userAgeInput.value.trim() === '') {
@@ -618,7 +617,6 @@
                   } else {
                     document.getElementById('ageError').innerHTML = '';
                   }
-                  alert('Age input is working');
         
                   let sGender = document.getElementById('Gender').value
                   if (sGender == 0) {
@@ -628,7 +626,6 @@
                   }else {
                     document.getElementById('dropboxError1').innerHTML = '';
                   }
-                  alert('Gender input is working');
 
                   let sRelationshipStatus = document.getElementById('RelationshipStatus').value
                   if (sRelationshipStatus == 0) {
@@ -638,7 +635,6 @@
                   }else {
                     document.getElementById('dropboxError2').innerHTML = '';
                   }
-                  alert('RelationshipStatus is working');
                   
                   let sOccupationStatus = document.getElementById('OccupationStatus').value
                   if (sOccupationStatus == 0) {
@@ -648,7 +644,6 @@
                   }else {
                     document.getElementById('dropboxError3').innerHTML = '';
                   }
-                  alert('OccupationStatus is working');
                   
                   let sUseSocialMedia = document.getElementById('UseSocialMedia').value
                   if (sUseSocialMedia == 0) {
@@ -658,7 +653,6 @@
                   }else {
                     document.getElementById('dropboxError4').innerHTML = '';
                   }
-                  alert('sUseSocialMedia is working');
                   
                   let sAverageTime = document.getElementById('AverageTime').value
                   if (sAverageTime == 0) {
@@ -668,13 +662,11 @@
                   }else {
                     document.getElementById('dropboxError5').innerHTML = '';
                   }
-                  alert('AverageTime is working');
                   
                   var affiliationCheckboxes = document.querySelectorAll('.affiliation-group .form-check-input');
                   var ifNoneChecked = Array.from(affiliationCheckboxes).some(checkbox => checkbox.checked);
                   
                   if (!ifNoneChecked) {
-                    // alert("Please select at least affiliation.");
                     
                     var firstCheckbox = document.querySelector('.affiliation-group .form-check-input');
                     if (firstCheckbox) {
@@ -687,13 +679,11 @@
                   }else {
                     document.getElementById('sAffiliationError').innerHTML = '';
                   }
-                  alert('Affiliation is working');
 
                   var socialMediaCheckboxes = document.querySelectorAll('.social-media-group .form-check-input');
                   var atLeastOneChecked = Array.from(socialMediaCheckboxes).some(checkbox => checkbox.checked);
                   
                   if (!atLeastOneChecked) {
-                    // alert("Please select at least one social media platform.");
                     
                     var secondCheckbox = document.querySelector('.social-media-group .form-check-input');
                     if (secondCheckbox) {
@@ -706,7 +696,6 @@
                   }else {
                     document.getElementById('sCheckboxError').innerHTML = '';
                   }
-                  alert('Platforms is Running');
                   
                   var radioButton1 = document.getElementsByName('DoomscrollingScale');
                   var radioButton2 = document.getElementsByName('PhoneDistractsYouScale');
@@ -732,7 +721,6 @@
                   var selected10 = false;
                   var selected11 = false;
                   var selected12 = false;
-                  alert('Ran all variables');
 
 
                   for (var i = 0; i < radioButton1.length; i++) {
@@ -741,7 +729,6 @@
                       break;
                     }
                   }
-                  alert('Validation1 is Running');
 
                   for (var i = 0; i < radioButton2.length; i++) {
                     if (radioButton2[i].checked) {
@@ -749,7 +736,6 @@
                       break;
                     }
                   }
-                  alert('Validation2 is Running');
 
                   for (var i = 0; i < radioButton3.length; i++) {
                     if (radioButton3[i].checked) {
@@ -757,7 +743,6 @@
                       break;
                     }
                   }
-                  alert('Validation3 is Running');
 
                   for (var i = 0; i < radioButton4.length; i++) {
                     if (radioButton4[i].checked) {
@@ -765,7 +750,6 @@
                       break;
                     }
                   }
-                  alert('Validation4 is Running');
 
                   for (var i = 0; i < radioButton5.length; i++) {
                     if (radioButton5[i].checked) {
@@ -773,7 +757,6 @@
                       break;
                     }
                   }
-                  alert('Validation5 is Running');
 
                   for (var i = 0; i < radioButton6.length; i++) {
                     if (radioButton6[i].checked) {
@@ -781,7 +764,6 @@
                       break;
                     }
                   }
-                  alert('Validation6 is Running');
 
                   for (var i = 0; i < radioButton7.length; i++) {
                     if (radioButton7[i].checked) {
@@ -789,7 +771,6 @@
                       break;
                     }
                   }
-                  alert('Validation7 is Running');
 
                   for (var i = 0; i < radioButton8.length; i++) {
                     if (radioButton8[i].checked) {
@@ -797,7 +778,6 @@
                       break;
                     }
                   }
-                  alert('Validation8 is Running');
 
                   for (var i = 0; i < radioButton9.length; i++) {
                     if (radioButton9[i].checked) {
@@ -805,7 +785,6 @@
                       break;
                     }
                   }
-                  alert('Validation9 is Running');
 
                   for (var i = 0; i < radioButton10.length; i++) {
                     if (radioButton10[i].checked) {
@@ -813,7 +792,6 @@
                       break;
                     }
                   }
-                  alert('Validation10 is Running');
 
                   for (var i = 0; i < radioButton11.length; i++) {
                     if (radioButton11[i].checked) {
@@ -821,7 +799,6 @@
                       break;
                     }
                   }
-                  alert('Validation11 is Running');
 
                   for (var i = 0; i < radioButton12.length; i++) {
                     if (radioButton12[i].checked) {
@@ -829,7 +806,6 @@
                       break;
                     }
                   }
-                  alert('Validation12 is Running');
 
                   if (!selected1) {
                     // Show error message
@@ -842,7 +818,6 @@
                     // Hide error message
                     document.getElementById('radioError1').style.display = 'none';
                   }
-                  alert('SC1 is Running');
                   
                   if (!selected2) {
                     // Show error message
@@ -854,7 +829,6 @@
                     // Hide error message
                     document.getElementById('radioError2').style.display = 'none';
                   }
-                  alert('Sc2 is Running');
 
                   if (!selected3) {
                     // Show error message
@@ -866,7 +840,6 @@
                     // Hide error message
                     document.getElementById('radioError3').style.display = 'none';
                   }
-                  alert('SC3 is Running');
 
                   if (!selected4) {
                     // Show error message
@@ -878,7 +851,6 @@
                     // Hide error message
                     document.getElementById('radioError4').style.display = 'none';
                   }
-                  alert('SC4 is Running');
 
                   if (!selected5) {
                     // Show error message
@@ -890,7 +862,6 @@
                     // Hide error message
                     document.getElementById('radioError5').style.display = 'none';
                   }
-                  alert('SC5 is Running');
 
                   if (!selected6) {
                     // Show error message
@@ -902,7 +873,6 @@
                     // Hide error message
                     document.getElementById('radioError6').style.display = 'none';
                   }
-                  alert('SC6 is Running');
 
                   if (!selected7) {
                     // Show error message
@@ -914,7 +884,6 @@
                     // Hide error message
                     document.getElementById('radioError7').style.display = 'none';
                   }
-                  alert('SC7 is Running');
 
                   if (!selected8) {
                     // Show error message
@@ -926,7 +895,6 @@
                     // Hide error message
                     document.getElementById('radioError8').style.display = 'none';
                   }
-                  alert('SC8 is Running');
 
                   if (!selected9) {
                     // Show error message
@@ -938,7 +906,6 @@
                     // Hide error message
                     document.getElementById('radioError9').style.display = 'none';
                   }
-                  alert('SC9 is Running');
 
                   if (!selected10) {
                     // Show error message
@@ -950,7 +917,6 @@
                     // Hide error message
                     document.getElementById('radioError10').style.display = 'none';                        
                   }
-                  alert('SC10 is Running');
 
                   if (!selected11) {
                     // Show error message
@@ -962,7 +928,6 @@
                     // Hide error message
                     document.getElementById('radioError11').style.display = 'none';
                   }
-                  alert('SelectionCheck11 is Running');
 
                   if (!selected12) {
                     // Show error message
@@ -974,9 +939,6 @@
                     // Hide error message
                     document.getElementById('radioError12').style.display = 'none';
                   }
-                  alert('SelectionCheck12 is Running');
-
-                  alert(totalErrors + ' errors in your survey');
 
                   if (totalErrors > 0) {
                     let sSurveyErrorMessage = (`* You have ${totalErrors} errors in your survey.`)
@@ -988,7 +950,6 @@
                 }
                 
                 function setTimestamp() {
-                  alert('timestamp is running');
                   const currentTimestamp = new Date().toISOString().slice(0, 19).replace("T", "Z");
                   document.getElementById("Timestamp").value = currentTimestamp
                   document.getElementById("Timestamp").innerHTML = currentTimestamp
