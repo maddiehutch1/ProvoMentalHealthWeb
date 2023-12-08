@@ -470,6 +470,35 @@
           <div class="form-check form-check-inline">
             <span class="text-light survey-response">Rarely</span>
             <label class="radio-label">
+              <input type="radio" name="SocialMediaValidationScale" value="1"/>
+              <span>1</span>
+            </label>
+            <label class="radio-label">
+              <input type="radio" name="SocialMediaValidationScale" value="2"/>
+              <span>2</span>
+            </label>
+            <label class="radio-label">
+              <input type="radio" name="SocialMediaValidationScale" value="3"/>
+              <span>3</span>
+            </label>
+            <label class="radio-label">
+              <input type="radio" name="SocialMediaValidationScale" value="4"/>
+              <span>4</span>
+            </label>
+            <label class="radio-label">
+              <input type="radio" name="SocialMediaValidationScale" value="5"/>
+              <span>5</span>
+            </label>
+            <span class="text-light survey-response">Often</span>
+          </div><br>
+          <p id="radioError9" class="text-danger" style="display: none;">Please select an option.</p>
+
+
+          <!-- DepressionOrDownScale Question -->
+          <p class="text-light survey-question">How often do you feel depressed or down?</p>
+          <div class="form-check form-check-inline">
+            <span class="text-light survey-response">Rarely</span>
+            <label class="radio-label">
               <input type="radio" name="DepressionOrDownScale" value="1"/>
               <span>1</span>
             </label>
@@ -491,11 +520,10 @@
             </label>
             <span class="text-light survey-response">Often</span>
           </div><br>
-          <p id="radioError9" class="text-danger" style="display: none;">Please select an option.</p>
+          <p id="radioError10" class="text-danger" style="display: none;">Please select an option.</p>
 
-
-          <!-- DepressionOrDownScale Question -->
-          <p class="text-light survey-question">How often do you feel depressed or down?</p>
+          <!-- DailyActivityInterestScale -->
+          <p class="text-light survey-question">How frequently does your interested in daily activities fluctuate?</p>
           <div class="form-check form-check-inline">
             <span class="text-light survey-response">Rarely</span>
             <label class="radio-label">
@@ -520,10 +548,11 @@
             </label>
             <span class="text-light survey-response">Often</span>
           </div><br>
-          <p id="radioError10" class="text-danger" style="display: none;">Please select an option.</p>
+          <p id="radioError11" class="text-danger" style="display: none;">Please select an option.</p>
 
-          <!-- DailyActivityInterestScale -->
-          <p class="text-light survey-question">How frequently does your interested in daily activities fluctuate?</p>
+
+          <!-- SleepIssueScale Question -->
+          <p class="text-light survey-question">How often do you face issues regarding sleep?</p>
           <div class="form-check form-check-inline">
             <span class="text-light survey-response">Rarely</span>
             <label class="radio-label">
@@ -544,35 +573,6 @@
             </label>
             <label class="radio-label">
               <input type="radio" name="SleepIssueScale" value="5"/>
-              <span>5</span>
-            </label>
-            <span class="text-light survey-response">Often</span>
-          </div><br>
-          <p id="radioError11" class="text-danger" style="display: none;">Please select an option.</p>
-
-
-          <!-- SleepIssueScale Question -->
-          <p class="text-light survey-question">How often do you face issues regarding sleep?</p>
-          <div class="form-check form-check-inline">
-            <span class="text-light survey-response">Rarely</span>
-            <label class="radio-label">
-              <input type="radio" name="SocialMediaValidationScale" value="1"/>
-              <span>1</span>
-            </label>
-            <label class="radio-label">
-              <input type="radio" name="SocialMediaValidationScale" value="2"/>
-              <span>2</span>
-            </label>
-            <label class="radio-label">
-              <input type="radio" name="SocialMediaValidationScale" value="3"/>
-              <span>3</span>
-            </label>
-            <label class="radio-label">
-              <input type="radio" name="SocialMediaValidationScale" value="4"/>
-              <span>4</span>
-            </label>
-            <label class="radio-label">
-              <input type="radio" name="SocialMediaValidationScale" value="5"/>
               <span>5</span>
             </label>
             <span class="text-light survey-response">Often</span>
@@ -700,18 +700,18 @@
                     document.getElementById('sCheckboxError').innerHTML = '';
                   }
                   
-                  var radioButton1 = document.getElementsByName('option1');
-                  var radioButton2 = document.getElementsByName('option2');
-                  var radioButton3 = document.getElementsByName('option3');
-                  var radioButton4 = document.getElementsByName('option4');
-                  var radioButton5 = document.getElementsByName('option5');
-                  var radioButton6 = document.getElementsByName('option6');
-                  var radioButton7 = document.getElementsByName('option7');
-                  var radioButton8 = document.getElementsByName('option8');
-                  var radioButton9 = document.getElementsByName('option9');
-                  var radioButton10 = document.getElementsByName('option10');
-                  var radioButton11 = document.getElementsByName('option11');
-                  var radioButton12 = document.getElementsByName('option12');
+                  var radioButton1 = document.getElementsByName('DoomscrollingScale');
+                  var radioButton2 = document.getElementsByName('PhoneDistractsYouScale');
+                  var radioButton3 = document.getElementsByName('RestlessnessScale');
+                  var radioButton4 = document.getElementsByName('HowEasilyDistractedScale');
+                  var radioButton5 = document.getElementsByName('BotherByWorriesScale');
+                  var radioButton6 = document.getElementsByName('DifficultyConcentratingScale');
+                  var radioButton7 = document.getElementsByName('SocialMediaComparisonScale');
+                  var radioButton8 = document.getElementsByName('PreviousQuestionFeelAboutComparison');
+                  var radioButton9 = document.getElementsByName('SocialMediaValidationScale');
+                  var radioButton10 = document.getElementsByName('DepressionOrDownScale');
+                  var radioButton11 = document.getElementsByName('DailyActivityInterestScale');
+                  var radioButton12 = document.getElementsByName('SleepIssueScale');
                   var selected1 = false;
                   var selected2 = false;
                   var selected3 = false;
@@ -930,7 +930,7 @@
                   }
 
                   alert(totalErrors + ' errors in your survey');
-                  
+
                   if (totalErrors > 0) {
                     let sSurveyErrorMessage = (`* You have ${totalErrors} errors in your survey.`)
                     document.getElementById("survey-error").innerHTML = sSurveyErrorMessage

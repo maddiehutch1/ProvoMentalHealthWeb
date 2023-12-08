@@ -224,14 +224,6 @@ app.post("/editresponse", (req, res)=> {
    })
 });
 
-app.post("/deleteresponse/:id", (req, res) => {
-    knex("SurveyResponse").where("SurveyID",req.params.id).del().then( mySurvey => {
-      res.redirect("/surveydata");
-   }).catch( err => {
-      console.log(err);
-      res.status(500).json({err});
-   });
-});
 
 app.get('/logout', (req, res) => {
     req.session.destroy(function(err){
@@ -367,6 +359,12 @@ app.post("/createResponse", async (req, res)=> {
 //         res.status(500).send('Internal Server Error');
 //     }
 // });
+
+app.get('/surveyResults/:surveyId', function(req, res) {
+    knex.select().from("SurveyResponse").then(SurveyResponse => {
+        res.render("surveydata", {mySurvey: SurveyResponse, session:req.session });
+    });
+})
 
 
 app.post("/search", (req, res) => {
